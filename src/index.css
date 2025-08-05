@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义样式 */
+@layer components {
+  /* Markdown 内容样式 */
+  .prose {
+    @apply text-gray-800;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-bold text-gray-900 my-4;
+  }
+
+  .prose h1 {
+    @apply text-3xl;
+  }
+
+  .prose h2 {
+    @apply text-2xl;
+  }
+
+  .prose h3 {
+    @apply text-xl;
+  }
+
+  .prose p {
+    @apply my-4;
+  }
+
+  .prose ul, .prose ol {
+    @apply my-4 ml-6;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose li {
+    @apply my-1;
+  }
+
+  .prose a {
+    @apply text-blue-600 hover:underline;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-4;
+  }
+
+  .prose code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-gray-100 p-4 rounded my-4 overflow-auto;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose table {
+    @apply w-full border-collapse my-4;
+  }
+
+  .prose th, .prose td {
+    @apply border border-gray-300 p-2;
+  }
+
+  .prose th {
+    @apply bg-gray-100;
+  }
+
+  .prose img {
+    @apply max-w-full my-4;
+  }
+
+  /* 暗黑模式下的Markdown样式 */
+  .dark .prose {
+    @apply text-gray-200;
+  }
+
+  .dark .prose h1, .dark .prose h2, .dark .prose h3, 
+  .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+    @apply text-white;
+  }
+
+  .dark .prose a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+
+  .dark .prose blockquote {
+    @apply border-gray-600;
+  }
+
+  .dark .prose code {
+    @apply bg-gray-800 text-gray-200;
+  }
+
+  .dark .prose pre {
+    @apply bg-gray-800;
+  }
+
+  .dark .prose th {
+    @apply bg-gray-800;
+  }
+
+  .dark .prose td, .dark .prose th {
+    @apply border-gray-700;
+  }
+} 
