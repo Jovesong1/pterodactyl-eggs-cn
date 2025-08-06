@@ -1,0 +1,14 @@
+{
+  "name": "The Lord of the Rings: Return to Moria",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "指环王：重返摩瑞亚，中土世界第四纪元生存建造游戏服务器",
+  "author": "Free Range Games",
+  "date": "2025-08-06",
+  "tags": ["生存", "建造", "冒险", "多人联机", "指环王"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1966720/header.jpg",
+  "downloadUrl": "/src/data/eggs/return_to_moria/egg-the-lord-of-the-rings--return-to-moria-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+    "name": "Puck",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Puck是一款基于物理的冰球游戏，没有规则，没有暂停，只要把冰球射入球门",
+    "author": "Puck Team",
+    "date": "2025-08-06",
+    "tags": ["体育", "冰球", "多人联机", "物理", "竞技"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2994020/header.jpg",
+    "downloadUrl": "/src/data/eggs/puck/egg-puck-cn.json"
+} 

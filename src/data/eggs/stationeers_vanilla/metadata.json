@@ -1,0 +1,14 @@
+{
+    "name": "Stationeers",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "太空工程师是一款太空站建造和管理游戏，拥有完整的大气、科学和工程系统",
+    "author": "RocketWerkz",
+    "date": "2025-08-06",
+    "tags": ["太空", "生存", "建造", "模拟", "管理"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/544550/header.jpg",
+    "downloadUrl": "/src/data/eggs/stationeers_vanilla/egg-stationeers-cn.json"
+} 

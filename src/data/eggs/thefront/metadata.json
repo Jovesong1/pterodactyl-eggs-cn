@@ -1,0 +1,14 @@
+{
+    "name": "The Front",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "The Front是一款生存开放世界制作射击游戏，扮演抵抗战士阻止暴政帝国崛起",
+    "author": "Samar Studio",
+    "date": "2024-08-06",
+    "tags": ["生存", "射击", "开放世界", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2285150/header.jpg",
+    "downloadUrl": "/src/data/eggs/thefront/egg-the-front-cn.json"
+} 

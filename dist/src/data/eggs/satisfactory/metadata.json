@@ -1,0 +1,14 @@
+{
+    "name": "Satisfactory",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "幸福工厂是一款第一人称开放世界工厂建造游戏，玩家可以探索外星球并建造复杂的工厂",
+    "author": "Coffee Stain Studios",
+    "date": "2025-08-06",
+    "tags": ["工厂", "建造", "开放世界", "多人联机", "自动化"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/526870/header.jpg",
+    "downloadUrl": "/src/data/eggs/satisfactory/egg-satisfactory-cn.json"
+} 

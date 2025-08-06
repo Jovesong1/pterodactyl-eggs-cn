@@ -1,20 +1,25 @@
-// 其他 - 自动生成的Egg索引文件 - 2025-08-06T02:42:33.071Z
+// 工具 - 自动生成的Egg索引文件 - 2025-08-06T05:30:36.740Z
 export const others = [
   {
-    "id": "the_forest",
-    "name": "The Forest",
-    "path": "the_forest/the_forest.md",
-    "jsonPath": "the_forest/egg-the-forest-cn.json",
+    "id": "generic",
+    "name": "Wine Generic",
+    "path": "generic/generic.md",
+    "jsonPath": "generic/egg-wine-generic-cn.json",
     "version": "1.0.0",
-    "category": "其他",
-    "description": "作为一架客机坠毁的唯一幸存者，你发现自己身处一片神秘的森林，与一群食人族变种人搏斗求生。在这款恐怖的第一人称生存恐怖模拟器中建造、探索、生存。",
-    "author": "admin@softwarenoob.com",
-    "date": "2025-08-06",
-    "tags": [],
-    "localizationStatus": "未汉化",
+    "category": "工具",
+    "description": "一个通用的Wine镜像，可用于安装需要wine运行的服务器",
+    "author": "parker@parkervcp.com",
+    "date": "2024-08-06",
+    "tags": [
+      "工具",
+      "Wine",
+      "通用",
+      "Windows"
+    ],
+    "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
-    "icon": "",
-    "downloadUrl": "https://github.com/ptero-eggs/the_forest/blob/master/egg-the-forest-cn.json"
+    "icon": "https://gips0.baidu.com/it/u=1327757428,1607205401&fm=3030&app=3030&size=re3,2&q=75&n=0&g=4n&f=JPEG&fmt=auto&maxorilen2heic=2000000?s=9D04915FF5B319982C616CAB0300E006",
+    "downloadUrl": "/src/data/eggs/generic/egg-wine-generic-cn.json"
   }
 ];

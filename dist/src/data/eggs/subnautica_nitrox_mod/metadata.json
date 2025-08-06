@@ -1,0 +1,14 @@
+{
+    "name": "Subnautica",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "深海迷航是一款开放世界生存冒险游戏，使用Nitrox模组实现多人游戏功能",
+    "author": "Unknown Worlds Entertainment",
+    "date": "2025-08-06",
+    "tags": ["生存", "冒险", "海洋", "多人联机", "模组"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/264710/header.jpg",
+    "downloadUrl": "/src/data/eggs/subnautica_nitrox_mod/egg-subnautica-cn.json"
+} 

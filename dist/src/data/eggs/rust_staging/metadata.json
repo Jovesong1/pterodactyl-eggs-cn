@@ -1,0 +1,14 @@
+{
+    "name": "Rust Staging",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Rust测试分支服务器，用于测试最新的游戏功能和更新",
+    "author": "Facepunch Studios",
+    "date": "2025-08-06",
+    "tags": ["生存", "开放世界", "多人联机", "PVP", "测试版"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg",
+    "downloadUrl": "/src/data/eggs/rust/rust_staging/egg-rust-staging-cn.json"
+} 

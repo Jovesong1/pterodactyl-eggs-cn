@@ -1,0 +1,14 @@
+{
+  "name": "Rising World Java Legacy",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "Rising World Java Legacy版本开放世界沙盒游戏服务器",
+  "author": "JIW-Games",
+  "date": "2025-08-06",
+  "tags": ["沙盒", "建造", "开放世界", "多人联机", "体素", "Java"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/324080/header.jpg",
+  "downloadUrl": "/src/data/eggs/legacy/egg-rising-world-legacy-cn.json"
+} 

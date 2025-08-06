@@ -1,0 +1,14 @@
+{
+  "name": "Risk of Rain 2",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "Risk of Rain 2开放世界生存射击游戏服务器",
+  "author": "Hopoo Games",
+  "date": "2025-08-06",
+  "tags": ["生存", "射击", "多人联机", "Roguelike"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/632360/header.jpg",
+  "downloadUrl": "/src/data/eggs/risk_of_rain_2/egg-risk-of-rain2-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+    "name": "Resonite",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Resonite是一个充满无限可能性的全新数字宇宙，用户可以在其中社交、创造和开发",
+    "author": "Yellow Dog Man Studios",
+    "date": "2025-08-06",
+    "tags": ["社交", "虚拟现实", "多人联机", "创造", "沙盒"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://uploads-ssl.webflow.com/656504e52e383d09efa776a6/6567cd3c5415149f20af9525_RSN_MiniTrailer_01_v01_1_1-poster-00001.jpg",
+    "downloadUrl": "/src/data/eggs/resonite/egg-resonite-cn.json"
+} 

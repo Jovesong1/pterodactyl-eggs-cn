@@ -1,0 +1,14 @@
+{
+    "name": "Rimworld Together",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "环世界一起玩是一个社区驱动的多人模组，允许玩家在同一世界中共同建设和生存",
+    "author": "RimworldTogether",
+    "date": "2025-08-06",
+    "tags": ["模拟", "殖民地", "多人联机", "建造", "生存"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/294100/header.jpg",
+    "downloadUrl": "/src/data/eggs/rimworld/together/egg-rimworld-together-cn.json"
+} 

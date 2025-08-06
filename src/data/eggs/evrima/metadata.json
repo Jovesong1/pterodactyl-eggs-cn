@@ -1,0 +1,14 @@
+{
+    "name": "The Isle",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "The Isle是一款开放世界生存游戏，玩家可以选择不同阵营在危险岛屿上生存",
+    "author": "Afterthought LLC",
+    "date": "2024-08-06",
+    "tags": ["生存", "恐龙", "开放世界", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/376210/header.jpg",
+    "downloadUrl": "/src/data/eggs/evrima/egg-the-isle-cn.json"
+} 

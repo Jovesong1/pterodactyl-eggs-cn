@@ -1,0 +1,244 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-10-18T15:46:21+02:00",
+    "name": "The Front",
+    "author": "eggs@goover.dev",
+    "description": "The Front是一款生存开放世界制作射击游戏。你扮演一名被送回过去阻止暴政帝国崛起的抵抗战士。",
+    "features": [
+        "steam_disk_space"
+    ],
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/steamcmd:debian": "ghcr.io\/ptero-eggs\/steamcmd:debian"
+    },
+    "file_denylist": [],
+    "startup": ".\/ProjectWar\/Binaries\/Linux\/TheFrontServer  ProjectWar_Start?DedicatedServer -server -game -log -ServerTags=\"{{SRV_TAGS}}\" -UseSteamSocket={{STEAMSOCKET}} -Port=\"{{SERVER_PORT}}\" -BeaconPort=\"{{BEACON_PORT}}\" -ShutDownServicePort=\"{{SHUTDOWN_PORT}}\" -QueryPort=\"{{QUERY_PORT}}\" -ConfigServerName=\"{{CFG_NAME}}\" -OutIPAddress={{SERVER_IP}} -UserDir=\"\/home\/container\/TheFrontManager\/{{CFG_NAME}}\/\" -ServerName=\"{{SRV_NAME}}\" -EnableParallelCharacterMovementTickFunction -EnableParallelCharacterTickFunction -UseDynamicPhysicsScene -Game.PhysicsVehicle=false -ansimalloc -Game.MaxFrameRate=35 -MaxQueueSize=50 -QueueValidTime=120 -QueueThreshold={{MAX_PLAYERS}} -ServerFightModeType={{GAMEMODE}} -IsCanSelfDamage={{SELFDMG}} -IsCanFriendDamage={{DMGALLIES}} -SaveWorldInterval={{SRV_SAVETIME}} -GMOverlapRatio=2 -GreenHand={{GREENHAND}} -SensitiveWords={{SENSITIVE_WORDS}} -UseACE={{ANTI_CHEAT}} -ServerAdminAccounts={{SRV_ADMIN}} -IsShowGmTitle={{ADMIN_LABEL}} -ServerPassword={{SRV_PW}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"LogLoad: (Engine Initialization) \"\r\n}",
+        "logs": "{}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# steamcmd Base Installation Script\r\n#\r\nclear\r\nRED='\\033[0;31m'\r\nGREEN='\\033[0;32m'\r\nYELLOW='\\033[1;33m'\r\nBLUE='\\033[0;34m'\r\nNC='\\033[0m'\r\n\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\necho -e \"${YELLOW}The Front  Installscript${NC}\"\r\necho -e \"${YELLOW}Egg by gOOvER | https:\/\/goover.dev${NC}\"\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\n\r\n#apt -y update\r\n#apt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates jq dos2unix\r\n\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\necho -e \"${YELLOW}download and install steamcmd. please wait...${NC}\"\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\n\r\n## just in case someone removed the defaults.\r\nif [[ \"${STEAM_USER}\" == \"\" ]] || [[ \"${STEAM_PASS}\" == \"\" ]]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\nmkdir -p \/mnt\/server\/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\necho -e \"${GREEN}..done..${NC}\"\r\n\r\n## install game using steamcmd\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\necho -e \"${YELLOW}install game using steamcmd. please wait...${NC}\"\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\n\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ \"${WINDOWS_INSTALL}\" == \"1\" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update 1007 +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) ${INSTALL_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\necho -e \"${GREEN}..done..${NC}\"\r\n\r\n## set up 32 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk32\r\ncp -v linux32\/steamclient.so ..\/.steam\/sdk32\/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk64\r\ncp -v linux64\/steamclient.so ..\/.steam\/sdk64\/steamclient.so\r\n\r\n## install end\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"\r\necho -e \"${GREEN}Installation completed...${NC}\"\r\necho -e \"${BLUE}-------------------------------------------------${NC}\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "[服务器] 服务器名称",
+            "description": "不能包含空格和特殊符号",
+            "env_variable": "SRV_NAME",
+            "default_value": "Pterodactyl hosted Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:50",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 最大玩家数",
+            "description": "服务器上的最大玩家数量。",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "10",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1,80",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 配置名称",
+            "description": "存档文件的名称。不能包含空格或特殊符号",
+            "env_variable": "CFG_NAME",
+            "default_value": "new",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 服务器密码",
+            "description": "服务器访问密码",
+            "env_variable": "SRV_PW",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] PvE模式",
+            "description": "关闭 = PvP; 开启 = PvE",
+            "env_variable": "GAMEMODE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 使用Steam Socket",
+            "description": "使用Steam服务器进行网络穿透。如果您没有公共IP但希望允许外部网络的玩家加入您的服务器，请启用此功能。如果禁用，只有您和局域网内的其他玩家可以加入。如果您有公共IP，则不需要启用此功能。启用此功能将影响延迟。当Steam服务器繁忙时，您可能无法加入此服务器。",
+            "env_variable": "STEAMSOCKET",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 允许自伤？",
+            "description": "允许玩家对自己造成伤害。",
+            "env_variable": "SELFDMG",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 允许队友伤害？",
+            "description": "允许队友之间互相造成伤害。",
+            "env_variable": "DMGALLIES",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 服务器管理员",
+            "description": "输入17位Steam ID。使用分号分隔每个ID。GM级别默认为最高级别（25级）",
+            "env_variable": "SRV_ADMIN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 显示管理员标签",
+            "description": "切换特殊管理员图标。",
+            "env_variable": "ADMIN_LABEL",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 服务器保存间隔",
+            "description": "服务器存档间隔（以秒为单位）",
+            "env_variable": "SRV_SAVETIME",
+            "default_value": "300",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:150,600",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 启用新手保护？",
+            "description": "启用后，新角色将获得新手保护。",
+            "env_variable": "GREENHAND",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 服务器标签",
+            "description": "最多5个 -> \r\n\r\n0= PVP |   \r\n1= PVE | \r\n2= 经验倍率 |  \r\n3= 采集率 |  \r\n4= 保留物品栏 |  \r\n5= 45天清档 |  \r\n6= 15天清档 |  \r\n7= 30天清档 |  \r\n8= 60天清档 |",
+            "env_variable": "SRV_TAGS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 启用反作弊？",
+            "description": "切换反作弊功能。",
+            "env_variable": "ANTI_CHEAT",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 允许脏话？",
+            "description": "禁用时，将屏蔽脏话。",
+            "env_variable": "SENSITIVE_WORDS",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 自动更新",
+            "description": "在启动/重启时自动更新服务器",
+            "env_variable": "AUTO_UPDATE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] SRCDS_APPID",
+            "description": "",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "2334200",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 信标端口",
+            "description": "端口+1",
+            "env_variable": "BEACON_PORT",
+            "default_value": "27016",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1024,65536",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 查询端口",
+            "description": "端口+2",
+            "env_variable": "QUERY_PORT",
+            "default_value": "27017",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1024,65536",
+            "field_type": "text"
+        },
+        {
+            "name": "[服务器] 关闭服务端口",
+            "description": "端口+3",
+            "env_variable": "SHUTDOWN_PORT",
+            "default_value": "27017",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1024,65536",
+            "field_type": "text"
+        },
+        {
+            "name": "WINDOWS_INSTALL",
+            "description": "请勿删除！！！",
+            "env_variable": "WINDOWS_INSTALL",
+            "default_value": "1",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|boolean",
+            "field_type": "text"
+        }
+    ]
+} 

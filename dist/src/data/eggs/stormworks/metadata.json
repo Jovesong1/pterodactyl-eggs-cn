@@ -1,0 +1,14 @@
+{
+    "name": "Stormworks: Build and Rescue",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "加入一个世界，在这里你可以设计、创建和驾驶自己的空中海上救援服务",
+    "author": "Sunfire Software",
+    "date": "2025-08-06",
+    "tags": ["模拟", "建造", "救援", "多人联机", "沙盒"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/573090/header.jpg",
+    "downloadUrl": "/src/data/eggs/stormworks/egg-stormworks--build-and-rescue-cn.json"
+} 

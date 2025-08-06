@@ -1,0 +1,14 @@
+{
+    "name": "Rust Autowipe",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Rust是一款硬核生存游戏，具有自动清档功能，玩家需要收集资源并建造基地以生存",
+    "author": "Facepunch Studios",
+    "date": "2025-08-06",
+    "tags": ["生存", "开放世界", "多人联机", "PVP", "建造"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg",
+    "downloadUrl": "/src/data/eggs/rust/rust_autowipe/egg-rust-autowipe-cn.json"
+} 

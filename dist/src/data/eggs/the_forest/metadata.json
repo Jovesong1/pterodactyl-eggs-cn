@@ -1,0 +1,14 @@
+{
+    "name": "The Forest",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "The Forest是一款第一人称生存恐怖游戏，玩家需要在充满食人族的森林中求生",
+    "author": "Endnight Games",
+    "date": "2024-08-06",
+    "tags": ["生存", "恐怖", "第一人称", "多人联机", "建造"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/242760/header.jpg",
+    "downloadUrl": "/src/data/eggs/the_forest/egg-the-forest-cn.json"
+} 

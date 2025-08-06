@@ -1,0 +1,14 @@
+{
+    "name": "Veloren",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Veloren 开源多人体素角色扮演游戏服务器",
+    "author": "Veloren Team",
+    "date": "2025-08-07",
+    "tags": ["RPG", "体素", "开源", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://veloren.net/processed_images/gallery-0.50cacb0aa6b9efab.jpg",
+    "downloadUrl": "/src/data/eggs/veloren/egg-veloren-cn.json"
+} 

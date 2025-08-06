@@ -1,0 +1,14 @@
+{
+    "name": "V Rising",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "V Rising是一款吸血鬼主题的开放世界生存游戏，玩家需要建造城堡并征服生者之地",
+    "author": "Stunlock Studios",
+    "date": "2024-08-06",
+    "tags": ["生存", "吸血鬼", "开放世界", "多人联机", "建造"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1604030/header.jpg",
+    "downloadUrl": "/src/data/eggs/v_rising/egg-v-rising-cn.json"
+} 

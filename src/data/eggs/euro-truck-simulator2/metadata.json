@@ -1,0 +1,14 @@
+{
+    "name": "Euro Truck Simulator 2",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "欧洲卡车模拟器2专用服务器，允许玩家组建车队共同探索欧洲公路",
+    "author": "SCS Software",
+    "date": "2024-08-06",
+    "tags": ["模拟", "卡车", "车队", "多人联机", "欧洲"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/227300/header.jpg",
+    "downloadUrl": "/src/data/eggs/euro-truck-simulator2/egg-euro-truck-simulator2-dedicated-server-cn.json"
+} 

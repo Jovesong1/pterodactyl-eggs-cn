@@ -1,0 +1,14 @@
+{
+    "name": "starmade",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "星际创造是一款终极太空沙盒游戏，玩家可以参与舰队战斗，组建联盟，统治星系",
+    "author": "Schema",
+    "date": "2025-08-06",
+    "tags": ["沙盒", "太空", "建造", "多人联机", "战斗"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://www.star-made.org/assets/bg1-7c78094b62d01085add85a37a28554520397eb32fafe492ae4e76c9520425811.jpg",
+    "downloadUrl": "/src/data/eggs/starmade/egg-starmade-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+    "name": "R5Reloaded",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "R5Reloaded是一个修改版的Apex英雄服务器，允许玩家创建和运行自定义游戏",
+    "author": "R5Reloaded Team",
+    "date": "2025-08-06",
+    "tags": ["FPS", "战术", "多人联机", "射击", "修改版"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg",
+    "downloadUrl": "/src/data/eggs/r5reloaded/egg-r5-reloaded-cn.json"
+} 

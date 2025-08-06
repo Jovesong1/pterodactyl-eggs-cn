@@ -1,0 +1,14 @@
+{
+    "name": "TerraTech Worlds",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "TerraTech Worlds是一款开放世界的PvE生存游戏，设定在一个未知的外星球上",
+    "author": "Payload Studios",
+    "date": "2024-08-06",
+    "tags": ["生存", "建造", "开放世界", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2313330/header.jpg",
+    "downloadUrl": "/src/data/eggs/terratech_worlds/egg-terra-tech-worlds-cn.json"
+} 

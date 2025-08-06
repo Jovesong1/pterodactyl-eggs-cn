@@ -1,0 +1,14 @@
+{
+    "name": "Team Fortress 2 Classic",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Team Fortress 2 Classic是《军团要塞2》的一个免费模组，重现2008-2009年的经典时代",
+    "author": "Eminoma",
+    "date": "2024-08-06",
+    "tags": ["FPS", "射击", "团队", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/440/header.jpg",
+    "downloadUrl": "/src/data/eggs/team_fortress_2_classic/egg-team-fortress-2-classic-cn.json"
+} 

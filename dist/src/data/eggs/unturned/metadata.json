@@ -1,0 +1,14 @@
+{
+    "name": "Unturned",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Unturned 开放世界僵尸生存游戏服务器",
+    "author": "Smartly Dressed Games",
+    "date": "2025-08-07",
+    "tags": ["生存", "僵尸", "开放世界", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/304930/header.jpg",
+    "downloadUrl": "/src/data/eggs/unturned/egg-unturned-cn.json"
+} 

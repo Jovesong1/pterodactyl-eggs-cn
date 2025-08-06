@@ -9,6 +9,6 @@
     "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
-    "icon": "https://xonotic.org/static/img/xonotic-logo.png",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1018720/header.jpg",
     "downloadUrl": "/src/data/eggs/xonotic/egg-xonotic-cn.json"
 } 

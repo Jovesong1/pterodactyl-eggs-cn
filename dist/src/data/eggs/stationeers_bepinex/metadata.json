@@ -1,0 +1,14 @@
+{
+    "name": "Stationeers (BepInEx)",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "带有基本BepInEx支持的太空工程师服务器，允许使用模组",
+    "author": "RocketWerkz",
+    "date": "2025-08-06",
+    "tags": ["太空", "生存", "建造", "模拟", "模组"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/544550/header.jpg",
+    "downloadUrl": "/src/data/eggs/stationeers_bepinex/egg-stationeers--bep-in-ex-cn.json"
+} 

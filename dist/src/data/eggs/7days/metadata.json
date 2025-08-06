@@ -9,6 +9,6 @@
     "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
     "testStatus": "已通过运行认证",
-    "icon": "https://7daystodie.com/images/header_g_logo_2024.png",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/294420/header.jpg",
     "downloadUrl": "/src/data/eggs/7days/egg-7days.json"
   }

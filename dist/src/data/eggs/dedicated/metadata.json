@@ -1,0 +1,14 @@
+{
+    "name": "SCP:SL",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "SCP: 秘密实验室是一款多人恐怖游戏，基于SCP基金会的作品",
+    "author": "Northwood Studios",
+    "date": "2025-08-06",
+    "tags": ["恐怖", "多人联机", "SCP", "第一人称", "生存"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/700330/header.jpg",
+    "downloadUrl": "/src/data/eggs/scpsl/dedicated/egg-scpsl-cn.json"
+} 

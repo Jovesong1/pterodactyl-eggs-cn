@@ -1,0 +1,14 @@
+{
+    "name": "SCP:SL - Exiled",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "带有Exiled插件框架的SCP: 秘密实验室多人恐怖游戏服务器",
+    "author": "Northwood Studios",
+    "date": "2025-08-06",
+    "tags": ["恐怖", "多人联机", "SCP", "第一人称", "生存", "插件"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/700330/header.jpg",
+    "downloadUrl": "/src/data/eggs/scpsl/exiled/egg-s-c-p--s-l--exiled-cn.json"
+} 
