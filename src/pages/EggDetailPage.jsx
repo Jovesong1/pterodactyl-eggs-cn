@@ -10,13 +10,16 @@ function EggDetailPage() {
   const { id } = useParams();
   const [egg, setEgg] = useState(null);
   const [content, setContent] = useState('');
+  const [eggJson, setEggJson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState('description'); // 'description', 'installation', 'configuration'
+  const [activeTab, setActiveTab] = useState('description'); // 'description', 'installation', 'configuration', 'variables', 'technical'
   const [tabContent, setTabContent] = useState({
     description: '',
     installation: '',
-    configuration: ''
+    configuration: '',
+    variables: '',
+    technical: ''
   });
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
@@ -78,6 +81,77 @@ function EggDetailPage() {
     return name;
   };
 
+  // 从JSON文件中提取变量信息并格式化为Markdown
+  const formatVariablesAsMarkdown = (jsonData) => {
+    if (!jsonData || !jsonData.variables || jsonData.variables.length === 0) {
+      return '### 暂无变量信息\n\n该Egg资源未定义任何变量。';
+    }
+
+    let markdown = '## 变量配置\n\n';
+    markdown += '| 变量名 | 描述 | 默认值 | 用户可见 | 用户可编辑 |\n';
+    markdown += '|-------|------|-------|---------|----------|\n';
+
+    jsonData.variables.forEach(variable => {
+      markdown += `| ${variable.name} | ${variable.description || '无描述'} | ${variable.default_value || '无默认值'} | ${variable.user_viewable ? '是' : '否'} | ${variable.user_editable ? '是' : '否'} |\n`;
+    });
+
+    return markdown;
+  };
+
+  // 从JSON文件中提取技术信息（启动脚本和安装脚本）
+  const formatTechnicalInfoAsMarkdown = (jsonData) => {
+    if (!jsonData) {
+      return '### 暂无技术信息\n\n该Egg资源未提供技术信息。';
+    }
+
+    let markdown = '';
+
+    // 添加基本信息
+    markdown += '## 基本信息\n\n';
+    markdown += `**名称:** ${jsonData.name || '未指定'}\n\n`;
+    markdown += `**作者:** ${jsonData.author || '未指定'}\n\n`;
+    markdown += `**描述:** ${jsonData.description || '未提供描述'}\n\n`;
+    markdown += `**导出时间:** ${jsonData.exported_at || '未指定'}\n\n`;
+
+    // 添加Docker镜像信息
+    if (jsonData.docker_images && Object.keys(jsonData.docker_images).length > 0) {
+      markdown += '## Docker镜像\n\n';
+      markdown += '| 名称 | 镜像 |\n';
+      markdown += '|------|------|\n';
+      
+      Object.entries(jsonData.docker_images).forEach(([name, image]) => {
+        markdown += `| ${name} | ${image} |\n`;
+      });
+      markdown += '\n';
+    }
+
+    // 添加启动脚本
+    if (jsonData.startup) {
+      markdown += '## 启动脚本\n\n';
+      markdown += '```bash\n';
+      markdown += jsonData.startup;
+      markdown += '\n```\n\n';
+    }
+
+    // 添加安装脚本
+    if (jsonData.scripts && jsonData.scripts.installation && jsonData.scripts.installation.script) {
+      markdown += '## 安装脚本\n\n';
+      markdown += '```bash\n';
+      markdown += jsonData.scripts.installation.script;
+      markdown += '\n```\n\n';
+      
+      if (jsonData.scripts.installation.container) {
+        markdown += `**容器:** ${jsonData.scripts.installation.container}\n\n`;
+      }
+      
+      if (jsonData.scripts.installation.entrypoint) {
+        markdown += `**入口点:** ${jsonData.scripts.installation.entrypoint}\n\n`;
+      }
+    }
+
+    return markdown;
+  };
+
   useEffect(() => {
     // 查找对应的Egg
     const foundEgg = eggsIndex.find(e => e.id === id);
@@ -90,18 +164,31 @@ function EggDetailPage() {
     
     setEgg(foundEgg);
     
-    // 加载Markdown内容
-    async function loadMarkdown() {
+    // 设置页面标题
+    document.title = `${foundEgg.name} - 翼龙面板中文Egg资源站`;
+    
+    // 加载Markdown内容和JSON文件
+    async function loadEggData() {
       try {
-        const response = await fetch(`/src/data/eggs/${foundEgg.path}`);
-        if (!response.ok) {
-          throw new Error(`无法加载Egg内容: ${response.status}`);
+        // 加载Markdown文件
+        const mdResponse = await fetch(`/src/data/eggs/${foundEgg.path}`);
+        if (!mdResponse.ok) {
+          throw new Error(`无法加载Egg内容: ${mdResponse.status}`);
         }
-        const text = await response.text();
-        setContent(text);
+        const mdText = await mdResponse.text();
+        setContent(mdText);
+        
+        // 加载JSON文件
+        const jsonResponse = await fetch(`/src/data/eggs/${foundEgg.jsonPath}`);
+        if (!jsonResponse.ok) {
+          console.warn(`无法加载Egg JSON文件: ${jsonResponse.status}`);
+        } else {
+          const jsonData = await jsonResponse.json();
+          setEggJson(jsonData);
+        }
         
         // 简单处理内容，分割为不同的标签页内容
-        const sections = text.split('## ');
+        const sections = mdText.split('## ');
         let descContent = sections[0] || '';
         let installContent = '';
         let configContent = '';
@@ -122,19 +209,36 @@ function EggDetailPage() {
         setTabContent({
           description: descContent,
           installation: installContent || '### 暂无安装指南\n\n该Egg资源尚未提供详细的安装指南。',
-          configuration: configContent || '### 暂无配置参数\n\n该Egg资源尚未提供详细的配置参数说明。'
+          configuration: configContent || '### 暂无配置参数\n\n该Egg资源尚未提供详细的配置参数说明。',
+          variables: '### 加载中...\n\n正在加载变量信息...',
+          technical: '### 加载中...\n\n正在加载技术信息...'
         });
         
       } catch (err) {
-        console.error('加载Markdown失败:', err);
+        console.error('加载Egg数据失败:', err);
         setError('无法加载Egg内容，请稍后再试');
       } finally {
         setLoading(false);
       }
     }
     
-    loadMarkdown();
+    loadEggData();
   }, [id]);
+
+  // 当JSON数据加载完成后，更新变量标签页内容和技术信息标签页
+  useEffect(() => {
+    if (eggJson) {
+      const variablesMarkdown = formatVariablesAsMarkdown(eggJson);
+      const technicalMarkdown = formatTechnicalInfoAsMarkdown(eggJson);
+      
+      // 更新标签页内容
+      setTabContent(prev => ({
+        ...prev,
+        variables: variablesMarkdown,
+        technical: technicalMarkdown
+      }));
+    }
+  }, [eggJson]);
 
   // 处理下载按钮点击
   const handleDownload = () => {
@@ -327,6 +431,8 @@ function EggDetailPage() {
             <div className="mb-2 md:mb-0 flex flex-wrap gap-x-4 gap-y-2">
               <span><strong>作者:</strong> {egg.author}</span>
               <span><strong>更新日期:</strong> {egg.date}</span>
+              {eggJson && eggJson.name && <span><strong>原始名称:</strong> {eggJson.name}</span>}
+              {eggJson && eggJson.author && <span><strong>原始作者:</strong> {eggJson.author}</span>}
             </div>
           </div>
         </div>
@@ -335,7 +441,7 @@ function EggDetailPage() {
       {/* 内容标签页 */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-8">
         <div className="border-b border-gray-200 dark:border-gray-700">
-          <nav className="flex">
+          <nav className="flex flex-wrap">
             <button
               onClick={() => setActiveTab('description')}
               className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
@@ -366,6 +472,26 @@ function EggDetailPage() {
             >
               配置参数
             </button>
+            <button
+              onClick={() => setActiveTab('variables')}
+              className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
+                activeTab === 'variables'
+                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
+            >
+              变量设置
+            </button>
+            <button
+              onClick={() => setActiveTab('technical')}
+              className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
+                activeTab === 'technical'
+                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
+            >
+              技术信息
+            </button>
           </nav>
         </div>
         
@@ -376,7 +502,11 @@ function EggDetailPage() {
                 ? tabContent.description 
                 : activeTab === 'installation' 
                   ? tabContent.installation 
-                  : tabContent.configuration}
+                  : activeTab === 'configuration'
+                    ? tabContent.configuration
+                    : activeTab === 'variables'
+                      ? tabContent.variables
+                      : tabContent.technical}
             </ReactMarkdown>
           </div>
         </div>

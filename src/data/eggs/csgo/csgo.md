@@ -1,13 +1,3 @@
----
-name: CS:GO服务器
-version: 最新版
-category: 游戏服务器
-description: 反恐精英：全球攻势(CS:GO)游戏服务器
-author: 翼龙中文社区
-date: 2023-12-20
-tags: [游戏, FPS, 射击]
----
-
 # CS:GO服务器
 
 ## 简介

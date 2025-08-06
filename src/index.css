@@ -57,8 +57,14 @@
     @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
   }
 
+  /* 增强代码块的可读性 */
   .prose pre {
-    @apply bg-gray-100 p-4 rounded my-4 overflow-auto;
+    background-color: #1e293b !important; /* 深蓝色背景 */
+    color: #e2e8f0 !important; /* 亮色文字 */
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
   }
 
   .prose pre code {
@@ -113,5 +119,14 @@
 
   .dark .prose td, .dark .prose th {
     @apply border-gray-700;
+  }
+
+  .dark .prose pre {
+    background-color: #0f172a !important; /* 暗模式下更深的背景 */
+    color: #f1f5f9 !important; /* 暗模式下更亮的文字 */
+  }
+
+  .dark .prose code {
+    color: #fbbf24 !important; /* 暗模式下更亮的橙色 */
   }
 } 

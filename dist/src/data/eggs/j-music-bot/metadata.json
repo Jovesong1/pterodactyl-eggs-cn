@@ -1,0 +1,14 @@
+{
+  "name": "JMusicBot",
+  "version": "1.0.0",
+  "category": "Discord机器人",
+  "description": "易于设置和运行的Discord音乐机器人",
+  "author": "翼龙中文社区",
+  "date": "2024-08-06",
+  "tags": ["Discord", "音乐", "机器人", "Java"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "已优化",
+  "testStatus": "已通过运行认证",
+  "icon": "",
+  "downloadUrl": "https://github.com/jagrosh/MusicBot/releases/latest"
+} 

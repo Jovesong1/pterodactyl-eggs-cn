@@ -1,0 +1,65 @@
+{
+  "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL EGG REPOSITORY - PTERODACTYLEGGS.COM",
+  "meta": {
+    "version": "PTDL_v2",
+    "update_url": "https://pterodactyleggs.com/egg/minecraft/download"
+  },
+  "exported_at": "2023-12-15T12:00:00+08:00",
+  "name": "Vanilla Minecraft",
+  "author": "support@pterodactyl.io",
+  "description": "Minecraft is a game about placing blocks and going on adventures. Explore randomly generated worlds and build amazing things from the simplest of homes to the grandest of castles.",
+  "features": null,
+  "docker_images": {
+    "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
+    "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
+    "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
+    "Java 8": "ghcr.io/pterodactyl/yolks:java_8"
+  },
+  "file_denylist": [],
+  "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
+  "config": {
+    "files": "{}",
+    "startup": "{\r\n    \"done\": \"Done\"\r\n}",
+    "logs": "{}",
+    "stop": "stop"
+  },
+  "scripts": {
+    "installation": {
+      "script": "#!/bin/bash\r\n# Vanilla MC Installation Script\r\n#\r\n# Server Files: /mnt/server\r\napt update\r\napt install -y curl jq\r\n\r\ncd /mnt/server\r\n\r\nLATEST_VERSION=`curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest.release'`\r\nVERSION=${VERSION:-\"$LATEST_VERSION\"}\r\n\r\necho -e \"\\nMinecraft Version: $VERSION\\n\"\r\n\r\nCDN_URL=https://serverjars.com/api/fetchJar/vanilla/vanilla/${VERSION}\r\n\r\nif [ ! -z \"$VANILLA_VERSION\" ]; then\r\n    echo -e \"Downloading: $CDN_URL\\n\"\r\n    curl -o ${SERVER_JARFILE} $CDN_URL\r\nelse\r\n    echo -e \"Downloading vanilla server jar for version ${VERSION}\\n\"\r\n    curl -o ${SERVER_JARFILE} $CDN_URL\r\nfi\r\n\r\necho -e \"Done downloading vanilla server jar for version ${VERSION}\\n\"",
+      "container": "ghcr.io/pterodactyl/installers:debian",
+      "entrypoint": "bash"
+    }
+  },
+  "variables": [
+    {
+      "name": "Server Jar File",
+      "description": "The name of the server jarfile to run the server with.",
+      "env_variable": "SERVER_JARFILE",
+      "default_value": "server.jar",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|regex:/^([\\w\\d._-]+)(\\.jar)$/",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Version",
+      "description": "The version of Minecraft Vanilla to install. Leave blank to use the latest.",
+      "env_variable": "VERSION",
+      "default_value": "latest",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|string|max:20",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Memory",
+      "description": "The amount of memory in MB to allocate to the Java Heap.",
+      "env_variable": "SERVER_MEMORY",
+      "default_value": "1024",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|numeric|digits_between:3,5",
+      "field_type": "text"
+    }
+  ]
+} 

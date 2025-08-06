@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import SearchBar from '../components/SearchBar';
@@ -8,6 +8,11 @@ import eggsIndex from '../data/eggs-index';
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+  
+  // 设置页面标题
+  useEffect(() => {
+    document.title = '翼龙面板中文Egg资源站 - 首页';
+  }, []);
   
   // 创建Fuse搜索实例
   const fuse = new Fuse(eggsIndex, {

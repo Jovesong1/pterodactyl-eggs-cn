@@ -1,0 +1,142 @@
+{
+  "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL EGG REPOSITORY - PTERODACTYLEGGS.COM",
+  "meta": {
+    "version": "PTDL_v2",
+    "update_url": "https://pterodactyleggs.com/egg/rust/download"
+  },
+  "exported_at": "2023-10-05T10:30:00+08:00",
+  "name": "Rust",
+  "author": "parker@parkervcp.com",
+  "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
+  "features": null,
+  "docker_images": {
+    "rustserver": "ghcr.io/pterodactyl/games:rust"
+  },
+  "file_denylist": [],
+  "startup": "./RustDedicated -batchmode +server.port {{SERVER_PORT}} +server.identity \"{{RUST_SERVER_IDENTITY}}\" +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \"{{RUST_SERVER_NAME}}\" +server.url \"{{RUST_SERVER_URL}}\" +server.headerimage \"{{RUST_SERVER_BANNER_URL}}\" +server.description \"{{RUST_SERVER_DESCRIPTION}}\" +server.worldsize {{RUST_SERVER_WORLDSIZE}} +server.seed {{RUST_SERVER_SEED}} +server.maxplayers {{RUST_SERVER_MAXPLAYERS}} +rcon.password \"{{RCON_PASSWORD}}\"",
+  "config": {
+    "files": "{}",
+    "startup": "{\r\n    \"done\": \"Server startup complete\"\r\n}",
+    "logs": "{}",
+    "stop": "quit"
+  },
+  "scripts": {
+    "installation": {
+      "script": "#!/bin/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n# Image to install with is 'ghcr.io/pterodactyl/installers:debian'\r\napt -y update\r\napt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates\r\n\r\n## just in case someone removed the defaults.\r\nif [ \"${STEAM_USER}\" == \"\" ]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd /tmp\r\nmkdir -p /mnt/server/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C /mnt/server/steamcmd\r\ncd /mnt/server/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root /mnt\r\nexport HOME=/mnt/server\r\n\r\n## install game using steamcmd\r\n./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p /mnt/server/.steam/sdk32\r\ncp -v linux32/steamclient.so ../.steam/sdk32/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p /mnt/server/.steam/sdk64\r\ncp -v linux64/steamclient.so ../.steam/sdk64/steamclient.so\r\n\r\n## RUST specific setup\r\ncd /mnt/server\r\nmkdir -p server/${RUST_SERVER_IDENTITY}\r\nmkdir -p server/${RUST_SERVER_IDENTITY}/cfg\r\n\r\necho \"Creating rust server identity files\"\r\necho \"server.ip 0.0.0.0\" > server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.port ${SERVER_PORT}\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.hostname \\\"${RUST_SERVER_NAME}\\\"\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.identity \\\"${RUST_SERVER_IDENTITY}\\\"\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.seed ${RUST_SERVER_SEED}\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.maxplayers ${RUST_SERVER_MAXPLAYERS}\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.worldsize ${RUST_SERVER_WORLDSIZE}\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"server.saveinterval 300\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"rcon.ip 0.0.0.0\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"rcon.port ${RCON_PORT}\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"rcon.password \\\"${RCON_PASSWORD}\\\"\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\necho \"rcon.web 1\" >> server/${RUST_SERVER_IDENTITY}/cfg/server.cfg\r\n\r\necho \"Installing oxide...\"\r\ncd /tmp\r\ncurl -sSL \"https://github.com/OxideMod/Oxide.Rust/releases/latest/download/Oxide.Rust-linux.zip\" -o oxide.zip\r\nunzip -o -d /mnt/server oxide.zip\r\nrm oxide.zip\r\n\r\necho \"Installation complete.\"",
+      "container": "ghcr.io/pterodactyl/installers:debian",
+      "entrypoint": "bash"
+    }
+  },
+  "variables": [
+    {
+      "name": "Server Name",
+      "description": "The name of your server in the server browser.",
+      "env_variable": "RUST_SERVER_NAME",
+      "default_value": "A Rust Server",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:60",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Description",
+      "description": "The description of your server. This appears in the server browser below the server name.",
+      "env_variable": "RUST_SERVER_DESCRIPTION",
+      "default_value": "Powered by Pterodactyl",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string",
+      "field_type": "text"
+    },
+    {
+      "name": "Server URL",
+      "description": "The URL for your server. This appears in the server browser as a clickable link.",
+      "env_variable": "RUST_SERVER_URL",
+      "default_value": "https://pterodactyl.io",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|url",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Banner",
+      "description": "The URL for your server banner image. This appears in the server browser as a clickable image.",
+      "env_variable": "RUST_SERVER_BANNER_URL",
+      "default_value": "",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|url",
+      "field_type": "text"
+    },
+    {
+      "name": "RCON Password",
+      "description": "RCON password for the server.",
+      "env_variable": "RCON_PASSWORD",
+      "default_value": "changeme",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:64",
+      "field_type": "text"
+    },
+    {
+      "name": "RCON Port",
+      "description": "RCON port for the server.",
+      "env_variable": "RCON_PORT",
+      "default_value": "28016",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|numeric|max:65535",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Identity",
+      "description": "The identity of your server. This is used to store server information and save files.",
+      "env_variable": "RUST_SERVER_IDENTITY",
+      "default_value": "rust",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:64|alpha_dash",
+      "field_type": "text"
+    },
+    {
+      "name": "Server Seed",
+      "description": "The map generation seed for your server.",
+      "env_variable": "RUST_SERVER_SEED",
+      "default_value": "12345",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|numeric",
+      "field_type": "text"
+    },
+    {
+      "name": "Max Players",
+      "description": "The maximum number of players allowed on the server at once.",
+      "env_variable": "RUST_SERVER_MAXPLAYERS",
+      "default_value": "50",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|numeric|max:500",
+      "field_type": "text"
+    },
+    {
+      "name": "World Size",
+      "description": "The world size of the generated map (in meters).",
+      "env_variable": "RUST_SERVER_WORLDSIZE",
+      "default_value": "3000",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|numeric|max:6000",
+      "field_type": "text"
+    },
+    {
+      "name": "App ID",
+      "description": "Steam app ID for Rust server.",
+      "env_variable": "SRCDS_APPID",
+      "default_value": "258550",
+      "user_viewable": false,
+      "user_editable": false,
+      "rules": "required|numeric",
+      "field_type": "text"
+    }
+  ]
+} 

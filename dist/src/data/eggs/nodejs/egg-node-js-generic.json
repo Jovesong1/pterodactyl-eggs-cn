@@ -1,0 +1,85 @@
+{
+  "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL EGG REPOSITORY - PTERODACTYLEGGS.COM",
+  "meta": {
+    "version": "PTDL_v2",
+    "update_url": "https://pterodactyleggs.com/egg/nodejs/download"
+  },
+  "exported_at": "2023-09-18T14:00:00+08:00",
+  "name": "Node.js Generic",
+  "author": "support@pterodactyl.io",
+  "description": "A generic Node.js egg that supports most Node.js applications.",
+  "features": null,
+  "docker_images": {
+    "Node.js 18": "ghcr.io/pterodactyl/yolks:nodejs_18",
+    "Node.js 16": "ghcr.io/pterodactyl/yolks:nodejs_16",
+    "Node.js 14": "ghcr.io/pterodactyl/yolks:nodejs_14",
+    "Node.js 12": "ghcr.io/pterodactyl/yolks:nodejs_12"
+  },
+  "file_denylist": [],
+  "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/{{JS_FILE}}",
+  "config": {
+    "files": "{}",
+    "startup": "{\r\n    \"done\": \"Listening on port\"\r\n}",
+    "logs": "{}",
+    "stop": "^C"
+  },
+  "scripts": {
+    "installation": {
+      "script": "#!/bin/bash\r\n# Node.js Installation Script\r\n#\r\n# Server Files: /mnt/server\r\nif [[ -d /mnt/server ]]; then\r\n    echo -e \"Container directory exists. Installing dependencies...\"\r\n    if [[ ! -z ${NODE_PACKAGES} ]]; then\r\n        echo -e \"Installing node packages\"\r\n        cd /mnt/server\r\n        npm install ${NODE_PACKAGES}\r\n    fi\r\n    \r\n    echo -e \"Done!\"\r\n    exit 0\r\nfi\r\n\r\nmkdir -p /mnt/server\r\ncd /mnt/server\r\n\r\nif [[ ${GIT_REPO} != \"\" ]]; then\r\n    echo -e \"Using git repo: ${GIT_REPO}\"\r\n    git clone ${GIT_REPO} .\r\n    if [[ ! -z ${GIT_BRANCH} ]]; then\r\n        echo -e \"Using branch: ${GIT_BRANCH}\"\r\n        git checkout ${GIT_BRANCH}\r\n    fi\r\nelse\r\n    echo -e \"No git repo specified, creating default package.json\"\r\n    cat <<EOF > /mnt/server/package.json\r\n{\r\n    \"name\": \"pterodactyl-nodejs-app\",\r\n    \"version\": \"1.0.0\",\r\n    \"description\": \"A Node.js application running on Pterodactyl\",\r\n    \"main\": \"index.js\",\r\n    \"scripts\": {\r\n        \"start\": \"node index.js\"\r\n    },\r\n    \"author\": \"\",\r\n    \"license\": \"MIT\"\r\n}\r\nEOF\r\n\r\n    cat <<EOF > /mnt/server/index.js\r\nconst http = require('http');\r\n\r\nconst PORT = process.env.SERVER_PORT || 3000;\r\n\r\nconst server = http.createServer((req, res) => {\r\n    res.statusCode = 200;\r\n    res.setHeader('Content-Type', 'text/plain');\r\n    res.end('Hello World from Pterodactyl Node.js App!');\r\n});\r\n\r\nserver.listen(PORT, '0.0.0.0', () => {\r\n    console.log(`Server running on port ${PORT}`);\r\n});\r\nEOF\r\nfi\r\n\r\nif [[ ! -z ${NODE_PACKAGES} ]]; then\r\n    echo -e \"Installing node packages\"\r\n    npm install ${NODE_PACKAGES}\r\nfi\r\n\r\nif [ -f /mnt/server/package.json ]; then\r\n    echo -e \"Installing dependencies\"\r\n    npm install\r\nfi\r\n\r\necho -e \"Installation completed successfully!\"",
+      "container": "node:16-alpine",
+      "entrypoint": "ash"
+    }
+  },
+  "variables": [
+    {
+      "name": "JavaScript File",
+      "description": "The main JavaScript file to run your application.",
+      "env_variable": "JS_FILE",
+      "default_value": "index.js",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:100",
+      "field_type": "text"
+    },
+    {
+      "name": "Git Repo",
+      "description": "Git repository to clone (leave blank for a new Node.js app).",
+      "env_variable": "GIT_REPO",
+      "default_value": "",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|string",
+      "field_type": "text"
+    },
+    {
+      "name": "Git Branch",
+      "description": "Git branch to use.",
+      "env_variable": "GIT_BRANCH",
+      "default_value": "",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|string",
+      "field_type": "text"
+    },
+    {
+      "name": "Additional Node Packages",
+      "description": "Additional Node.js packages to install. Separated by space.",
+      "env_variable": "NODE_PACKAGES",
+      "default_value": "",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "nullable|string",
+      "field_type": "text"
+    },
+    {
+      "name": "Auto Update",
+      "description": "Pull the latest files from Git on startup.",
+      "env_variable": "AUTO_UPDATE",
+      "default_value": "0",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|boolean",
+      "field_type": "text"
+    }
+  ]
+} 

@@ -4,6 +4,11 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
 function AboutPage() {
+  // 设置页面标题
+  useEffect(() => {
+    document.title = '关于项目 - 翼龙面板中文Egg资源站';
+  }, []);
+
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
 

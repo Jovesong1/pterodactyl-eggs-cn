@@ -1,85 +1,10 @@
-// Egg索引文件
+// 自动生成的Egg索引文件 - 2025-08-06T00:31:57.853Z
+import { gameServers } from './categories/eggs-gameServers';
+import { others } from './categories/eggs-others';
+
 const eggsIndex = [
-  {
-    id: 'minecraft',
-    name: 'Minecraft Java服务器',
-    path: 'minecraft.md',
-    version: '1.0.0',
-    category: '游戏服务器',
-    description: '适用于翼龙面板的Minecraft Java版服务器Egg配置，支持多版本选择和Mod安装。',
-    author: 'PteroEggs中文组',
-    date: '2023-12-15',
-    tags: ['游戏', 'Minecraft', 'Java'],
-    localizationStatus: '已汉化',
-    optimizationStatus: '已优化',
-    testStatus: '已通过运行认证',
-    icon: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/minecraft-logo.png',
-    downloadUrl: 'https://github.com/ptero-eggs/minecraft/blob/master/egg-vanilla-minecraft.json'
-  },
-  {
-    id: 'csgo',
-    name: 'CS:GO服务器',
-    path: 'csgo.md',
-    version: '1.2.1',
-    category: '游戏服务器',
-    description: '适用于翼龙面板的CS:GO服务器Egg配置，支持自定义地图和插件。',
-    author: 'PteroEggs中文组',
-    date: '2023-11-20',
-    tags: ['游戏', 'CS:GO', 'FPS'],
-    localizationStatus: '已汉化',
-    optimizationStatus: '已优化',
-    testStatus: '已通过运行认证',
-    icon: 'https://cdn.cloudflare.steamstatic.com/steam/apps/730/capsule_616x353.jpg',
-    downloadUrl: 'https://github.com/ptero-eggs/source-engine/blob/master/egg-counter--strike--global-offensive.json'
-  },
-  {
-    id: 'rust',
-    name: 'Rust服务器',
-    path: 'rust.md',
-    version: '0.9.5',
-    category: '游戏服务器',
-    description: '适用于翼龙面板的Rust服务器Egg配置，支持模组和自定义设置。',
-    author: 'PteroEggs中文组',
-    date: '2023-10-05',
-    tags: ['游戏', 'Rust', '生存'],
-    localizationStatus: '部分汉化',
-    optimizationStatus: '已优化',
-    testStatus: '已通过运行认证',
-    icon: 'https://cdn.cloudflare.steamstatic.com/steam/apps/252490/capsule_616x353.jpg',
-    downloadUrl: 'https://github.com/ptero-eggs/rust/blob/master/egg-rust.json'
-  },
-  {
-    id: 'nodejs',
-    name: 'Node.js应用',
-    path: 'nodejs.md',
-    version: '2.0.1',
-    category: '应用服务器',
-    description: '适用于翼龙面板的Node.js应用Egg配置，支持npm和yarn包管理器。',
-    author: 'PteroEggs中文组',
-    date: '2023-09-18',
-    tags: ['应用', 'Node.js', 'JavaScript'],
-    localizationStatus: '已汉化',
-    optimizationStatus: '未优化',
-    testStatus: '已通过运行认证',
-    icon: 'https://nodejs.org/static/images/logo.svg',
-    downloadUrl: 'https://github.com/ptero-eggs/software/blob/master/egg-node-js-generic.json'
-  },
-  {
-    id: 'mongodb',
-    name: 'MongoDB数据库',
-    path: 'mongodb.md',
-    version: '1.1.0',
-    category: '数据库',
-    description: '适用于翼龙面板的MongoDB数据库Egg配置，支持数据持久化和备份。',
-    author: 'PteroEggs中文组',
-    date: '2023-08-22',
-    tags: ['数据库', 'MongoDB', 'NoSQL'],
-    localizationStatus: '部分汉化',
-    optimizationStatus: '未优化',
-    testStatus: '测试中',
-    icon: 'https://www.mongodb.com/assets/images/global/leaf.svg',
-    downloadUrl: 'https://github.com/ptero-eggs/database/blob/master/egg-mongo-database.json'
-  }
+  ...gameServers,
+  ...others,
 ];
 
-export default eggsIndex; 
+export default eggsIndex;

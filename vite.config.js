@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import fs from 'fs-extra';
+import eggsWatcher from './scripts/vite-plugin-eggs-watcher.js';
 
 // 复制Markdown文件到构建目录的插件
 const copyMarkdownPlugin = () => {
@@ -22,6 +23,12 @@ const copyMarkdownPlugin = () => {
         await fs.copy('src/data/about.md', 'dist/src/data/about.md');
         console.log('about.md copied to dist/src/data');
       }
+      
+      // 复制categories目录
+      if (fs.existsSync('src/data/categories')) {
+        await fs.copy('src/data/categories', 'dist/src/data/categories');
+        console.log('Categories files copied to dist/src/data/categories');
+      }
     }
   };
 };
@@ -32,7 +39,8 @@ export default defineConfig({
   base: './',
   plugins: [
     react(),
-    copyMarkdownPlugin()
+    copyMarkdownPlugin(),
+    eggsWatcher() // 添加eggs监视器插件
   ],
   build: {
     outDir: 'dist',

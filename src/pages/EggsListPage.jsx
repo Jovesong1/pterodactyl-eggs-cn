@@ -6,6 +6,11 @@ import EggCard from '../components/EggCard';
 import eggsIndex from '../data/eggs-index';
 
 function EggsListPage() {
+  // 设置页面标题
+  useEffect(() => {
+    document.title = '全部Egg资源 - 翼龙面板中文Egg资源站';
+  }, []);
+  
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredEggs, setFilteredEggs] = useState([]);

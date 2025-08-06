@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/update-eggs.cjs",
     "dev": "vite",
+    "prebuild": "node scripts/update-eggs.cjs",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-eggs": "node scripts/update-eggs.cjs"
   },
   "dependencies": {
     "fuse.js": "^6.6.2",

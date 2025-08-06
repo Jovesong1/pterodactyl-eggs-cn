@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import eggsIndex from '../data/eggs-index';
 
 function CategoriesPage() {
+  // 设置页面标题
+  useEffect(() => {
+    document.title = '分类浏览 - 翼龙面板中文Egg资源站';
+  }, []);
+  
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
