@@ -6,6 +6,9 @@ import EggsListPage from './pages/EggsListPage';
 import EggDetailPage from './pages/EggDetailPage';
 import CategoriesPage from './pages/CategoriesPage';
 import AboutPage from './pages/AboutPage';
+import MinecraftPage from './pages/MinecraftPage';
+import MinecraftCoreDetailPage from './pages/MinecraftCoreDetailPage';
+import MinecraftServerDetailPage from './pages/MinecraftServerDetailPage';
 import './App.css';
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
             <Route path="/egg/:id" element={<EggDetailPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/minecraft" element={<MinecraftPage />} />
+            <Route path="/mc/core/:id" element={<MinecraftCoreDetailPage />} />
+            <Route path="/mc/server/:id" element={<MinecraftServerDetailPage />} />
           </Routes>
         </main>
         <footer className="bg-gray-800 dark:bg-gray-950 text-white relative z-10">

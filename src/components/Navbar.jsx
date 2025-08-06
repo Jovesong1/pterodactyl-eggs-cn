@@ -68,6 +68,16 @@ function Navbar({ darkMode, toggleDarkMode }) {
               Egg资源
             </Link>
             <Link 
+              to="/minecraft" 
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                isActive('/minecraft') 
+                  ? (scrolled ? 'bg-blue-600 text-white shadow-md' : 'bg-blue-600 text-white shadow-md') 
+                  : (scrolled ? 'text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700')
+              }`}
+            >
+              我的世界
+            </Link>
+            <Link 
               to="/categories" 
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 isActive('/categories') 
@@ -170,6 +180,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
           <div className="md:hidden mt-3 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
             <Link to="/" className={`block px-4 py-2 text-sm ${isActive('/') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>首页</Link>
             <Link to="/eggs" className={`block px-4 py-2 text-sm ${isActive('/eggs') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>Egg资源</Link>
+            <Link to="/minecraft" className={`block px-4 py-2 text-sm ${isActive('/minecraft') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>我的世界</Link>
             <Link to="/categories" className={`block px-4 py-2 text-sm ${isActive('/categories') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>分类浏览</Link>
             <Link to="/about" className={`block px-4 py-2 text-sm ${isActive('/about') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>关于项目</Link>
             <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>

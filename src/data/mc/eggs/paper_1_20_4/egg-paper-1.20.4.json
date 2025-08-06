@@ -1,0 +1,76 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-12-10T12:00:00+00:00",
+    "name": "Paper 1.20.4",
+    "author": "support@pterodactyl.io",
+    "description": "高性能的Minecraft服务端，基于Spigot，优化了服务器性能，支持插件。",
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
+        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18",
+        "Java 19": "ghcr.io\/pterodactyl\/yolks:java_19",
+        "Java 20": "ghcr.io\/pterodactyl\/yolks:java_20",
+        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Paper Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y curl jq\r\n\r\ncd \/mnt\/server\r\n\r\nif [ ! -z \"${DL_PATH}\" ]; then\r\n    echo -e \"Using supplied download url: ${DL_PATH}\"\r\n    DOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's\/{{\/${\/g' -e 's\/}}\/}\/g')`\r\nelse\r\n    VER_EXISTS=`curl -s https:\/\/api.papermc.io\/v2\/projects\/paper | jq -r --arg VERSION $MC_VERSION '.versions[] | select(. == $VERSION)' | wc -l`\r\n    \r\n    if [ \"${VER_EXISTS}\" == \"0\" ]; then\r\n        echo -e \"Specified version ${MC_VERSION} does not exist for the Paper project.\"\r\n        echo -e \"Falling back to latest version\"\r\n        MC_VERSION=`curl -s https:\/\/api.papermc.io\/v2\/projects\/paper | jq -r '.versions' | jq -r '.[-1]'`\r\n    fi\r\n    \r\n    BUILD_EXISTS=`curl -s https:\/\/api.papermc.io\/v2\/projects\/paper\/versions\/${MC_VERSION} | jq -r --arg BUILD ${BUILD_NUMBER} '.builds[] | select(. == $BUILD | tonumber)' | wc -l`\r\n    \r\n    if [ \"${BUILD_EXISTS}\" == \"0\" ] || [ -z ${BUILD_NUMBER} ] || [ ${BUILD_NUMBER} == \"latest\" ]; then\r\n        echo -e \"Using latest Paper build for version ${MC_VERSION}\"\r\n        BUILD_NUMBER=`curl -s https:\/\/api.papermc.io\/v2\/projects\/paper\/versions\/${MC_VERSION} | jq -r '.builds' | jq -r '.[-1]'`\r\n    fi\r\n    \r\n    JAR_NAME=paper-${MC_VERSION}-${BUILD_NUMBER}.jar\r\n    \r\n    echo \"Version being downloaded: ${MC_VERSION}\"\r\n    echo \"Build being downloaded: ${BUILD_NUMBER}\"\r\n    \r\n    DOWNLOAD_URL=https:\/\/api.papermc.io\/v2\/projects\/paper\/versions\/${MC_VERSION}\/builds\/${BUILD_NUMBER}\/downloads\/${JAR_NAME}\r\nfi\r\n\r\necho -e \"Running curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}\"\r\n\r\nif [ -f ${SERVER_JARFILE} ]; then\r\n    mv ${SERVER_JARFILE} ${SERVER_JARFILE}.old\r\nfi\r\n\r\ncurl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}\r\n\r\nif [ ! -f server.properties ]; then\r\n    echo -e \"Downloading MC server.properties\"\r\n    curl -o server.properties https:\/\/raw.githubusercontent.com\/parkervcp\/eggs\/master\/minecraft\/java\/server.properties\r\nfi",
+            "container": "ghcr.io\/pterodactyl\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Minecraft Version",
+            "description": "The version of Minecraft to download. Leave at latest to always get the latest version. Invalid versions will default to latest.",
+            "env_variable": "MC_VERSION",
+            "default_value": "1.20.4",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:20"
+        },
+        {
+            "name": "Build Number",
+            "description": "The build number for the Paper release. Leave at latest to always get the latest build.",
+            "env_variable": "BUILD_NUMBER",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:20"
+        },
+        {
+            "name": "Server Jar File",
+            "description": "The name of the server jarfile to run the server with.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+        },
+        {
+            "name": "Download Path",
+            "description": "A URL to use to download a server.jar rather than the ones in the install script. This is not user viewable.",
+            "env_variable": "DL_PATH",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "string|nullable"
+        }
+    ]
+} 

@@ -7,4 +7,6 @@
 
 console.log('开始更新egg索引...');
 require('./generate-eggs-index.cjs');
+console.log('开始更新MC egg索引...');
+require('./generate-mc-eggs-index.cjs');
 console.log('更新完成！'); 

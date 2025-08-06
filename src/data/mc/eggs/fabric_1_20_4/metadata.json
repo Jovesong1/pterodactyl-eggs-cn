@@ -1,0 +1,13 @@
+{
+  "name": "Fabric 1.20.4",
+  "version": "1.0.0",
+  "type": "core",
+  "mcVersion": "1.20.4",
+  "description": "轻量级模组加载器，启动快速，资源占用低，适合安装各种模组",
+  "author": "Fabric Team",
+  "date": "2023-12-10",
+  "tags": ["轻量级", "模组支持", "启动快速"],
+  "performance": "高",
+  "features": ["轻量级", "模组支持", "启动快速", "低资源占用"],
+  "requiresJava": "Java 17+"
+} 

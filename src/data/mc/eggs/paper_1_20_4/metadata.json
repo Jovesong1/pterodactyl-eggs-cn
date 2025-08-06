@@ -1,0 +1,15 @@
+{
+  "name": "Paper 1.20.4",
+  "version": "1.0.0",
+  "type": "server",
+  "mcVersion": "1.20.4",
+  "description": "高性能的Minecraft服务端，基于Spigot，优化了服务器性能，支持插件",
+  "author": "PaperMC Team",
+  "date": "2023-12-10",
+  "tags": ["高性能", "插件支持", "优化补丁"],
+  "performance": "高",
+  "features": ["高性能", "插件支持", "优化补丁", "多线程处理"],
+  "requiresJava": "Java 17+",
+  "clientSource": "官方启动器或第三方启动器",
+  "clientDownloadUrl": "https://www.minecraft.net/zh-hans/download"
+} 
