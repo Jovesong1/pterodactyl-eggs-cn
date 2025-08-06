@@ -1,0 +1,14 @@
+{
+  "name": "project_zomboid",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "僵尸毁灭工程(Project Zomboid)开放世界僵尸生存游戏服务器",
+  "author": "The Indie Stone",
+  "date": "2025-08-06",
+  "tags": ["生存", "僵尸", "开放世界", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/108600/header.jpg",
+  "downloadUrl": "/src/data/eggs/project_zomboid/egg-project-zomboid-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+  "name": "palworld",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "2024 年年初最热门的游戏！！！幻兽帕鲁(Palworld)开放世界生存建造游戏服务器",
+  "author": "Pocketpair, Inc.",
+  "date": "2025-08-06",
+  "tags": ["生存", "开放世界", "建造", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "已通过运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg",
+  "downloadUrl": "/src/data/eggs/palworld/egg-palworld-cn.json"
+} 

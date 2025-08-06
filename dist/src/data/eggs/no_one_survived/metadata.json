@@ -1,0 +1,14 @@
+{
+  "name": "no_one_survived",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "无人生还(No One Survived)是一款多人合作开放世界建造生存沙盒游戏",
+  "author": "Warsim Games",
+  "date": "2025-08-06",
+  "tags": ["生存", "建造", "多人联机", "沙盒", "僵尸"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1963370/header.jpg",
+  "downloadUrl": "/src/data/eggs/no_one_survived/egg-no-one-survived-cn.json"
+} 

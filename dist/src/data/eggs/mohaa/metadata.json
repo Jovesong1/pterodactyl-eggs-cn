@@ -1,0 +1,14 @@
+{
+    "name": "mohaa",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "荣誉勋章：联合袭击服务器",
+    "author": "2015, Inc.",
+    "date": "2025-08-07",
+    "tags": ["射击", "第一人称", "二战", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/15100/header.jpg",
+    "downloadUrl": "/src/data/eggs/mohaa/egg-mohaa-cn.json"
+} 

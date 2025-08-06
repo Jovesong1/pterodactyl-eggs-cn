@@ -8,7 +8,7 @@
     "tags": ["工厂", "建造", "开放世界", "多人联机", "自动化"],
     "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
-    "testStatus": "未进行运行认证",
+    "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/526870/header.jpg",
     "downloadUrl": "/src/data/eggs/satisfactory/egg-satisfactory-cn.json"
 } 

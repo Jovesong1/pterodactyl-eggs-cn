@@ -1,0 +1,14 @@
+{
+    "name": "Neverwinter Nights: Enhanced Edition",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "无冬之夜：增强版是一款基于D&D规则的角色扮演游戏服务器",
+    "author": "Beamdog",
+    "date": "2024-08-06",
+    "tags": ["角色扮演", "龙与地下城", "多人联机", "冒险"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/704450/header.jpg",
+    "downloadUrl": "/src/data/eggs/neverwinter_nights_ee/egg-neverwinter-nights--enhanced-edition-cn.json"
+} 

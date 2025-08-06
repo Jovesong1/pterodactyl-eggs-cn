@@ -1,24 +1,25 @@
-// 应用服务器 - 自动生成的Egg索引文件 - 2025-08-06T00:31:30.308Z
+// 应用服务器 - 自动生成的Egg索引文件 - 2025-08-06T16:53:03.777Z
 export const appServers = [
   {
-    "id": "t-s3-manager",
-    "name": "TS3 Manager",
-    "path": "t-s3-manager/t-s3-manager.md",
-    "jsonPath": "t-s3-manager/egg-t-s3-manager.json",
+    "id": "neosvr",
+    "name": "NeosVR",
+    "path": "neosvr/neosvr.md",
+    "jsonPath": "neosvr/Config.json",
     "version": "1.0.0",
     "category": "应用服务器",
-    "description": "开源的TeamSpeak服务器Web界面管理工具",
-    "author": "翼龙中文社区",
+    "description": "Neos VR是一个高度协作的虚拟和增强现实元宇宙平台",
+    "author": "Neos Team",
     "date": "2024-08-06",
     "tags": [
-      "TeamSpeak",
-      "管理工具",
-      "Web界面"
+      "虚拟现实",
+      "元宇宙",
+      "社交",
+      "协作"
     ],
     "localizationStatus": "已汉化",
-    "optimizationStatus": "已优化",
-    "testStatus": "已通过运行认证",
-    "icon": "",
-    "downloadUrl": "https://github.com/joni1802/ts3-manager/releases/latest"
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/740250/header.jpg",
+    "downloadUrl": "/src/data/eggs/neosvr/egg-neos-v-r-cn.json"
   }
 ];

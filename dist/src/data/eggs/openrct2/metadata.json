@@ -1,0 +1,14 @@
+{
+  "name": "openrct2",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "开放过山车大亨2(OpenRCT2)主题公园模拟游戏服务器",
+  "author": "OpenRCT2 Team",
+  "date": "2025-08-06",
+  "tags": ["模拟", "建造", "主题公园", "开源"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://openrct2.io/assets/images/logos/icon_x256.png",
+  "downloadUrl": "/src/data/eggs/openrct2/egg-openrct2-cn.json"
+} 

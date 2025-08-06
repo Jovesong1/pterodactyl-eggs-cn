@@ -1,0 +1,232 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-01-30T23:02:22-08:00",
+    "name": "Neverwinter Nights: Enhanced Edition",
+    "author": "git@robsti.dev",
+    "description": "回到这款畅销的龙与地下城角色扮演游戏中的被遗忘的国度。结合了无冬之夜钻石版的所有内容以及全新的增强功能。包含100多小时的获奖冒险和创建自己冒险的工具！",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/yolks:debian": "ghcr.io\/ptero-eggs\/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": "cd bin\/linux-x86 && .\/nwserver-linux -port $SERVER_PORT -userdirectory '\/home\/container\/user' -servername \"${SERVER_NAME}\" -module \"${MODULE_NAME}\" -publicserver \"${IS_PUBLIC}\" -maxclients \"${MAX_CLIENTS}\" -minlevel \"${MIN_LEVEL}\" -maxlevel \"${MAX_LEVEL}\" -pauseandplay \"${PAUSE_AND_PLAY}\" -pvp \"${PVP}\" -servervault \"${SERVER_VAULT}\" -elc \"${ELC}\" -ilr \"${ILR}\" -gametype \"${GAME_TYPE}\" -oneparty \"${ONE_PARTY}\" -difficulty \"${DIFFICULTY}\" -autosaveinterval \"${AUTO_SAVE_INTERVAL}\" -playerpassword \"${PLAYER_PASSWORD}\" -dmpassword \"${DM_PASSWORD}\" -reloadwhenempty \"${RELOAD_WHEN_EMPTY}\"",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Server: Module loaded\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Neverwinter Nights Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\n# Download the latest version from the Beamdog website\r\nif [ -z \"$NWN_VERSION\" ] || [ \"$NWN_VERSION\" == \"latest\" ]; then\r\n    NWN_VERSION=$(curl -L -s 'https:\/\/registry.hub.docker.com\/v2\/repositories\/beamdog\/nwserver\/tags' | jq -r '[.\"results\"[][\"name\"] | select(test(\"\\\\d*\\\\.\\\\d*$\"))][0]')\r\nfi\r\n\r\ncd \/mnt\/server\r\ncurl -o nwnee.zip -L https:\/\/nwn.beamdog.net\/downloads\/nwnee-dedicated-${NWN_VERSION}.zip\r\nunzip -u nwnee.zip -d .\r\n\r\n# Run the server once to generate default files and directories\r\ncd bin\/linux-x86 && .\/nwserver-linux\r\n\r\n# Copy generated files into the volume and update relevant paths\r\nmv \/root\/.local\/share\/Neverwinter\\ Nights \/mnt\/server\/user\r\nsed -i 's\/\\\/root\\\/.local\\\/share\\\/Neverwinter Nights\/\\\/home\\\/container\\\/user\/g' \/mnt\/server\/user\/nwn.ini\r\nsed -i 's\/\\\/root\\\/.local\\\/share\\\/Neverwinter Nights\/\\\/home\\\/container\\\/user\/g' \/mnt\/server\/user\/nwnplayer.ini\r\nsed -i 's\/\\\/root\\\/.local\\\/share\\\/Neverwinter Nights\/\\\/home\\\/container\\\/user\/g' \/mnt\/server\/user\/settings.tml\r\n\r\necho \"Installation complete.\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "游戏版本",
+            "description": "要安装的游戏版本",
+            "env_variable": "NWN_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "模块名称",
+            "description": "我们要加载的模块名称。官方模块存储在 `~/data` 中，自定义模块需要存储在 `~/user` 中。必须与文件名完全匹配，不包括扩展名。",
+            "env_variable": "MODULE_NAME",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "加载存档槽位 #",
+            "description": "启动时要加载的游戏存档槽位号。",
+            "env_variable": "SAVE_SLOT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|numeric",
+            "field_type": "text"
+        },
+        {
+            "name": "最大客户端数量",
+            "description": "游戏服务器的最大连接数。",
+            "env_variable": "MAX_CLIENTS",
+            "default_value": "96",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "最低等级",
+            "description": "访问游戏服务器所需的最低角色等级。",
+            "env_variable": "MIN_LEVEL",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric",
+            "field_type": "text"
+        },
+        {
+            "name": "最高等级",
+            "description": "访问游戏服务器所需的最高角色等级。",
+            "env_variable": "MAX_LEVEL",
+            "default_value": "100",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric",
+            "field_type": "text"
+        },
+        {
+            "name": "暂停与游戏",
+            "description": "切换游戏暂停权限。\r\n0 = 游戏只能由DM暂停\r\n1 = 游戏可以由玩家暂停",
+            "env_variable": "PAUSE_AND_PLAY",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "PvP模式",
+            "description": "启用的PvP模式。\r\n0 = 无\r\n1 = 队伍\r\n2 = 完全",
+            "env_variable": "PVP",
+            "default_value": "2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|in:0,1,2",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器保险库模式",
+            "description": "0 = 仅本地角色\r\n1 = 仅服务器角色",
+            "env_variable": "SERVER_VAULT",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|in:0,1",
+            "field_type": "text"
+        },
+        {
+            "name": "强制合法角色",
+            "description": "切换是否强制使用合法角色。",
+            "env_variable": "ELC",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "强制物品等级限制",
+            "description": "切换是否强制物品等级限制。",
+            "env_variable": "ILR",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏类型",
+            "description": "设置要将游戏发布到哪个游戏房间。这仅适用于公共游戏。",
+            "env_variable": "GAME_TYPE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric",
+            "field_type": "text"
+        },
+        {
+            "name": "切换单一队伍",
+            "description": "切换是否允许多个队伍。",
+            "env_variable": "ONE_PARTY",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "难度",
+            "description": "游戏难度选择。\r\n1 = 简单\r\n2 = 普通\r\n3 = D&D硬核\r\n4 = 非常困难",
+            "env_variable": "DIFFICULTY",
+            "default_value": "3",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|in:1,2,3,4",
+            "field_type": "text"
+        },
+        {
+            "name": "自动保存间隔",
+            "description": "自动保存之间的间隔（分钟）。",
+            "env_variable": "AUTO_SAVE_INTERVAL",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "玩家密码",
+            "description": "作为玩家加入服务器所需的密码。",
+            "env_variable": "PLAYER_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "DM密码",
+            "description": "作为DM加入服务器所需的密码。",
+            "env_variable": "DM_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "服务器浏览器中显示的服务器名称。",
+            "env_variable": "SERVER_NAME",
+            "default_value": "A Pterodactyl hosted server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "是否公开游戏",
+            "description": "指示这是公开游戏还是私人游戏的切换。",
+            "env_variable": "IS_PUBLIC",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "空时重新加载",
+            "description": "确定服务器为空时模块状态是否持久。",
+            "env_variable": "RELOAD_WHEN_EMPTY",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        }
+    ]
+}

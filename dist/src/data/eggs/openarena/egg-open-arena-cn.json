@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-04-01T13:16:40+02:00",
+    "name": "OpenArena",
+    "author": "parker@parkervcp.com",
+    "description": "OpenArena是一款基于GPL idTech3技术的社区制作的死亡竞赛FPS游戏。\r\n\r\nhttp:\/\/www.openarena.ws\/",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/yolks:debian": "ghcr.io\/ptero-eggs\/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": ".\/oa_ded.x86_64 +set net_port {{SERVER_PORT}} +map {{GAME_MAP}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"AAS initialized\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# dirty install script for openarena\r\n# will get updated more later\r\n\r\nif [ ! -d \/mnt\/server\/ ]; then\r\n\tmkdir -p \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\/\r\n\r\nwget http:\/\/www.openarena.ws\/request.php?4 -O openarena.zip\r\n\r\nunzip -o openarena.zip openarena-*\/oa_ded.x86_64 openarena-*\/missionpack\/* openarena-*\/baseoa\/*\r\n\r\nmv -f openarena-*\/* \/mnt\/server\/\r\n\r\nrm -rf openarena-*\/ openarena.zip\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "游戏地图",
+            "description": "服务器启动时加载的地图。\r\n查看默认可用的所有地图 - https:\/\/openarena.fandom.com\/wiki\/Maps",
+            "env_variable": "GAME_MAP",
+            "default_value": "aggressor",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+} 

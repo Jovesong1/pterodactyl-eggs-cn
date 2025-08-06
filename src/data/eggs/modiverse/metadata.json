@@ -1,0 +1,14 @@
+{
+    "name": "Modiverse",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Modiverse 沙盒模组服务器",
+    "author": "Modiverse",
+    "date": "2025-08-07",
+    "tags": ["沙盒", "多人联机", "模组", "TTT", "死亡跑酷"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1549820/header.jpg",
+    "downloadUrl": "/src/data/eggs/modiverse/egg-modiverse-cn.json"
+} 

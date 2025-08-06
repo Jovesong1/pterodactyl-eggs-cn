@@ -1,0 +1,14 @@
+{
+    "name": "nmrih",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "地狱已满是一款基于Source引擎的合作僵尸生存游戏服务器",
+    "author": "NMRIH Team",
+    "date": "2024-08-06",
+    "tags": ["僵尸", "生存", "恐怖", "合作"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/224260/header.jpg",
+    "downloadUrl": "/src/data/eggs/nmrih/egg-nmrih-cn.json"
+} 

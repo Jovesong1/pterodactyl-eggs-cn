@@ -1,0 +1,14 @@
+{
+  "name": "onset",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "起源(Onset)是一款开放世界多人沙盒游戏，玩家可以使用脚本功能创建自己的游戏体验",
+  "author": "Blue Mountains",
+  "date": "2025-08-06",
+  "tags": ["沙盒", "开放世界", "多人联机", "脚本"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1105810/header.jpg",
+  "downloadUrl": "/src/data/eggs/onset/egg-onset-cn.json"
+} 

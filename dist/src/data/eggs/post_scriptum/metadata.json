@@ -1,0 +1,14 @@
+{
+  "name": "post_scriptum",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "战后余生(Post Scriptum)是一款以二战为主题的第一人称战术射击游戏，注重历史准确性和团队合作",
+  "author": "Periscope Games",
+  "date": "2025-08-06",
+  "tags": ["射击", "战术", "二战", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/736220/header.jpg",
+  "downloadUrl": "/src/data/eggs/post_scriptum/egg-post-scriptum-cn.json"
+} 

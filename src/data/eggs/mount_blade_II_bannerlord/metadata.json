@@ -1,0 +1,14 @@
+{
+    "name": "Mount & Blade II: Bannerlord",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "骑马与砍杀 II：霸主多人游戏服务器",
+    "author": "TaleWorlds Entertainment",
+    "date": "2025-08-07",
+    "tags": ["中世纪", "战略", "角色扮演", "沙盒", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/261550/header.jpg",
+    "downloadUrl": "/src/data/eggs/mount_blade_II_bannerlord/egg-mount-blade-ii-bannerlord-cn.json"
+} 

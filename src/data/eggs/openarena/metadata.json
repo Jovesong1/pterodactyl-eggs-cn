@@ -1,0 +1,14 @@
+{
+  "name": "openarena",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "开放竞技场(OpenArena)开源FPS游戏服务器",
+  "author": "OpenArena Team",
+  "date": "2025-08-06",
+  "tags": ["FPS", "射击", "多人联机", "开源"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/OpenArena_Logo.svg/1200px-OpenArena_Logo.svg.png",
+  "downloadUrl": "/src/data/eggs/openarena/egg-open-arena-cn.json"
+} 

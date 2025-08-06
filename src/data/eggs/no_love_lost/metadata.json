@@ -1,0 +1,14 @@
+{
+  "name": "no_love_lost",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "无爱可失(No Love Lost)是一款PvPvE提取游戏，玩家在危险星球上收集花蜜并与其他团队竞争",
+  "author": "Ape Tavern",
+  "date": "2025-08-06",
+  "tags": ["PvPvE", "提取", "多人联机", "生存"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2833050/header.jpg",
+  "downloadUrl": "/src/data/eggs/no_love_lost/egg-no-love-lost-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+  "name": "pavlov_vr",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "帕夫洛夫 VR(Pavlov VR)是一款多人虚拟现实射击游戏，提供逼真的射击体验",
+  "author": "Vankrupt Games",
+  "date": "2025-08-06",
+  "tags": ["射击", "VR", "多人联机", "第一人称"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/555160/header.jpg",
+  "downloadUrl": "/src/data/eggs/pavlov_vr/egg-pavlov-v-r-cn.json"
+} 

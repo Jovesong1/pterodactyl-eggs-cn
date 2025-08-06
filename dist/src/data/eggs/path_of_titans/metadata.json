@@ -1,0 +1,14 @@
+{
+  "name": "path_of_titans",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "泰坦之路(Path of Titans)是一款多人恐龙生存游戏，玩家可以在丰富的生态系统中扮演恐龙",
+  "author": "Alderon Games",
+  "date": "2025-08-06",
+  "tags": ["生存", "恐龙", "多人联机", "开放世界"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1818750/header.jpg",
+  "downloadUrl": "/src/data/eggs/path_of_titans/egg-path-of-titans-cn.json"
+} 

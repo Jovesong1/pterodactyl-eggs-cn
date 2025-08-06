@@ -1,0 +1,14 @@
+{
+  "name": "pixark",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "方块方舟(PixARK)像素风格生存建造游戏服务器",
+  "author": "Snail Games USA",
+  "date": "2025-08-06",
+  "tags": ["生存", "恐龙", "像素", "建造", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/593600/header.jpg",
+  "downloadUrl": "/src/data/eggs/pixark/egg-pix-a-r-k-cn.json"
+} 
