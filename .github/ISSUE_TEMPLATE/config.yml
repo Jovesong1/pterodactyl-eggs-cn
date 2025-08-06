@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 项目GitHub仓库
+    url: https://github.com/Jovesong1/pterodactyl-eggs-cn
+    about: 查看项目源代码和贡献指南
+  - name: 翼龙面板中文Egg资源站
+    url: https://pterodactyl-eggs-cn.example.com
+    about: 访问我们的官方网站，浏览更多Egg资源
+  - name: 翼龙面板官方网站
+    url: https://pterodactyl.io/
+    about: 访问翼龙面板官方网站，了解更多关于翼龙面板的信息 

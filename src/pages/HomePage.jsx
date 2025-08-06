@@ -59,46 +59,146 @@ function HomePage() {
         </div>
       </div>
       
-      {/* 统计数据 */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center justify-center text-center">
-          <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-2">
-            <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
+      {/* 统计数据 - 重新设计的卡片式展示 */}
+      <div className="mb-12">
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div className="p-6">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white flex items-center mb-4 md:mb-0">
+                <svg className="h-7 w-7 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                资源统计
+              </h2>
+              <div className="text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-sm">
+                最后更新: {new Date().toLocaleDateString('zh-CN')}
+              </div>
+            </div>
+            
+            {/* 总数统计卡片 */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mb-8">
+              <div className="p-6">
+                <div className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="flex items-center mb-4 md:mb-0">
+                    <div className="w-16 h-16 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center mr-5">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-gray-500 dark:text-gray-400">总资源数</h3>
+                      <div className="text-4xl font-bold text-gray-800 dark:text-white">{stats.total}</div>
+                    </div>
+                  </div>
+                  <Link 
+                    to="/eggs" 
+                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white rounded-lg shadow-md transition-colors flex items-center"
+                  >
+                    <span>浏览全部</span>
+                    <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* 详细统计数据 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* 已汉化 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <div className="p-5">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">已汉化</h3>
+                  </div>
+                  <div className="mb-3">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-3xl font-bold text-gray-800 dark:text-white">{stats.localized}</span>
+                      <span className="text-sm font-medium text-green-600 dark:text-green-400">
+                        {Math.round((stats.localized / stats.total) * 100)}%
+                      </span>
+                    </div>
+                    <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-green-500 dark:bg-green-400 rounded-full" 
+                        style={{width: `${(stats.localized / stats.total) * 100}%`}}
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    已完成中文本地化的Egg资源数量
+                  </p>
+                </div>
+              </div>
+              
+              {/* 已优化 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <div className="p-5">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">已优化</h3>
+                  </div>
+                  <div className="mb-3">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-3xl font-bold text-gray-800 dark:text-white">{stats.optimized}</span>
+                      <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                        {Math.round((stats.optimized / stats.total) * 100)}%
+                      </span>
+                    </div>
+                    <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-purple-500 dark:bg-purple-400 rounded-full" 
+                        style={{width: `${(stats.optimized / stats.total) * 100}%`}}
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    经过性能或配置优化的Egg资源数量
+                  </p>
+                </div>
+              </div>
+              
+              {/* 已认证 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <div className="p-5">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">已认证</h3>
+                  </div>
+                  <div className="mb-3">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-3xl font-bold text-gray-800 dark:text-white">{stats.tested}</span>
+                      <span className="text-sm font-medium text-yellow-600 dark:text-yellow-400">
+                        {Math.round((stats.tested / stats.total) * 100)}%
+                      </span>
+                    </div>
+                    <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-yellow-500 dark:bg-yellow-400 rounded-full" 
+                        style={{width: `${(stats.tested / stats.total) * 100}%`}}
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    通过运行测试认证的Egg资源数量
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-white">{stats.total}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">资源总数</div>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center justify-center text-center">
-          <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mb-2">
-            <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-            </svg>
-          </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-white">{stats.localized}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">已汉化</div>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center justify-center text-center">
-          <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-2">
-            <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-            </svg>
-          </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-white">{stats.optimized}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">已优化</div>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center justify-center text-center">
-          <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mb-2">
-            <svg className="w-6 h-6 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
-          </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-white">{stats.tested}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">已认证</div>
         </div>
       </div>
 
