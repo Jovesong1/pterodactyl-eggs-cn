@@ -159,11 +159,13 @@ function EggDetailPage() {
     const foundEgg = eggsIndex.find(e => e.id === id);
     
     if (!foundEgg) {
+      console.error(`找不到ID为 ${id} 的Egg资源`);
       setError('找不到该Egg资源');
       setLoading(false);
       return;
     }
     
+    console.log('找到Egg资源:', foundEgg);
     setEgg(foundEgg);
     
     // 设置页面标题
@@ -175,7 +177,7 @@ function EggDetailPage() {
         // 加载Markdown文件
         const mdResponse = await fetch(`/src/data/eggs/${foundEgg.path}`);
         if (!mdResponse.ok) {
-          throw new Error(`无法加载Egg内容: ${mdResponse.status}`);
+          throw new Error(`无法加载Egg内容: ${mdResponse.status} - 路径: /src/data/eggs/${foundEgg.path}`);
         }
         const mdText = await mdResponse.text();
         setContent(mdText);
@@ -183,7 +185,7 @@ function EggDetailPage() {
         // 加载JSON文件
         const jsonResponse = await fetch(`/src/data/eggs/${foundEgg.jsonPath}`);
         if (!jsonResponse.ok) {
-          console.warn(`无法加载Egg JSON文件: ${jsonResponse.status}`);
+          console.warn(`无法加载Egg JSON文件: ${jsonResponse.status} - 路径: /src/data/eggs/${foundEgg.jsonPath}`);
         } else {
           const jsonData = await jsonResponse.json();
           setEggJson(jsonData);
@@ -191,6 +193,7 @@ function EggDetailPage() {
         
         // 简单处理内容，分割为不同的标签页内容
         const sections = mdText.split('## ');
+        console.log('Markdown分割结果:', sections);
         let descContent = sections[0] || '';
         let installContent = '';
         let configContent = '';
@@ -198,19 +201,29 @@ function EggDetailPage() {
         // 查找安装指南和配置参数部分
         for (let i = 1; i < sections.length; i++) {
           const section = sections[i];
+          console.log(`处理第${i}个部分:`, section.substring(0, 30) + '...');
           if (section.toLowerCase().startsWith('安装') || section.toLowerCase().startsWith('installation')) {
+            console.log('找到安装指南部分');
             installContent = '## ' + section;
           } else if (section.toLowerCase().startsWith('配置') || section.toLowerCase().startsWith('configuration')) {
+            console.log('找到配置参数部分');
             configContent = '## ' + section;
           } else {
             // 其他部分添加到描述中
+            console.log('将部分添加到描述中');
             descContent += '## ' + section;
           }
         }
         
+        console.log('最终内容分割结果:', {
+          description: descContent.substring(0, 100) + '...',
+          installation: installContent ? installContent.substring(0, 100) + '...' : '无安装指南',
+          configuration: configContent ? configContent.substring(0, 100) + '...' : '无配置参数'
+        });
+        
         setTabContent({
           description: descContent,
-          installation: installContent || '### 暂无安装指南\n\n该Egg资源尚未提供详细的安装指南。',
+          installation: installContent || '### 默认安装指南\n\n1. 在翼龙面板中导入此Egg\n2. 创建新服务器并选择此Egg\n3. 配置服务器参数\n4. 启动服务器（首次启动需下载游戏文件，耗时较长）',
           configuration: configContent || '### 暂无配置参数\n\n该Egg资源尚未提供详细的配置参数说明。',
           variables: '### 加载中...\n\n正在加载变量信息...',
           technical: '### 加载中...\n\n正在加载技术信息...'
@@ -218,7 +231,7 @@ function EggDetailPage() {
         
       } catch (err) {
         console.error('加载Egg数据失败:', err);
-        setError('无法加载Egg内容，请稍后再试');
+        setError(`无法加载Egg内容，请稍后再试 - ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -297,7 +310,35 @@ function EggDetailPage() {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-200 p-4 rounded-lg">
-          <p>{error || '找不到该Egg资源'}</p>
+          <p className="font-bold text-lg mb-2">错误</p>
+          <p className="mb-4">{error || '找不到该Egg资源'}</p>
+          
+          {egg && (
+            <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">
+              <p className="font-semibold mb-2">调试信息:</p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>ID: {egg.id}</li>
+                <li>名称: {egg.name}</li>
+                <li>Markdown路径: {egg.path}</li>
+                <li>JSON路径: {egg.jsonPath}</li>
+              </ul>
+              <div className="mt-4">
+                <button 
+                  onClick={() => window.open(`/src/data/eggs/${egg.path}`, '_blank')}
+                  className="px-3 py-1 bg-blue-600 text-white rounded text-sm mr-2"
+                >
+                  测试Markdown路径
+                </button>
+                <button 
+                  onClick={() => window.open(`/src/data/eggs/${egg.jsonPath}`, '_blank')}
+                  className="px-3 py-1 bg-green-600 text-white rounded text-sm"
+                >
+                  测试JSON路径
+                </button>
+              </div>
+            </div>
+          )}
+          
           <Link to="/" className="mt-4 inline-block text-blue-600 dark:text-blue-400 hover:underline">
             返回首页
           </Link>

@@ -1,0 +1,14 @@
+{
+    "name": "Xonotic",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Xonotic免费且快速的竞技场射击游戏服务器",
+    "author": "Xonotic Team",
+    "date": "2024-08-06",
+    "tags": ["射击", "竞技", "多人联机", "免费"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://xonotic.org/static/img/xonotic-logo.png",
+    "downloadUrl": "/src/data/eggs/xonotic/egg-xonotic-cn.json"
+} 

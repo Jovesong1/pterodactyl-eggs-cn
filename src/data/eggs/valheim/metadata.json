@@ -1,0 +1,14 @@
+{
+    "name": "Valheim",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Valheim是一款1-10名玩家的维京主题生存游戏，在程序生成的世界中探索和生存",
+    "author": "Iron Gate AB",
+    "date": "2024-08-06",
+    "tags": ["生存", "维京", "开放世界", "多人联机", "建造"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/892970/header.jpg",
+    "downloadUrl": "/src/data/eggs/valheim/egg-valheim-cn.json"
+} 

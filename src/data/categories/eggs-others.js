@@ -1,24 +1,20 @@
-// 工具 - 自动生成的Egg索引文件 - 2025-08-06T01:19:19.913Z
+// 其他 - 自动生成的Egg索引文件 - 2025-08-06T02:42:33.071Z
 export const others = [
   {
-    "id": "big-brother-bot",
-    "name": "Big Brother Bot",
-    "path": "big-brother-bot/big-brother-bot.md",
-    "jsonPath": "big-brother-bot/egg-big-brother-bot.json",
+    "id": "the_forest",
+    "name": "The Forest",
+    "path": "the_forest/the_forest.md",
+    "jsonPath": "the_forest/egg-the-forest-cn.json",
     "version": "1.0.0",
-    "category": "工具",
-    "description": "完整的在线游戏服务器管理包，用于保持服务器免受不良行为",
-    "author": "翼龙中文社区",
-    "date": "2024-08-06",
-    "tags": [
-      "游戏管理",
-      "Python",
-      "服务器工具"
-    ],
-    "localizationStatus": "部分汉化",
+    "category": "其他",
+    "description": "作为一架客机坠毁的唯一幸存者，你发现自己身处一片神秘的森林，与一群食人族变种人搏斗求生。在这款恐怖的第一人称生存恐怖模拟器中建造、探索、生存。",
+    "author": "admin@softwarenoob.com",
+    "date": "2025-08-06",
+    "tags": [],
+    "localizationStatus": "未汉化",
     "optimizationStatus": "未优化",
-    "testStatus": "已通过运行认证",
+    "testStatus": "未进行运行认证",
     "icon": "",
-    "downloadUrl": "https://github.com/BigBrotherBot/big-brother-bot"
+    "downloadUrl": "https://github.com/ptero-eggs/the_forest/blob/master/egg-the-forest-cn.json"
   }
 ];

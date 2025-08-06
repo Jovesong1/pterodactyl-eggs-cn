@@ -1,0 +1,315 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-08-02T10:52:39-07:00",
+    "name": "V Rising",
+    "author": "red_thirten@yahoo.com",
+    "description": "作为吸血鬼觉醒。在附近的定居点猎取鲜血以恢复力量，躲避灼热的阳光以求生存。建造你的城堡，在充满神秘的不断变化的开放世界中繁荣发展。在线获得盟友，征服生者之地。",
+    "features": [
+        "steam_disk_space"
+    ],
+    "docker_images": {
+        "Wine (Latest)": "ghcr.io\/ptero-eggs\/yolks:wine_latest",
+        "Wine (Staging)": "ghcr.io\/ptero-eggs\/yolks:wine_staging"
+    },
+    "file_denylist": [],
+    "startup": "wine .\/VRisingServer.exe -address 0.0.0.0 -gamePort {{SERVER_PORT}} -persistentDataPath save-data",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"[Server] Startup Completed\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\n## File: V Rising Egg - egg-v-rising.json\r\n## Authors: David Wolfe (Red-Thirten), Kapatheus\r\n## Date: 2024\/08\/02\r\n## License: MIT License\r\n## Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n# Download and install SteamCMD\r\nexport HOME=\/mnt\/server\r\ncd \/tmp\r\nmkdir -p $HOME\/steamcmd $HOME\/steamapps\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C $HOME\/steamcmd\r\ncd $HOME\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\n\r\n# Install\/Verify game server using SteamCMD\r\n.\/steamcmd.sh +force_install_dir $HOME +login anonymous $( [[ \"${WINDOWS_INSTALL}\" == \"1\" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} validate +quit\r\n\r\n# Set up 32 and 64 bit libraries\r\nmkdir -p $HOME\/.steam\/sdk{32,64}\r\ncp -v linux32\/steamclient.so $HOME\/.steam\/sdk32\/steamclient.so\r\ncp -v linux64\/steamclient.so $HOME\/.steam\/sdk64\/steamclient.so\r\n\r\n## V Rising Setup\r\nmkdir -p $HOME\/save-data\/Settings\r\n# Check for successful installation.\r\ncd $HOME\/VRisingServer_Data\/StreamingAssets\/Settings\r\nif [[ -f ServerHostSettings.json ]]; then\r\n    echo -e \"\\nV Rising Dedicated Server successfully installed!\\n\"\r\nelse\r\n    echo -e \"\\n\\nSteamCMD failed to install the V Rising Dedicated Server!\"\r\n    echo -e \"\\tTry reinstalling the server again.\\n\"\r\n    exit 1\r\nfi",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "\/bin\/bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "[主机] 服务器查询端口",
+            "description": "Steam服务器列表功能的UDP端口。",
+            "env_variable": "VR_QUERY_PORT",
+            "default_value": "9877",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "nullable|integer|between:1024,65536",
+            "field_type": "text"
+        },
+        {
+            "name": "[主机] 隐藏IP地址",
+            "description": "在EOS服务器列表中列出服务器时，IP地址将不会被显示/广告。玩家将通过中继服务器连接。",
+            "env_variable": "VR_HIDEIPADDRESS",
+            "default_value": "false",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "自动更新",
+            "description": "在启动时快速检查服务器更新，并在必要时更新。",
+            "env_variable": "AUTO_UPDATE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏设置预设",
+            "description": "服务器应运行的游戏设置预设。某些设置可能在首次创建保存文件后不适用。如果您使用单人游戏上传的存档或在'~/save-data/Settings/'目录中的自定义ServerGameSettings.json文件，请留空/null。",
+            "env_variable": "VR_PRESET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|in:,DuoPvP,DuoPvP_DailySiege,DuoPvP_NoSiege,DuoPvP_WeekendSiege,HardcoreDuoPvP,HardcorePvP,HardcoreTrioPvP,Level30PvE,Level30PvP,Level40PvE,Level40PvP,Level50PvE,Level50PvP,Level60PvE,Level60PvP,Level70PvE,Level70PvP,Level80PvE,Level80PvP,Level90PvE,Level90PvP,SoloPvP,StandardPvE,StandardPvP,StandardPvP_DailySiege,StandardPvP_NoSiege,StandardPvP_WeekendSiege,TrioPvP,TrioPvP_DailySiege,TrioPvP_NoSiege,TrioPvP_WeekendSiege",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏难度预设",
+            "description": "服务器应运行的游戏难度预设。某些设置可能在首次创建保存文件后不适用。如果您使用单人游戏上传的存档或在'~/save-data/Settings/'目录中的自定义ServerGameSettings.json文件，请留空/null。",
+            "env_variable": "VR_DIFFICULTY_PRESET",
+            "default_value": "Difficulty_Normal",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|in:,Difficulty_Easy,Difficulty_Normal,Difficulty_Brutal",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "服务器的名称。在服务器列表中显示的名称。",
+            "env_variable": "VR_NAME",
+            "default_value": "V Rising Dedicated Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器描述",
+            "description": "简短的服务器描述。在选择服务器列表条目时显示在详细信息面板中。连接到服务器时也会在聊天中显示。",
+            "env_variable": "VR_DESCRIPTION",
+            "default_value": "Welcome to the server!",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "最大连接用户数",
+            "description": "服务器上的最大并发玩家数。技术上支持的最大数量为128。",
+            "env_variable": "VR_MAX_USERS",
+            "default_value": "40",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "最大连接管理员数",
+            "description": "即使服务器已满，也允许连接的最大管理员数量。",
+            "env_variable": "VR_MAX_ADMINS",
+            "default_value": "4",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "加入服务器所需的密码。留空则无密码。",
+            "env_variable": "VR_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "安全服务器",
+            "description": "在服务器上启用VAC保护。被VAC封禁的客户端将无法连接。(true | false)",
+            "env_variable": "VR_SECURE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "存档名称",
+            "description": "保存文件/目录的名称。",
+            "env_variable": "VR_SAVE_NAME",
+            "default_value": "world1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "自动保存数量",
+            "description": "要保留的自动保存数量。",
+            "env_variable": "VR_SAVE_COUNT",
+            "default_value": "20",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "自动保存间隔",
+            "description": "每次自动保存之间的间隔（秒）。",
+            "env_variable": "VR_SAVE_INTERVAL",
+            "default_value": "120",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 服务器FPS",
+            "description": "服务器的目标FPS。",
+            "env_variable": "VR_FPS",
+            "default_value": "30",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 空闲时降低FPS",
+            "description": "当没有玩家登录时，以较低的帧率目标运行服务器。(true | false)",
+            "env_variable": "VR_LOWER_FPS_WHEN_EMPTY",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 空闲时降低FPS值",
+            "description": "设置当'[高级] 空闲时降低FPS'激活时的帧率目标。",
+            "env_variable": "VR_LOWER_FPS_WHEN_EMPTY_VALUE",
+            "default_value": "10",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 在Epic上列出",
+            "description": "是否在EOS列表服务器上注册。客户端默认在这里查找服务器，因为有额外的可用功能。(true | false)",
+            "env_variable": "VR_LIST_ON_EOS",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 在Steam上列出",
+            "description": "是否在Steam列表服务器上注册。(true | false)",
+            "env_variable": "VR_LIST_ON_STEAM",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[RCON] 启用RCON",
+            "description": "启用或禁用RCON功能。(true | false) 有关如何连接和使用RCON的信息，请参阅以下链接：https://github.com/StunlockStudios/vrising-dedicated-server-instructions/blob/master/1.0.x/INSTRUCTIONS.md#rcon-1",
+            "env_variable": "VR_RCON_ENABLED",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[RCON] RCON密码",
+            "description": "如果启用RCON，连接RCON所需的密码。",
+            "env_variable": "VR_RCON_PASSWORD",
+            "default_value": "somepassword",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[RCON] RCON端口",
+            "description": "用于连接RCON的TCP端口。必须分配给服务器才能使RCON工作。",
+            "env_variable": "VR_RCON_PORT",
+            "default_value": "25575",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1024,65536",
+            "field_type": "text"
+        },
+        {
+            "name": "[修复] 验证服务器文件",
+            "description": "留空（无值）表示关闭，或设置为'true'表示开启。在启用自动更新时验证所有服务器文件。注意：这将显著增加服务器启动时间，因此建议仅在需要时启用。",
+            "env_variable": "VALIDATE",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string|nullable|in:,true",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] V Rising专用服务器应用ID",
+            "description": "用于安装和更新。很少需要更改。",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "1829350",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|integer|in:1829350",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] 使用Windows分支",
+            "description": "告诉安装程序/更新程序只下载服务器的Windows分支（目前唯一可用的分支），以便它可以在Wine上运行。无法更改。",
+            "env_variable": "WINDOWS_INSTALL",
+            "default_value": "1",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:1",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] WINEDEBUG",
+            "description": "用于抑制WINE FIXME消息。很少需要更改。",
+            "env_variable": "WINEDEBUG",
+            "default_value": "-all",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "string|nullable",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] WINEARCH",
+            "description": "用于兼容性。无法更改。",
+            "env_variable": "WINEARCH",
+            "default_value": "win64",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:win64",
+            "field_type": "text"
+        },
+        {
+            "name": "[系统] WINEPATH",
+            "description": "用于兼容性。无法更改。",
+            "env_variable": "WINEPATH",
+            "default_value": "\/home\/container",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:\/home\/container",
+            "field_type": "text"
+        }
+    ]
+} 

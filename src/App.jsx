@@ -122,7 +122,7 @@ function App() {
                 </p>
                 <p className="text-sm text-gray-400 mt-2 md:mt-0">
                   <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                    备案号：京ICP备XXXXXXXX号-X
+                    备案号：琼ICP备20001473号-3
                   </a>
                 </p>
               </div>

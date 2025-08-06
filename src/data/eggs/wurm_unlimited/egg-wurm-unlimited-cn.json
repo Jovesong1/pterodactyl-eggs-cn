@@ -1,0 +1,152 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-12-18T14:40:15+01:00",
+    "name": "Wurm Unlimited",
+    "author": "josdekurk@gmail.com",
+    "description": "Wurm Unlimited是幻想沙盒世界Wurm Online的独立版本，这是一款由玩家掌控的MMORPG！作为玩家影响力、制作和冒险理念的先驱，它现在是最深入且功能丰富的真正沙盒体验之一。",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/steamcmd:debian": "ghcr.io\/ptero-eggs\/steamcmd:debian"
+    },
+    "file_denylist": [],
+    "startup": ".\/WurmServerLauncher ip=0.0.0.0 externalport={{SERVER_PORT}} start={{SERVER_WORLD}} maxplayers={{MAX_PLAYERS}} servername=\"{{SERVERNAME}}\" adminpwd={{ADMINPWD}} serverpassword={{SERVERPWD}} epicsettings={{EPIC}} queryport={{QUERY_PORT}} pvp={{PVP}}",
+    "config": {
+        "files": "{\r\n    \"LaunchConfig.ini\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"CleanLogsOnStart\": \"{{server.build.env.SERVER_CLEAN_LOGS_ON_START}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Wurm Server launcher finished at\"\r\n}",
+        "logs": "{}",
+        "stop": "shutdown"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n# Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n# Install packages. Default packages below are not required if using our existing install image thus speeding up the install process.\r\n#apt -y update\r\n#apt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates\r\n\r\n## just in case someone removed the defaults.\r\nif [[ \"${STEAM_USER}\" == \"\" ]] || [[ \"${STEAM_PASS}\" == \"\" ]]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\nmkdir -p \/mnt\/server\/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n## install game using steamcmd\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ \"${WINDOWS_INSTALL}\" == \"1\" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) ${INSTALL_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk32\r\ncp -v linux32\/steamclient.so ..\/.steam\/sdk32\/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk64\r\ncp -v linux64\/steamclient.so ..\/.steam\/sdk64\/steamclient.so\r\n\r\n## add below your custom commands if needed\r\n\r\n# Copying steamclient.so as per https:\/\/www.wurmpedia.com\/index.php\/Server_administration_(Wurm_Unlimited)#Headless\r\nmkdir -p \/mnt\/server\/nativelibs\r\ncp -v linux64\/steamclient.so \/mnt\/server\/nativelibs\r\n\r\nmkdir -p .\/backup\r\ncp .\/WurmServerLauncher .\/backup\/\r\ncp -r .\/dist\/Adventure .\/backup\/\r\ncp -r .\/dist\/Creative .\/backup\/\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"安装完成...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "应用ID",
+            "description": "",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "402370",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:402370",
+            "field_type": "text"
+        },
+        {
+            "name": "自动更新",
+            "description": "重启时自动更新",
+            "env_variable": "AUTO_UPDATE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "管理员密码",
+            "description": "解锁游戏内的管理员命令，可用于更改服务器的游戏设置，如技能获取速率和田地生长时间。",
+            "env_variable": "ADMINPWD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "查询端口",
+            "description": "用于设置Steam查询端口（27016-27030 UDP）",
+            "env_variable": "QUERY_PORT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|int",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "在服务器浏览器中可见的服务器名称。",
+            "env_variable": "SERVERNAME",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "最大玩家数",
+            "description": "设置服务器允许的最大玩家数，如果通过此命令行选项设置，则内部游戏命令将无法更改玩家限制。",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "25",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|int",
+            "field_type": "text"
+        },
+        {
+            "name": "启用PVP",
+            "description": "是否启用玩家对战玩家模式",
+            "env_variable": "PVP",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "尝试连接到服务器时使用的密码。",
+            "env_variable": "SERVERPWD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "史诗模式",
+            "description": "如果为true，服务器将遵循Wurm Online中史诗服务器的规则。例如，它将使用技能曲线。",
+            "env_variable": "EPIC",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "启动时清理日志",
+            "description": "在服务器启动时清除日志文件",
+            "env_variable": "SERVER_CLEAN_LOGS_ON_START",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "世界",
+            "description": "启动Wurm时使用的世界。提供的默认值是Creative和Adventure（区分大小写）",
+            "env_variable": "SERVER_WORLD",
+            "default_value": "dist\/Adventure",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "测试版",
+            "description": "公共分支留空，测试分支填写beta",
+            "env_variable": "SRCDS_BETAID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|in:,beta",
+            "field_type": "text"
+        }
+    ]
+} 

@@ -1,0 +1,15 @@
+{
+    "name": "非生物因素",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "非生物因素(Abiotic Factor)地下研究设施地下生存建造游戏服务器",
+    "author": "DFJacob",
+    "date": "2024-08-06",
+    "tags": ["生存", "建造", "多人联机", "地下设施", "科幻"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://patchwiki.biligame.com/images/fswys/d/da/ptp4q70kdfjkt98crd47kq5t9lb10r7.jpg",
+    "downloadUrl": "/src/data/eggs/abiotic_factor/egg-abiotic-factor-cn.json"
+}
+    

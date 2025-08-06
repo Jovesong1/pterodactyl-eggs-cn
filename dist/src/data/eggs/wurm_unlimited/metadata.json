@@ -1,0 +1,14 @@
+{
+    "name": "Wurm Unlimited",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Wurm Unlimited是幻想沙盒世界Wurm Online的独立版本，由玩家掌控的MMORPG",
+    "author": "Code Club AB",
+    "date": "2024-08-06",
+    "tags": ["沙盒", "MMORPG", "生存", "建造", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/366220/header.jpg",
+    "downloadUrl": "/src/data/eggs/wurm_unlimited/egg-wurm-unlimited-cn.json"
+} 

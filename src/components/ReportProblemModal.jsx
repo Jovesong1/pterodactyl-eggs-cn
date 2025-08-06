@@ -18,8 +18,11 @@ function ReportProblemModal({ isOpen, onClose, eggName, eggId }) {
 
   // 处理前往GitHub Issues
   const handleGoToGitHub = () => {
+    // 获取问题类型的中文标签
+    const problemTypeLabel = problemTypes.find(type => type.id === problemType)?.label || problemType;
+    
     // 构建问题标题和内容
-    const issueTitle = `[${problemType}] ${eggName} 问题报告`;
+    const issueTitle = `[${problemTypeLabel}] ${eggName} 问题报告`;
     const issueBody = `
 ## 问题描述
 ${description}
@@ -27,7 +30,7 @@ ${description}
 ## Egg信息
 - Egg名称: ${eggName}
 - Egg ID: ${eggId}
-- 问题类型: ${problemTypes.find(type => type.id === problemType)?.label || problemType}
+- 问题类型: ${problemTypeLabel}
 
 ## 系统环境
 <!-- 请填写您的系统环境信息，如操作系统、翼龙面板版本等 -->
