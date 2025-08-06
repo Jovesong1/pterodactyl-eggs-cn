@@ -1,0 +1,14 @@
+{
+  "name": "Rust服务器",
+  "version": "0.9.5",
+  "category": "游戏服务器",
+  "description": "适用于翼龙面板的Rust服务器Egg配置，支持模组和自定义设置。",
+  "author": "PteroEggs中文组",
+  "date": "2023-10-05",
+  "tags": ["游戏", "Rust", "生存"],
+  "localizationStatus": "部分汉化",
+  "optimizationStatus": "已优化",
+  "testStatus": "已通过运行认证",
+  "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/252490/capsule_616x353.jpg",
+  "downloadUrl": "https://github.com/ptero-eggs/rust/blob/master/egg-rust.json"
+} 
