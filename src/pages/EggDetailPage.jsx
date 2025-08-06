@@ -92,7 +92,9 @@ function EggDetailPage() {
     markdown += '|-------|------|-------|---------|----------|\n';
 
     jsonData.variables.forEach(variable => {
-      markdown += `| ${variable.name} | ${variable.description || '无描述'} | ${variable.default_value || '无默认值'} | ${variable.user_viewable ? '是' : '否'} | ${variable.user_editable ? '是' : '否'} |\n`;
+      // 处理描述中的换行符，将其替换为空格
+      const description = variable.description ? variable.description.replace(/\r?\n/g, ' ') : '无描述';
+      markdown += `| ${variable.name} | ${description} | ${variable.default_value || '无默认值'} | ${variable.user_viewable ? '是' : '否'} | ${variable.user_editable ? '是' : '否'} |\n`;
     });
 
     return markdown;

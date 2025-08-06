@@ -111,7 +111,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
             
             {/* GitHub 按钮 */}
             <a 
-              href="https://github.com/your-repo/pterodactyl-eggs-cn" 
+              href="https://github.com/Jovesong1/pterodactyl-eggs-cn" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`ml-2 flex items-center px-4 py-2 rounded-full text-sm font-medium ${
@@ -174,7 +174,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
             <Link to="/about" className={`block px-4 py-2 text-sm ${isActive('/about') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>关于项目</Link>
             <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
             <a 
-              href="https://github.com/your-repo/pterodactyl-eggs-cn" 
+              href="https://github.com/Jovesong1/pterodactyl-eggs-cn" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"

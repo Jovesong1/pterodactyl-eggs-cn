@@ -97,7 +97,7 @@ npm run build
 {
   "name": "Egg名称",
   "version": "版本号",
-  "category": "分类",
+  "category": "分类",  // 仅包含：游戏服务器、工具、应用服务器、其他 四类，其他都会导致索引出现异常。
   "description": "简短描述",
   "author": "作者",
   "date": "更新日期",
