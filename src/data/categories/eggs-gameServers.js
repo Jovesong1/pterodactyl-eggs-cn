@@ -1,4 +1,4 @@
-// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-06T00:39:07.225Z
+// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-06T00:40:25.457Z
 export const gameServers = [
   {
     "id": "counter-strike2",
