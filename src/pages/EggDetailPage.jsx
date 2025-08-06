@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import eggsIndex from '../data/eggs-index';
 import ReportProblemModal from '../components/ReportProblemModal';
+import AdditionalFilesSection from '../components/AdditionalFilesSection';
 
 function EggDetailPage() {
   const { id } = useParams();
@@ -13,13 +14,14 @@ function EggDetailPage() {
   const [eggJson, setEggJson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState('description'); // 'description', 'installation', 'configuration', 'variables', 'technical'
+  const [activeTab, setActiveTab] = useState('description'); // 'description', 'installation', 'configuration', 'variables', 'technical', 'files'
   const [tabContent, setTabContent] = useState({
     description: '',
     installation: '',
     configuration: '',
     variables: '',
-    technical: ''
+    technical: '',
+    files: []
   });
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
@@ -221,12 +223,16 @@ function EggDetailPage() {
           configuration: configContent ? configContent.substring(0, 100) + '...' : '无配置参数'
         });
         
+        // 设置额外文件
+        const additionalFiles = foundEgg.additionalFiles || [];
+        
         setTabContent({
           description: descContent,
           installation: installContent || '### 默认安装指南\n\n1. 在翼龙面板中导入此Egg\n2. 创建新服务器并选择此Egg\n3. 配置服务器参数\n4. 启动服务器（首次启动需下载游戏文件，耗时较长）',
           configuration: configContent || '### 暂无配置参数\n\n该Egg资源尚未提供详细的配置参数说明。',
           variables: '### 加载中...\n\n正在加载变量信息...',
-          technical: '### 加载中...\n\n正在加载技术信息...'
+          technical: '### 加载中...\n\n正在加载技术信息...',
+          files: additionalFiles
         });
         
       } catch (err) {
@@ -535,23 +541,37 @@ function EggDetailPage() {
             >
               技术信息
             </button>
+            <button
+              onClick={() => setActiveTab('files')}
+              className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
+                activeTab === 'files'
+                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
+            >
+              额外文件
+            </button>
           </nav>
         </div>
         
         <div className="p-6">
-          <div className="prose max-w-none dark:prose-invert">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
-              {activeTab === 'description' 
-                ? tabContent.description 
-                : activeTab === 'installation' 
-                  ? tabContent.installation 
-                  : activeTab === 'configuration'
-                    ? tabContent.configuration
-                    : activeTab === 'variables'
-                      ? tabContent.variables
-                      : tabContent.technical}
-            </ReactMarkdown>
-          </div>
+          {activeTab !== 'files' ? (
+            <div className="prose max-w-none dark:prose-invert">
+              <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+                {activeTab === 'description' 
+                  ? tabContent.description 
+                  : activeTab === 'installation' 
+                    ? tabContent.installation 
+                    : activeTab === 'configuration'
+                      ? tabContent.configuration
+                      : activeTab === 'variables'
+                        ? tabContent.variables
+                        : tabContent.technical}
+              </ReactMarkdown>
+            </div>
+          ) : (
+            <AdditionalFilesSection files={tabContent.files} />
+          )}
         </div>
       </div>
       

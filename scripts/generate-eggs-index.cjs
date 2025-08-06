@@ -70,6 +70,25 @@ async function generateEggsIndex() {
     const eggJsonFile = files.find(file => file.endsWith('.json') && !file.startsWith('metadata'));
     const metadataFile = files.find(file => file === 'metadata.json');
     
+    // 收集额外文件信息
+    const additionalFiles = files.filter(file => {
+      // 排除基本三个文件
+      return file !== mdFile && 
+             file !== eggJsonFile && 
+             file !== metadataFile &&
+             // 排除隐藏文件
+             !file.startsWith('.');
+    }).map(file => {
+      const filePath = path.join(folderPath, file);
+      const stats = fs.statSync(filePath);
+      return {
+        name: file,
+        path: `${folder}/${file}`,
+        size: stats.size,
+        isDirectory: stats.isDirectory()
+      };
+    });
+    
     if (mdFile && eggJsonFile) {
       try {
         let eggIndex = null;
@@ -94,7 +113,8 @@ async function generateEggsIndex() {
             optimizationStatus: metadata.optimizationStatus || '未优化',
             testStatus: metadata.testStatus || '未进行运行认证',
             icon: metadata.icon || '',
-            downloadUrl: metadata.downloadUrl || `https://github.com/ptero-eggs/${folder}/blob/master/${eggJsonFile}`
+            downloadUrl: metadata.downloadUrl || `https://github.com/ptero-eggs/${folder}/blob/master/${eggJsonFile}`,
+            additionalFiles: additionalFiles // 添加额外文件信息
           };
           
           console.log(`处理: ${folder} - 使用metadata.json`);
@@ -124,7 +144,8 @@ async function generateEggsIndex() {
             optimizationStatus: '未优化',
             testStatus: '未进行运行认证',
             icon: '',
-            downloadUrl: `https://github.com/ptero-eggs/${folder}/blob/master/${eggJsonFile}`
+            downloadUrl: `https://github.com/ptero-eggs/${folder}/blob/master/${eggJsonFile}`,
+            additionalFiles: additionalFiles // 添加额外文件信息
           };
           
           console.log(`处理: ${folder} - 从MD和JSON文件提取信息（缺少metadata.json）`);

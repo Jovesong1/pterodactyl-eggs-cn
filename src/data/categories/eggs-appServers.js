@@ -1,4 +1,4 @@
-// 应用服务器 - 自动生成的Egg索引文件 - 2025-08-06T16:53:03.777Z
+// 应用服务器 - 自动生成的Egg索引文件 - 2025-08-06T22:57:49.332Z
 export const appServers = [
   {
     "id": "neosvr",
@@ -20,6 +20,14 @@ export const appServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/740250/header.jpg",
-    "downloadUrl": "/src/data/eggs/neosvr/egg-neos-v-r-cn.json"
+    "downloadUrl": "/src/data/eggs/neosvr/egg-neos-v-r-cn.json",
+    "additionalFiles": [
+      {
+        "name": "egg-neos-v-r-cn.json",
+        "path": "neosvr/egg-neos-v-r-cn.json",
+        "size": 6590,
+        "isDirectory": false
+      }
+    ]
   }
 ];
