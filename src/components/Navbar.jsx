@@ -37,7 +37,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
             </div>
             <div>
               <span className={`font-bold text-lg ${scrolled ? 'text-blue-700 dark:text-blue-400' : 'text-gray-800 dark:text-white'}`}>
-                翼龙面板
+                翼龙面板 EGGS-CN
               </span>
               <span className={`block text-xs ${scrolled ? 'text-blue-500 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}>
                 中文Egg资源站
