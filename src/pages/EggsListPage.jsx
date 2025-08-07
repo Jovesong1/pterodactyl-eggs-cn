@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import SearchBar from '../components/SearchBar';
 import EggCard from '../components/EggCard';
@@ -12,14 +12,23 @@ function EggsListPage() {
   }, []);
   
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredEggs, setFilteredEggs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('');
   
   // 提取所有分类和标签
   const categories = [...new Set(eggsIndex.map(egg => egg.category))];
   const tags = [...new Set(eggsIndex.flatMap(egg => egg.tags))];
+  
+  // 状态筛选选项
+  const statusFilters = [
+    { id: 'localized', label: '已汉化', field: 'localizationStatus', value: '已汉化' },
+    { id: 'optimized', label: '已优化', field: 'optimizationStatus', value: '已优化' },
+    { id: 'tested', label: '已认证', field: 'testStatus', value: '已通过运行认证' }
+  ];
   
   // 创建Fuse搜索实例
   const fuse = new Fuse(eggsIndex, {
@@ -28,8 +37,14 @@ function EggsListPage() {
     includeScore: true
   });
 
-  // 处理从其他页面传入的筛选条件
+  // 处理从URL和其他页面传入的筛选条件
   useEffect(() => {
+    // 从URL参数中获取筛选条件
+    const filter = searchParams.get('filter');
+    if (filter) {
+      setSelectedStatus(filter);
+    }
+    
     // 检查是否有从分类页传入的筛选条件
     if (location.state) {
       if (location.state.filterCategory || location.state.selectedCategory) {
@@ -39,7 +54,7 @@ function EggsListPage() {
         setSelectedTag(location.state.filterTag || location.state.selectedTag);
       }
     }
-  }, [location]);
+  }, [location, searchParams]);
   
   // 当筛选条件变化时，更新显示的Egg列表
   useEffect(() => {
@@ -55,20 +70,44 @@ function EggsListPage() {
       results = results.filter(egg => egg.tags.includes(selectedTag));
     }
     
+    // 应用状态筛选
+    if (selectedStatus) {
+      const statusFilter = statusFilters.find(filter => filter.id === selectedStatus);
+      if (statusFilter) {
+        results = results.filter(egg => egg[statusFilter.field] === statusFilter.value);
+      }
+    }
+    
     // 应用搜索筛选
     if (searchTerm) {
       const searchResults = fuse.search(searchTerm);
       results = searchResults
         .map(result => result.item)
         .filter(egg => {
-          // 同时满足分类和标签筛选条件
-          return (!selectedCategory || egg.category === selectedCategory) && 
-                 (!selectedTag || egg.tags.includes(selectedTag));
+          // 同时满足分类、标签和状态筛选条件
+          let matchesFilters = true;
+          
+          if (selectedCategory) {
+            matchesFilters = matchesFilters && egg.category === selectedCategory;
+          }
+          
+          if (selectedTag) {
+            matchesFilters = matchesFilters && egg.tags.includes(selectedTag);
+          }
+          
+          if (selectedStatus) {
+            const statusFilter = statusFilters.find(filter => filter.id === selectedStatus);
+            if (statusFilter) {
+              matchesFilters = matchesFilters && egg[statusFilter.field] === statusFilter.value;
+            }
+          }
+          
+          return matchesFilters;
         });
     }
     
     setFilteredEggs(results);
-  }, [searchTerm, selectedCategory, selectedTag]);
+  }, [searchTerm, selectedCategory, selectedTag, selectedStatus]);
 
   // 处理搜索
   const handleSearch = (term) => {
@@ -84,6 +123,29 @@ function EggsListPage() {
   const handleTagFilter = (tag) => {
     setSelectedTag(tag === selectedTag ? '' : tag);
   };
+  
+  // 处理状态筛选
+  const handleStatusFilter = (status) => {
+    setSelectedStatus(status === selectedStatus ? '' : status);
+    
+    // 更新URL参数
+    if (status === selectedStatus) {
+      searchParams.delete('filter');
+    } else {
+      searchParams.set('filter', status);
+    }
+    setSearchParams(searchParams);
+  };
+  
+  // 清除所有筛选条件
+  const clearAllFilters = () => {
+    setSelectedCategory('');
+    setSelectedTag('');
+    setSelectedStatus('');
+    setSearchTerm('');
+    searchParams.delete('filter');
+    setSearchParams(searchParams);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -92,6 +154,49 @@ function EggsListPage() {
       {/* 搜索栏 */}
       <div className="mb-8">
         <SearchBar onSearch={handleSearch} />
+      </div>
+      
+      {/* 状态筛选器 */}
+      <div className="mb-6">
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={clearAllFilters}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              !selectedCategory && !selectedTag && !selectedStatus && !searchTerm
+                ? 'bg-blue-600 dark:bg-blue-700 text-white shadow-md' 
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+            }`}
+          >
+            全部资源
+          </button>
+          
+          {statusFilters.map(filter => {
+            // 计算每种状态的资源数量
+            const count = eggsIndex.filter(egg => egg[filter.field] === filter.value).length;
+            
+            // 为不同状态设置不同的颜色
+            const colors = {
+              localized: 'bg-green-600 dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-600',
+              optimized: 'bg-purple-600 dark:bg-purple-700 hover:bg-purple-700 dark:hover:bg-purple-600',
+              tested: 'bg-yellow-600 dark:bg-yellow-700 hover:bg-yellow-700 dark:hover:bg-yellow-600'
+            };
+            
+            return (
+              <button
+                key={filter.id}
+                onClick={() => handleStatusFilter(filter.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center ${
+                  selectedStatus === filter.id 
+                    ? `${colors[filter.id]} text-white shadow-md` 
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                }`}
+              >
+                <span className="w-2 h-2 bg-white rounded-full mr-1.5"></span>
+                {filter.label} ({count})
+              </button>
+            );
+          })}
+        </div>
       </div>
       
       {/* 筛选器 */}
@@ -151,6 +256,7 @@ function EggsListPage() {
           共找到 <span className="font-semibold">{filteredEggs.length}</span> 个Egg资源
           {selectedCategory && <span> 在 <span className="font-semibold">{selectedCategory}</span> 分类下</span>}
           {selectedTag && <span> 带有 <span className="font-semibold">{selectedTag}</span> 标签</span>}
+          {selectedStatus && <span> 状态为 <span className="font-semibold">{statusFilters.find(f => f.id === selectedStatus)?.label}</span></span>}
           {searchTerm && <span> 匹配 <span className="font-semibold">"{searchTerm}"</span></span>}
         </p>
       </div>
@@ -169,11 +275,7 @@ function EggsListPage() {
           </svg>
           <p className="text-gray-500 dark:text-gray-400 text-lg">没有找到符合条件的Egg资源</p>
           <button 
-            onClick={() => {
-              setSelectedCategory('');
-              setSelectedTag('');
-              setSearchTerm('');
-            }}
+            onClick={clearAllFilters}
             className="mt-4 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
           >
             清除所有筛选条件

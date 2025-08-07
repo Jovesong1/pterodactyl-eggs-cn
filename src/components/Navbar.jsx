@@ -90,16 +90,19 @@ function Navbar({ darkMode, toggleDarkMode }) {
               >
                 关于项目
               </Link>
-              
+
               {/* 投稿按钮 */}
-              <button 
+              <button
+                id="contribute-button" 
                 onClick={() => setIsContributeModalOpen(true)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-white flex items-center`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 shadow-sm hover:shadow`}
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-                投稿
+                <div className="flex items-center">
+                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                  投稿
+                </div>
               </button>
               
               {/* 暗黑模式切换按钮 */}
@@ -143,6 +146,17 @@ function Navbar({ darkMode, toggleDarkMode }) {
             
             {/* 移动端菜单按钮 */}
             <div className="md:hidden flex items-center">
+              {/* 移动端投稿按钮 */}
+              <button
+                id="contribute-button-mobile"
+                onClick={() => setIsContributeModalOpen(true)}
+                className="p-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 text-white mr-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+              </button>
+
               {/* 移动端暗黑模式切换按钮 */}
               <button
                 onClick={toggleDarkMode}
@@ -186,18 +200,6 @@ function Navbar({ darkMode, toggleDarkMode }) {
               <Link to="/eggs" className={`block px-4 py-2 text-sm ${isActive('/eggs') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>Egg资源</Link>
               <Link to="/categories" className={`block px-4 py-2 text-sm ${isActive('/categories') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>分类浏览</Link>
               <Link to="/about" className={`block px-4 py-2 text-sm ${isActive('/about') ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>关于项目</Link>
-              <button 
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsContributeModalOpen(true);
-                }}
-                className="w-full text-left px-4 py-2 text-sm text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-800/30 flex items-center"
-              >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-                投稿 Egg 资源
-              </button>
               <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
               <a 
                 href="https://github.com/Jovesong1/pterodactyl-eggs-cn" 
@@ -214,7 +216,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
           )}
         </div>
       </nav>
-      
+
       {/* 投稿模态窗口 */}
       <ContributeModal 
         isOpen={isContributeModalOpen} 

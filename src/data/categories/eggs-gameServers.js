@@ -1,4 +1,4 @@
-// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-06T23:40:41.928Z
+// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-07T00:13:34.925Z
 export const gameServers = [
   {
     "id": "7days",
@@ -852,7 +852,7 @@ export const gameServers = [
     ],
     "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
-    "testStatus": "未进行运行认证",
+    "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg",
     "downloadUrl": "/src/data/eggs/palworld_proton/egg-palworld-proton-cn.json",
     "additionalFiles": [

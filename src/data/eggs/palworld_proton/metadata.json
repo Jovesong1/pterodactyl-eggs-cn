@@ -8,7 +8,7 @@
   "tags": ["生存", "开放世界", "建造", "多人联机"],
   "localizationStatus": "已汉化",
   "optimizationStatus": "未优化",
-  "testStatus": "未进行运行认证",
+  "testStatus": "已通过运行认证",
   "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg",
   "downloadUrl": "/src/data/eggs/palworld_proton/egg-palworld-proton-cn.json"
 } 

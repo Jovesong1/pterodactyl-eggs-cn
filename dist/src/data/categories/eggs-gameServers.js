@@ -1,4 +1,4 @@
-// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-06T16:53:03.759Z
+// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-07T00:13:32.501Z
 export const gameServers = [
   {
     "id": "7days",
@@ -20,7 +20,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/294420/header.jpg",
-    "downloadUrl": "/src/data/eggs/7days/egg-7days.json"
+    "downloadUrl": "/src/data/eggs/7days/egg-7days.json",
+    "additionalFiles": []
   },
   {
     "id": "abiotic_factor",
@@ -43,7 +44,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://patchwiki.biligame.com/images/fswys/d/da/ptp4q70kdfjkt98crd47kq5t9lb10r7.jpg",
-    "downloadUrl": "/src/data/eggs/abiotic_factor/egg-abiotic-factor-cn.json"
+    "downloadUrl": "/src/data/eggs/abiotic_factor/egg-abiotic-factor-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "american-truck-simulator",
@@ -66,7 +68,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/270880/header.jpg",
-    "downloadUrl": "/src/data/eggs/american-truck-simulator/egg-american-truck-simulator-dedicated-server-cn.json"
+    "downloadUrl": "/src/data/eggs/american-truck-simulator/egg-american-truck-simulator-dedicated-server-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "dedicated",
@@ -89,7 +92,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/700330/header.jpg",
-    "downloadUrl": "/src/data/eggs/scpsl/dedicated/egg-scpsl-cn.json"
+    "downloadUrl": "/src/data/eggs/scpsl/dedicated/egg-scpsl-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "etlegacy",
@@ -111,7 +115,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.etlegacy.com/images/logo.png",
-    "downloadUrl": "/src/data/eggs/etlegacy/egg-e-t-legacy-cn.json"
+    "downloadUrl": "/src/data/eggs/etlegacy/egg-e-t-legacy-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "euro-truck-simulator2",
@@ -134,7 +139,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/227300/header.jpg",
-    "downloadUrl": "/src/data/eggs/euro-truck-simulator2/egg-euro-truck-simulator2-dedicated-server-cn.json"
+    "downloadUrl": "/src/data/eggs/euro-truck-simulator2/egg-euro-truck-simulator2-dedicated-server-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "evrima",
@@ -156,7 +162,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/376210/header.jpg",
-    "downloadUrl": "/src/data/eggs/evrima/egg-the-isle-cn.json"
+    "downloadUrl": "/src/data/eggs/evrima/egg-the-isle-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "exiled",
@@ -180,7 +187,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/700330/header.jpg",
-    "downloadUrl": "/src/data/eggs/scpsl/exiled/egg-s-c-p--s-l--exiled-cn.json"
+    "downloadUrl": "/src/data/eggs/scpsl/exiled/egg-s-c-p--s-l--exiled-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "legacy",
@@ -204,7 +212,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/324080/header.jpg",
-    "downloadUrl": "/src/data/eggs/legacy/egg-rising-world-legacy-cn.json"
+    "downloadUrl": "/src/data/eggs/legacy/egg-rising-world-legacy-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "minetest",
@@ -226,7 +235,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/223750/header.jpg",
-    "downloadUrl": "/src/data/eggs/minetest/egg-minetest-cn.json"
+    "downloadUrl": "/src/data/eggs/minetest/egg-minetest-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "modiverse",
@@ -249,7 +259,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1549820/header.jpg",
-    "downloadUrl": "/src/data/eggs/modiverse/egg-modiverse-cn.json"
+    "downloadUrl": "/src/data/eggs/modiverse/egg-modiverse-cn.json",
+    "additionalFiles": [
+      {
+        "name": "egg-modiverse-cn.json",
+        "path": "modiverse/egg-modiverse-cn.json",
+        "size": 7475,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "mohaa",
@@ -271,7 +289,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/15100/header.jpg",
-    "downloadUrl": "/src/data/eggs/mohaa/egg-mohaa-cn.json"
+    "downloadUrl": "/src/data/eggs/mohaa/egg-mohaa-cn.json",
+    "additionalFiles": [
+      {
+        "name": "server.cfg",
+        "path": "mohaa/server.cfg",
+        "size": 3117,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "mordhau",
@@ -294,7 +320,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/629800/header.jpg",
-    "downloadUrl": "/src/data/eggs/mordhau/egg-mordhau-cn.json"
+    "downloadUrl": "/src/data/eggs/mordhau/egg-mordhau-cn.json",
+    "additionalFiles": [
+      {
+        "name": "egg-mordhau-wine-cn.json",
+        "path": "mordhau/egg-mordhau-wine-cn.json",
+        "size": 9575,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "mount_blade_II_bannerlord",
@@ -317,7 +351,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/261550/header.jpg",
-    "downloadUrl": "/src/data/eggs/mount_blade_II_bannerlord/egg-mount-blade-ii-bannerlord-cn.json"
+    "downloadUrl": "/src/data/eggs/mount_blade_II_bannerlord/egg-mount-blade-ii-bannerlord-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "myth_of_empires",
@@ -340,7 +375,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1371580/header.jpg",
-    "downloadUrl": "/src/data/eggs/myth_of_empires/egg-myth-of-empires-cn.json"
+    "downloadUrl": "/src/data/eggs/myth_of_empires/egg-myth-of-empires-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "necesse",
@@ -362,7 +398,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1169040/header.jpg",
-    "downloadUrl": "/src/data/eggs/necesse/egg-necesse-cn.json"
+    "downloadUrl": "/src/data/eggs/necesse/egg-necesse-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "neverwinter_nights_ee",
@@ -384,7 +421,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/704450/header.jpg",
-    "downloadUrl": "/src/data/eggs/neverwinter_nights_ee/egg-neverwinter-nights--enhanced-edition-cn.json"
+    "downloadUrl": "/src/data/eggs/neverwinter_nights_ee/egg-neverwinter-nights--enhanced-edition-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "night_of_the_dead",
@@ -406,7 +444,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1420710/header.jpg",
-    "downloadUrl": "/src/data/eggs/night_of_the_dead/egg-night-of-the-dead-cn.json"
+    "downloadUrl": "/src/data/eggs/night_of_the_dead/egg-night-of-the-dead-cn.json",
+    "additionalFiles": [
+      {
+        "name": "ServerSettings.ini",
+        "path": "night_of_the_dead/ServerSettings.ini",
+        "size": 3478,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "nmrih",
@@ -428,7 +474,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/224260/header.jpg",
-    "downloadUrl": "/src/data/eggs/nmrih/egg-nmrih-cn.json"
+    "downloadUrl": "/src/data/eggs/nmrih/egg-nmrih-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "no_love_lost",
@@ -450,7 +497,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2833050/header.jpg",
-    "downloadUrl": "/src/data/eggs/no_love_lost/egg-no-love-lost-cn.json"
+    "downloadUrl": "/src/data/eggs/no_love_lost/egg-no-love-lost-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "no_one_survived",
@@ -473,7 +521,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1963370/header.jpg",
-    "downloadUrl": "/src/data/eggs/no_one_survived/egg-no-one-survived-cn.json"
+    "downloadUrl": "/src/data/eggs/no_one_survived/egg-no-one-survived-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "novalife_amboise",
@@ -495,7 +544,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1665030/header.jpg",
-    "downloadUrl": "/src/data/eggs/novalife_amboise/egg-nova--life--amboise-cn.json"
+    "downloadUrl": "/src/data/eggs/novalife_amboise/egg-nova--life--amboise-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "onset",
@@ -517,7 +567,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1105810/header.jpg",
-    "downloadUrl": "/src/data/eggs/onset/egg-onset-cn.json"
+    "downloadUrl": "/src/data/eggs/onset/egg-onset-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "open_fortress",
@@ -539,7 +590,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://openfortress.fun/assets/images/logo.png",
-    "downloadUrl": "/src/data/eggs/open_fortress/egg-open-fortress-cn.json"
+    "downloadUrl": "/src/data/eggs/open_fortress/egg-open-fortress-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "open_world",
@@ -562,7 +614,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/294100/header.jpg",
-    "downloadUrl": "/src/data/eggs/open_world/egg-rimworld-open-world-cn.json"
+    "downloadUrl": "/src/data/eggs/open_world/egg-rimworld-open-world-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "openarena",
@@ -584,7 +637,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/OpenArena_Logo.svg/1200px-OpenArena_Logo.svg.png",
-    "downloadUrl": "/src/data/eggs/openarena/egg-open-arena-cn.json"
+    "downloadUrl": "/src/data/eggs/openarena/egg-open-arena-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "openra_dune2000",
@@ -606,7 +660,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.openra.net/images/icons/d2k_32x32.png",
-    "downloadUrl": "/src/data/eggs/openra_dune2000/egg-open-r-a--dune2000-cn.json"
+    "downloadUrl": "/src/data/eggs/openra_dune2000/egg-open-r-a--dune2000-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "openra_red_alert",
@@ -628,7 +683,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.openra.net/images/icons/ra_32x32.png",
-    "downloadUrl": "/src/data/eggs/openra_red_alert/egg-open-r-a-cn.json"
+    "downloadUrl": "/src/data/eggs/openra_red_alert/egg-open-r-a-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "openra_tiberian_dawn",
@@ -650,7 +706,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.openra.net/images/icons/cnc_32x32.png",
-    "downloadUrl": "/src/data/eggs/openra_tiberian_dawn/egg-open-r-a--tiberian-dawn-cn.json"
+    "downloadUrl": "/src/data/eggs/openra_tiberian_dawn/egg-open-r-a--tiberian-dawn-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "openrct2",
@@ -672,7 +729,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://openrct2.io/assets/images/logos/icon_x256.png",
-    "downloadUrl": "/src/data/eggs/openrct2/egg-openrct2-cn.json"
+    "downloadUrl": "/src/data/eggs/openrct2/egg-openrct2-cn.json",
+    "additionalFiles": [
+      {
+        "name": "save.park",
+        "path": "openrct2/save.park",
+        "size": 73489,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "openttd",
@@ -694,7 +759,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1536610/header.jpg",
-    "downloadUrl": "/src/data/eggs/openttd/egg-open-t-t-d-server-cn.json"
+    "downloadUrl": "/src/data/eggs/openttd/egg-open-t-t-d-server-cn.json",
+    "additionalFiles": [
+      {
+        "name": "openttd.cfg",
+        "path": "openttd/openttd.cfg",
+        "size": 10377,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "operation_harsh_doorstop",
@@ -716,7 +789,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/736590/header.jpg",
-    "downloadUrl": "/src/data/eggs/operation_harsh_doorstop/egg-operation-harsh-doorstop-cn.json"
+    "downloadUrl": "/src/data/eggs/operation_harsh_doorstop/egg-operation-harsh-doorstop-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "palworld",
@@ -738,7 +812,27 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg",
-    "downloadUrl": "/src/data/eggs/palworld/egg-palworld-cn.json"
+    "downloadUrl": "/src/data/eggs/palworld/egg-palworld-cn.json",
+    "additionalFiles": [
+      {
+        "name": "PalworldServerConfigParser-linux-amd64",
+        "path": "palworld/PalworldServerConfigParser-linux-amd64",
+        "size": 2534266,
+        "isDirectory": false
+      },
+      {
+        "name": "egg-palworld-proton-cn.json",
+        "path": "palworld/egg-palworld-proton-cn.json",
+        "size": 9909,
+        "isDirectory": false
+      },
+      {
+        "name": "winmm.dll",
+        "path": "palworld/winmm.dll",
+        "size": 34304,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "palworld_proton",
@@ -758,9 +852,23 @@ export const gameServers = [
     ],
     "localizationStatus": "已汉化",
     "optimizationStatus": "未优化",
-    "testStatus": "未进行运行认证",
+    "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg",
-    "downloadUrl": "/src/data/eggs/palworld_proton/egg-palworld-proton-cn.json"
+    "downloadUrl": "/src/data/eggs/palworld_proton/egg-palworld-proton-cn.json",
+    "additionalFiles": [
+      {
+        "name": "PalworldServerConfigParser-linux-amd64",
+        "path": "palworld_proton/PalworldServerConfigParser-linux-amd64",
+        "size": 2534266,
+        "isDirectory": false
+      },
+      {
+        "name": "winmm.dll",
+        "path": "palworld_proton/winmm.dll",
+        "size": 34304,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "path_of_titans",
@@ -782,7 +890,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1818750/header.jpg",
-    "downloadUrl": "/src/data/eggs/path_of_titans/egg-path-of-titans-cn.json"
+    "downloadUrl": "/src/data/eggs/path_of_titans/egg-path-of-titans-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "pavlov_vr",
@@ -804,7 +913,21 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/555160/header.jpg",
-    "downloadUrl": "/src/data/eggs/pavlov_vr/egg-pavlov-v-r-cn.json"
+    "downloadUrl": "/src/data/eggs/pavlov_vr/egg-pavlov-v-r-cn.json",
+    "additionalFiles": [
+      {
+        "name": "Game.ini",
+        "path": "pavlov_vr/Game.ini",
+        "size": 626,
+        "isDirectory": false
+      },
+      {
+        "name": "RconSettings.txt",
+        "path": "pavlov_vr/RconSettings.txt",
+        "size": 15,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "pixark",
@@ -827,7 +950,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/593600/header.jpg",
-    "downloadUrl": "/src/data/eggs/pixark/egg-pix-a-r-k-cn.json"
+    "downloadUrl": "/src/data/eggs/pixark/egg-pix-a-r-k-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "portal_knights",
@@ -849,7 +973,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/374040/header.jpg",
-    "downloadUrl": "/src/data/eggs/portal_knights/egg-portal-knights-cn.json"
+    "downloadUrl": "/src/data/eggs/portal_knights/egg-portal-knights-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "post_scriptum",
@@ -871,7 +996,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/736220/header.jpg",
-    "downloadUrl": "/src/data/eggs/post_scriptum/egg-post-scriptum-cn.json"
+    "downloadUrl": "/src/data/eggs/post_scriptum/egg-post-scriptum-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "project_zomboid",
@@ -893,7 +1019,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/108600/header.jpg",
-    "downloadUrl": "/src/data/eggs/project_zomboid/egg-project-zomboid-cn.json"
+    "downloadUrl": "/src/data/eggs/project_zomboid/egg-project-zomboid-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "puck",
@@ -916,7 +1043,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2994020/header.jpg",
-    "downloadUrl": "/src/data/eggs/puck/egg-puck-cn.json"
+    "downloadUrl": "/src/data/eggs/puck/egg-puck-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "quake_live",
@@ -939,7 +1067,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/282440/header.jpg",
-    "downloadUrl": "/src/data/eggs/quake_live/egg-quake-live-cn.json"
+    "downloadUrl": "/src/data/eggs/quake_live/egg-quake-live-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "r5reloaded",
@@ -962,7 +1091,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg",
-    "downloadUrl": "/src/data/eggs/r5reloaded/egg-r5-reloaded-cn.json"
+    "downloadUrl": "/src/data/eggs/r5reloaded/egg-r5-reloaded-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "redm",
@@ -985,7 +1115,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1404210/header.jpg",
-    "downloadUrl": "/src/data/eggs/rdr/redm/egg-red-m-cn.json"
+    "downloadUrl": "/src/data/eggs/rdr/redm/egg-red-m-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "resonite",
@@ -1008,7 +1139,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://uploads-ssl.webflow.com/656504e52e383d09efa776a6/6567cd3c5415149f20af9525_RSN_MiniTrailer_01_v01_1_1-poster-00001.jpg",
-    "downloadUrl": "/src/data/eggs/resonite/egg-resonite-cn.json"
+    "downloadUrl": "/src/data/eggs/resonite/egg-resonite-cn.json",
+    "additionalFiles": [
+      {
+        "name": "egg-resonite-cn.json",
+        "path": "resonite/egg-resonite-cn.json",
+        "size": 7603,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "return_to_moria",
@@ -1031,7 +1170,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1966720/header.jpg",
-    "downloadUrl": "/src/data/eggs/return_to_moria/egg-the-lord-of-the-rings--return-to-moria-cn.json"
+    "downloadUrl": "/src/data/eggs/return_to_moria/egg-the-lord-of-the-rings--return-to-moria-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "risk_of_rain_2",
@@ -1053,7 +1193,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/632360/header.jpg",
-    "downloadUrl": "/src/data/eggs/risk_of_rain_2/egg-risk-of-rain2-cn.json"
+    "downloadUrl": "/src/data/eggs/risk_of_rain_2/egg-risk-of-rain2-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "rust_autowipe",
@@ -1076,7 +1217,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg",
-    "downloadUrl": "/src/data/eggs/rust/rust_autowipe/egg-rust-autowipe-cn.json"
+    "downloadUrl": "/src/data/eggs/rust/rust_autowipe/egg-rust-autowipe-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "rust_staging",
@@ -1099,7 +1241,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg",
-    "downloadUrl": "/src/data/eggs/rust/rust_staging/egg-rust-staging-cn.json"
+    "downloadUrl": "/src/data/eggs/rust/rust_staging/egg-rust-staging-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "satisfactory",
@@ -1122,7 +1265,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/526870/header.jpg",
-    "downloadUrl": "/src/data/eggs/satisfactory/egg-satisfactory-cn.json"
+    "downloadUrl": "/src/data/eggs/satisfactory/egg-satisfactory-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "scum",
@@ -1145,7 +1289,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/513710/header.jpg",
-    "downloadUrl": "/src/data/eggs/scum/egg-scum-cn.json"
+    "downloadUrl": "/src/data/eggs/scum/egg-scum-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "space-engineers",
@@ -1167,7 +1312,21 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/244850/header.jpg",
-    "downloadUrl": "/src/data/eggs/space-engineers/egg-space-engineers-cn.json"
+    "downloadUrl": "/src/data/eggs/space-engineers/egg-space-engineers-cn.json",
+    "additionalFiles": [
+      {
+        "name": "SpaceEngineers-Dedicated.cfg",
+        "path": "space-engineers/SpaceEngineers-Dedicated.cfg",
+        "size": 8537,
+        "isDirectory": false
+      },
+      {
+        "name": "World.zip",
+        "path": "space-engineers/World.zip",
+        "size": 2139591,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "spacestation_14",
@@ -1189,7 +1348,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1255460/header.jpg",
-    "downloadUrl": "/src/data/eggs/spacestation_14/egg-spacestation14-cn.json"
+    "downloadUrl": "/src/data/eggs/spacestation_14/egg-spacestation14-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "squad",
@@ -1212,7 +1372,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/393380/header.jpg",
-    "downloadUrl": "/src/data/eggs/squad/egg-squad-cn.json"
+    "downloadUrl": "/src/data/eggs/squad/egg-squad-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "starbound",
@@ -1235,7 +1396,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/211820/header.jpg",
-    "downloadUrl": "/src/data/eggs/starbound/egg-starbound-cn.json"
+    "downloadUrl": "/src/data/eggs/starbound/egg-starbound-cn.json",
+    "additionalFiles": [
+      {
+        "name": "starbound_server.config",
+        "path": "starbound/starbound_server.config",
+        "size": 1321,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "starmade",
@@ -1258,7 +1427,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.star-made.org/assets/bg1-7c78094b62d01085add85a37a28554520397eb32fafe492ae4e76c9520425811.jpg",
-    "downloadUrl": "/src/data/eggs/starmade/egg-starmade-cn.json"
+    "downloadUrl": "/src/data/eggs/starmade/egg-starmade-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "stationeers_bepinex",
@@ -1281,7 +1451,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/544550/header.jpg",
-    "downloadUrl": "/src/data/eggs/stationeers_bepinex/egg-stationeers--bep-in-ex-cn.json"
+    "downloadUrl": "/src/data/eggs/stationeers_bepinex/egg-stationeers--bep-in-ex-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "stationeers_vanilla",
@@ -1304,7 +1475,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/544550/header.jpg",
-    "downloadUrl": "/src/data/eggs/stationeers_vanilla/egg-stationeers-cn.json"
+    "downloadUrl": "/src/data/eggs/stationeers_vanilla/egg-stationeers-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "stormworks",
@@ -1327,7 +1499,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/573090/header.jpg",
-    "downloadUrl": "/src/data/eggs/stormworks/egg-stormworks--build-and-rescue-cn.json"
+    "downloadUrl": "/src/data/eggs/stormworks/egg-stormworks--build-and-rescue-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "subnautica_nitrox_mod",
@@ -1350,7 +1523,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/264710/header.jpg",
-    "downloadUrl": "/src/data/eggs/subnautica_nitrox_mod/egg-subnautica-cn.json"
+    "downloadUrl": "/src/data/eggs/subnautica_nitrox_mod/egg-subnautica-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "svencoop",
@@ -1373,7 +1547,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/225840/header.jpg",
-    "downloadUrl": "/src/data/eggs/svencoop/egg-sven-co-op-cn.json"
+    "downloadUrl": "/src/data/eggs/svencoop/egg-sven-co-op-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "team_fortress_2_classic",
@@ -1395,7 +1570,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/440/header.jpg",
-    "downloadUrl": "/src/data/eggs/team_fortress_2_classic/egg-team-fortress-2-classic-cn.json"
+    "downloadUrl": "/src/data/eggs/team_fortress_2_classic/egg-team-fortress-2-classic-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "teeworlds",
@@ -1417,7 +1593,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/380840/header.jpg",
-    "downloadUrl": "/src/data/eggs/teeworlds/egg-teeworlds-cn.json"
+    "downloadUrl": "/src/data/eggs/teeworlds/egg-teeworlds-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "terraria",
@@ -1440,7 +1617,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "已通过运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg",
-    "downloadUrl": "/src/data/eggs/terraria/egg-terraria-vanilla-cn.json"
+    "downloadUrl": "/src/data/eggs/terraria/egg-terraria-vanilla-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "terratech_worlds",
@@ -1462,7 +1640,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2313330/header.jpg",
-    "downloadUrl": "/src/data/eggs/terratech_worlds/egg-terra-tech-worlds-cn.json"
+    "downloadUrl": "/src/data/eggs/terratech_worlds/egg-terra-tech-worlds-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "the_forest",
@@ -1485,7 +1664,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/242760/header.jpg",
-    "downloadUrl": "/src/data/eggs/the_forest/egg-the-forest-cn.json"
+    "downloadUrl": "/src/data/eggs/the_forest/egg-the-forest-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "thefront",
@@ -1507,7 +1687,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2285150/header.jpg",
-    "downloadUrl": "/src/data/eggs/thefront/egg-the-front-cn.json"
+    "downloadUrl": "/src/data/eggs/thefront/egg-the-front-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "together",
@@ -1530,7 +1711,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/294100/header.jpg",
-    "downloadUrl": "/src/data/eggs/rimworld/together/egg-rimworld-together-cn.json"
+    "downloadUrl": "/src/data/eggs/rimworld/together/egg-rimworld-together-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "tower_unite",
@@ -1551,7 +1733,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/394690/header.jpg",
-    "downloadUrl": "/src/data/eggs/tower_unite/egg-tower-unite-cn.json"
+    "downloadUrl": "/src/data/eggs/tower_unite/egg-tower-unite-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "unity",
@@ -1574,7 +1757,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/324080/header.jpg",
-    "downloadUrl": "/src/data/eggs/unity/egg-rising-world-unity-cn.json"
+    "downloadUrl": "/src/data/eggs/unity/egg-rising-world-unity-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "unturned",
@@ -1596,7 +1780,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/304930/header.jpg",
-    "downloadUrl": "/src/data/eggs/unturned/egg-unturned-cn.json"
+    "downloadUrl": "/src/data/eggs/unturned/egg-unturned-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "urbanterror",
@@ -1618,7 +1803,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://www.urbanterror.info//files/static/images/pics/presentation/shot0007.jpg",
-    "downloadUrl": "/src/data/eggs/urbanterror/egg-urban-terror-cn.json"
+    "downloadUrl": "/src/data/eggs/urbanterror/egg-urban-terror-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "v_rising",
@@ -1641,7 +1827,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1604030/header.jpg",
-    "downloadUrl": "/src/data/eggs/v_rising/egg-v-rising-cn.json"
+    "downloadUrl": "/src/data/eggs/v_rising/egg-v-rising-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "valheim",
@@ -1664,7 +1851,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/892970/header.jpg",
-    "downloadUrl": "/src/data/eggs/valheim/egg-valheim-cn.json"
+    "downloadUrl": "/src/data/eggs/valheim/egg-valheim-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "vein",
@@ -1686,7 +1874,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1857950/header.jpg",
-    "downloadUrl": "/src/data/eggs/vein/egg-v-e-i-n-cn.json"
+    "downloadUrl": "/src/data/eggs/vein/egg-v-e-i-n-cn.json",
+    "additionalFiles": [
+      {
+        "name": "Game.ini",
+        "path": "vein/Game.ini",
+        "size": 276,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "veloren",
@@ -1708,7 +1904,15 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://veloren.net/processed_images/gallery-0.50cacb0aa6b9efab.jpg",
-    "downloadUrl": "/src/data/eggs/veloren/egg-veloren-cn.json"
+    "downloadUrl": "/src/data/eggs/veloren/egg-veloren-cn.json",
+    "additionalFiles": [
+      {
+        "name": "settings.ron",
+        "path": "veloren/settings.ron",
+        "size": 828,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "vintage_story",
@@ -1730,7 +1934,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1928980/header.jpg",
-    "downloadUrl": "/src/data/eggs/vintage_story/egg-vintage-story-cn.json"
+    "downloadUrl": "/src/data/eggs/vintage_story/egg-vintage-story-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "wurm_unlimited",
@@ -1753,7 +1958,8 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/366220/header.jpg",
-    "downloadUrl": "/src/data/eggs/wurm_unlimited/egg-wurm-unlimited-cn.json"
+    "downloadUrl": "/src/data/eggs/wurm_unlimited/egg-wurm-unlimited-cn.json",
+    "additionalFiles": []
   },
   {
     "id": "xonotic",
@@ -1775,6 +1981,7 @@ export const gameServers = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1018720/header.jpg",
-    "downloadUrl": "/src/data/eggs/xonotic/egg-xonotic-cn.json"
+    "downloadUrl": "/src/data/eggs/xonotic/egg-xonotic-cn.json",
+    "additionalFiles": []
   }
 ];

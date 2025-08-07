@@ -1,4 +1,4 @@
-// 工具 - 自动生成的Egg索引文件 - 2025-08-06T16:53:03.778Z
+// 工具 - 自动生成的Egg索引文件 - 2025-08-07T00:13:32.504Z
 export const others = [
   {
     "id": "generic",
@@ -20,6 +20,7 @@ export const others = [
     "optimizationStatus": "未优化",
     "testStatus": "未进行运行认证",
     "icon": "https://gips0.baidu.com/it/u=1327757428,1607205401&fm=3030&app=3030&size=re3,2&q=75&n=0&g=4n&f=JPEG&fmt=auto&maxorilen2heic=2000000?s=9D04915FF5B319982C616CAB0300E006",
-    "downloadUrl": "/src/data/eggs/generic/egg-wine-generic-cn.json"
+    "downloadUrl": "/src/data/eggs/generic/egg-wine-generic-cn.json",
+    "additionalFiles": []
   }
 ];
