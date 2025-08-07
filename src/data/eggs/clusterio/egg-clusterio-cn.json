@@ -1,0 +1,115 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-04-02T14:24:51+02:00",
+    "name": "Clusterio",
+    "author": "psychoalex@thevcbc.com",
+    "description": "Clusterio是一个集群式Factorio服务器管理器，提供在Factorio中实现跨服务器交互的工具。它之前最著名的是通过传送箱实现跨服务器物品传输和云存储。但这一功能已从Clusterio中分离出来，成为Clusterio的一个名为Subspace Storage的插件。\r\n\r\n本身Clusterio不会以任何方式改变游戏玩法，您甚至可以使用Clusterio来管理完全原版的Factorio服务器。插件负责将可见的变化添加到游戏中，请参阅插件部分了解可以安装到Clusterio集群的现成插件。",
+    "features": null,
+    "docker_images": {
+        "NodeJS 21": "ghcr.io\/ptero-eggs\/yolks:nodejs_21",
+        "NodeJS 20": "ghcr.io\/ptero-eggs\/yolks:nodejs_20",
+        "NodeJS 19": "ghcr.io\/ptero-eggs\/yolks:nodejs_19",
+        "NodeJS 18": "ghcr.io\/ptero-eggs\/yolks:nodejs_18"
+    },
+    "file_denylist": [],
+    "startup": "exec .\/node_modules\/.bin\/clusterio{{SERVER_MODE}} run",
+    "config": {
+        "files": "{\r\n    \"config-controller.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"controller~1http_port\": \"{{server.build.default.port}}\",\r\n            \"controller~1name\": \"{{server.build.env.CLUSTER_NAME}}\"\r\n        }\r\n    },\r\n    \"config-host.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"host~1controller_url\": \"{{server.build.env.CONTROLLER_URL}}\",\r\n            \"host~1controller_token\": \"{{server.build.env.CONTROLLER_TOKEN}}\",\r\n            \"host~1public_address\": \"{{server.build.default.ip}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Started\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Clusterio Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y git curl jq file unzip make gcc g++ python3 python3-dev libtool\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nif [ \"${USER_UPLOAD}\" == \"true\" ] || [ \"${USER_UPLOAD}\" == \"1\" ]; then\r\n    echo -e \"assuming user knows what they are doing have a good day.\"\r\n    exit 0\r\nfi\r\n\r\ncase \"${SERVER_MODE}\" in\r\n\r\n  \"controller\")\r\n    echo -e \"Initialising Clustorio In Controller mode\"\r\n        npm init \"@clusterio\" -y -- --allow-install-as-root --mode \"${SERVER_MODE}\" --download-headless --log-level \"${LOG_LEVEL}\" --admin \"${ADMIN_STRING}\" --public-address \"${SERVER_IP}\":\"${SERVER_PORT}\" --plugins ${PLUGINS}\r\n\t;;\r\n\r\n  \"host\")\r\n    echo -e \"Initialising Clustorio In Host mode\"\r\n\tnpm init \"@clusterio\" -y -- --allow-install-as-root --mode \"${SERVER_MODE}\" --download-headless --log-level \"${LOG_LEVEL}\" --host-name \"${HOST_NAME}\" --public-address \"${SERVER_IP}\" --controller-url \"${CONTROLLER_URL}\" --controller-token \"${CONTROLLER_TOKEN}\" --plugins ${PLUGINS}\r\n    ;;\r\n    \r\nesac\r\n\r\necho -e \"install complete\"\r\nexit 0",
+            "container": "node:21-bookworm-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "服务器模式",
+            "description": "设置服务器的集群操作模式，可以是\"controller\"或\"host\"。这更好地理解为管理节点或游戏服务器节点。\r\n\r\n需要在：\r\n所有",
+            "env_variable": "SERVER_MODE",
+            "default_value": "controller",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:controller,host",
+            "field_type": "text"
+        },
+        {
+            "name": "日志级别",
+            "description": "选项：\"none\"、\"fatal\"、\"error\"、\"warn\"、\"audit\"、\"info\"、\"verbose\"\r\n\r\n需要在：\r\n所有",
+            "env_variable": "LOG_LEVEL",
+            "default_value": "info",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:none,fatal,error,warn,audit,info,verbose",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器管理员",
+            "description": "超级管理员账户名\r\n\r\n需要在：\r\nController",
+            "env_variable": "ADMIN_STRING",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "主机名",
+            "description": "Controller网页界面中的主机名\r\n\r\n需要在：\r\nHost",
+            "env_variable": "HOST_NAME",
+            "default_value": "Your Sub-Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "控制器URL",
+            "description": "连接到Controller服务器的URL，如果您为Controller服务器分配了额外的内部端口，可以是内部地址。\r\n示例：http://yourip:yourport\r\n需要在：\r\nHost",
+            "env_variable": "CONTROLLER_URL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "控制器令牌",
+            "description": "用于连接到Controller服务器的认证令牌，通过Controller网页界面生成。\r\n\r\n需要在：\r\nHost",
+            "env_variable": "CONTROLLER_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:256",
+            "field_type": "text"
+        },
+        {
+            "name": "插件",
+            "description": "要安装的Clusterio插件，空格分隔列表。\r\n\r\n示例：\r\n@clusterio/plugin-subspace_storage @clusterio/plugin-global_chat @clusterio/plugin-research_sync @clusterio/plugin-inventory_sync\r\n\r\n需要在：\r\n所有",
+            "env_variable": "PLUGINS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:512",
+            "field_type": "text"
+        },
+        {
+            "name": "集群名称",
+            "description": "您的Controller服务器集群的名称。\r\n\r\n需要：\r\nController",
+            "env_variable": "CLUSTER_NAME",
+            "default_value": "Your Cluster",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        }
+    ]
+} 

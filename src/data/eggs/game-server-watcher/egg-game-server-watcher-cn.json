@@ -1,0 +1,122 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "update_url": null,
+        "version": "PTDL_v2"
+    },
+    "exported_at": "2024-06-01T19:44:15+00:00",
+    "name": "Game Server Watcher",
+    "author": "a-sync@devs.space",
+    "description": "一个简单的discord/telegram/slack机器人，可以托管在免费服务上，以时尚的方式监控您的游戏服务器和玩家。😎",
+    "features": null,
+    "docker_images": {
+        "Node.js 20": "ghcr.io/ptero-eggs/yolks:nodejs_20"
+    },
+    "file_denylist": [],
+    "startup": "env PORT={{SERVER_PORT}} /usr/local/bin/node /home/container/dist/server.js",
+    "config": {
+        "files": "{}",
+        "logs": "{}",
+        "startup": "{\r\n    \"done\": \"starting loop...\"\r\n}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "container": "node:20-bookworm-slim",
+            "entrypoint": "bash",
+            "script": "#!/bin/bash\r\n\r\napt-get update \u0026\u0026 apt-get install ca-certificates git -yq --no-install-suggests --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages\r\n\r\n\r\ncd /mnt/server\r\n\r\ngit config --global --add safe.directory /mnt/server\r\ngit clone https://github.com/a-sync/game-server-watcher.git . || git pull\r\n\r\n\r\nnpm install --no-save \u0026\u0026 npm update gamedig \u0026\u0026 npm run build\r\nnpm prune --omit=dev\r\n\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
+        }
+    },
+    "variables": [
+        {
+            "name": "管理密钥",
+            "description": "管理员密钥",
+            "env_variable": "SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|min:8|max:255",
+            "field_type": "text"
+        },
+        {
+            "name": "数据路径",
+            "description": "数据存储的可写文件夹",
+            "env_variable": "DATA_PATH",
+            "default_value": "./data/",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|min:1|max:255",
+            "field_type": "text"
+        },
+        {
+            "name": "刷新时间（分钟）",
+            "description": "游戏服务器信息刷新间隔（分钟）",
+            "env_variable": "REFRESH_TIME_MINUTES",
+            "default_value": "2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "Discord机器人令牌",
+            "description": "Discord机器人令牌",
+            "env_variable": "DISCORD_BOT_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Telegram机器人令牌",
+            "description": "Telegram机器人令牌",
+            "env_variable": "TELEGRAM_BOT_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Steam Web API密钥",
+            "description": "Steam Web API密钥",
+            "env_variable": "STEAM_WEB_API_KEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "调试模式",
+            "description": "启用或禁用调试模式。",
+            "env_variable": "DBG",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|in:0,1",
+            "field_type": "text"
+        },
+        {
+            "name": "Slack机器人令牌",
+            "description": "Slack机器人令牌",
+            "env_variable": "SLACK_BOT_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Slack应用令牌",
+            "description": "Slack应用令牌",
+            "env_variable": "SLACK_APP_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        }
+    ]
+} 

@@ -1,0 +1,14 @@
+{
+    "name": "Left 4 Dead 2",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "求生之路2(Left 4 Dead 2)僵尸末日生存射击游戏服务器",
+    "author": "Valve Corporation",
+    "date": "2025-08-07",
+    "tags": ["射击", "僵尸", "合作", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg",
+    "downloadUrl": "/src/data/eggs/left4dead_2/egg-left4dead_2-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+  "name": "rabbitmq",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "RabbitMQ是应用最广泛的开源消息代理",
+  "author": "Pivotal Software",
+  "date": "2025-08-07",
+  "tags": ["消息队列", "AMQP", "消息代理", "中间件"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://www.rabbitmq.com/img/logo-rabbitmq.svg",
+  "downloadUrl": "/src/data/eggs/rabbitmq/egg-rabbitmq-cn.json"
+} 

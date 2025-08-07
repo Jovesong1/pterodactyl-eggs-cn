@@ -1,0 +1,14 @@
+{
+    "name": "Holdfast: Nations At War",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "坚守阵地：列国战争(Holdfast: Nations At War)拿破仑时代多人射击游戏服务器",
+    "author": "Anvil Game Studios",
+    "date": "2025-08-07",
+    "tags": ["射击", "历史", "拿破仑", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/589290/header.jpg",
+    "downloadUrl": "/src/data/eggs/holdfast/egg-holdfast-na-w-cn.json"
+} 

@@ -1,4 +1,4 @@
-// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-07T00:13:34.925Z
+// 游戏服务器 - 自动生成的Egg索引文件 - 2025-08-07T17:17:43.714Z
 export const gameServers = [
   {
     "id": "7days",
@@ -72,6 +72,311 @@ export const gameServers = [
     "additionalFiles": []
   },
   {
+    "id": "arma3",
+    "name": "Arma 3",
+    "path": "arma3/arma3.md",
+    "jsonPath": "arma3/egg-arma3-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Arma 3是一款军事战术沙盒游戏，提供真实的战斗体验",
+    "author": "Bohemia Interactive",
+    "date": "2024-08-06",
+    "tags": [
+      "军事",
+      "战术",
+      "射击",
+      "沙盒",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/107410/header.jpg",
+    "downloadUrl": "/src/data/eggs/arma3/egg-arma3-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "arma_reforger",
+    "name": "Arma Reforger",
+    "path": "arma_reforger/arma_reforger.md",
+    "jsonPath": "arma_reforger/egg-arma-reforger-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Arma Reforger是一款冷战时期的军事战术游戏，提供真实的战斗体验",
+    "author": "Bohemia Interactive",
+    "date": "2024-08-06",
+    "tags": [
+      "军事",
+      "战术",
+      "冷战",
+      "射击",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1874880/header.jpg",
+    "downloadUrl": "/src/data/eggs/arma_reforger/egg-arma-reforger-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "assaultcube",
+    "name": "AssaultCube",
+    "path": "assaultcube/assaultcube.md",
+    "jsonPath": "assaultcube/egg-assault-cube-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "AssaultCube是一款免费的多人第一人称射击游戏，基于CUBE引擎",
+    "author": "AssaultCube Team",
+    "date": "2024-08-06",
+    "tags": [
+      "FPS",
+      "射击",
+      "多人联机",
+      "轻量级"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://assault.cubers.net/images/aclogo.png",
+    "downloadUrl": "/src/data/eggs/cubeengine/assaultcube/egg-assault-cube-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "beammp",
+    "name": "BeamMP",
+    "path": "beammp/beammp.md",
+    "jsonPath": "beammp/egg-beam-m-p-server-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "BeamMP是BeamNG.drive的多人游戏模组，让玩家能够在线一起驾驶",
+    "author": "BeamMP Team",
+    "date": "2024-08-06",
+    "tags": [
+      "模拟",
+      "驾驶",
+      "多人联机",
+      "物理引擎"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://www.beammp.com/assets/images/logo.png",
+    "downloadUrl": "/src/data/eggs/beammp/egg-beam-m-p-server-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "clusterio",
+    "name": "Clusterio",
+    "path": "clusterio/clusterio.md",
+    "jsonPath": "clusterio/egg-clusterio-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Factorio集群式服务器管理系统",
+    "author": "Clusterio Team",
+    "date": "2025-08-07",
+    "tags": [
+      "Factorio",
+      "集群",
+      "管理",
+      "NodeJS"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://raw.githubusercontent.com/clusterio/clusterio/master/packages/web_ui/img/clusterio.svg",
+    "downloadUrl": "/src/data/eggs/factorio/clusterio/egg-clusterio-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "counter_strike_1.6",
+    "name": "Counter Strike 1.6 - Vanilla",
+    "path": "counter_strike_1.6/counter_strike_1.6.md",
+    "jsonPath": "counter_strike_1.6/egg-counter-strike1-6--vanilla-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Counter-Strike: 1.6是由Valve Corporation开发的多人第一人称射击游戏",
+    "author": "Valve Corporation",
+    "date": "2025-08-08",
+    "tags": [
+      "FPS",
+      "射击游戏",
+      "多人游戏",
+      "竞技"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg",
+    "downloadUrl": "/src/data/eggs/counter_strike_1.6/egg-counter-strike1-6--vanilla-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "counter_strike_1.6_rehlds",
+    "name": "Counter Strike 1.6 - ReHLDS",
+    "path": "counter_strike_1.6_rehlds/counter_strike_1.6_rehlds.md",
+    "jsonPath": "counter_strike_1.6_rehlds/egg-cs1.6-rehlds-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "CS 1.6 ReHLDS是一个经过反向工程、优化的HLDS版本，提供更好的稳定性、性能和安全性",
+    "author": "Red-Banana-Official",
+    "date": "2025-08-08",
+    "tags": [
+      "FPS",
+      "射击游戏",
+      "多人游戏",
+      "竞技",
+      "ReHLDS",
+      "AMX Mod X"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg",
+    "downloadUrl": "/src/data/eggs/counter_strike_1.6_rehlds/egg-cs1.6-rehlds-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "counter_strike_2",
+    "name": "Counter-Strike 2",
+    "path": "counter_strike_2/counter_strike_2.md",
+    "jsonPath": "counter_strike_2/egg-counter-strike2-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "二十多年来，Counter-Strike一直提供着精英竞技体验，这一体验由全球数百万玩家共同塑造",
+    "author": "Valve Corporation",
+    "date": "2025-08-08",
+    "tags": [
+      "FPS",
+      "射击游戏",
+      "多人游戏",
+      "竞技",
+      "CS2",
+      "电子竞技"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg",
+    "downloadUrl": "/src/data/eggs/counter_strike_2/egg-counter-strike2-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "cs2d",
+    "name": "CS2D",
+    "path": "cs2d/cs2d.md",
+    "jsonPath": "cs2d/egg-c-s2-d-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "CS2D是一款2D俯视角射击游戏，类似于反恐精英的2D版本",
+    "author": "UnrealSoftware",
+    "date": "2024-08-06",
+    "tags": [
+      "射击",
+      "2D",
+      "多人联机",
+      "战术"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://www.cs2d.com/img/cs2d_logo.png",
+    "downloadUrl": "/src/data/eggs/cs2d/egg-c-s2-d-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "cube2",
+    "name": "Cube 2: Sauerbraten",
+    "path": "cube2/cube2.md",
+    "jsonPath": "cube2/egg-cube2--sauerbraten-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Cube 2: Sauerbraten是一款免费的多人和单人第一人称射击游戏",
+    "author": "Sauerbraten Team",
+    "date": "2024-08-06",
+    "tags": [
+      "FPS",
+      "射击",
+      "多人联机",
+      "地图编辑"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "http://sauerbraten.org/sauerbraten.png",
+    "downloadUrl": "/src/data/eggs/cubeengine/cube2/egg-cube2--sauerbraten-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "ddnet",
+    "name": "DDNet",
+    "path": "ddnet/ddnet.md",
+    "jsonPath": "ddnet/egg-d-d-net-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "DDNet是一款极具挑战性的合作2D平台游戏",
+    "author": "DDNet Team",
+    "date": "2024-08-06",
+    "tags": [
+      "平台游戏",
+      "2D",
+      "多人联机",
+      "合作"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://ddnet.org/favicon.png",
+    "downloadUrl": "/src/data/eggs/ddnet/egg-d-d-net-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "ddracenetwork",
+    "name": "DDRaceNetwork",
+    "path": "ddracenetwork/ddracenetwork.md",
+    "jsonPath": "ddracenetwork/egg-d-d-race-network-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "DDraceNetwork是Teeworlds的一个合作游戏玩法修改版",
+    "author": "DDNet Team",
+    "date": "2024-08-06",
+    "tags": [
+      "平台游戏",
+      "2D",
+      "多人联机",
+      "合作"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://ddnet.org/favicon.png",
+    "downloadUrl": "/src/data/eggs/ddracenetwork/egg-d-d-race-network-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "dead_matter",
+    "name": "Dead Matter",
+    "path": "dead_matter/dead_matter.md",
+    "jsonPath": "dead_matter/egg-dead-matter-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "末日生存游戏，在病毒爆发后的加拿大落基山脉中生存",
+    "author": "QI Software",
+    "date": "2024-08-06",
+    "tags": [
+      "生存",
+      "僵尸",
+      "开放世界",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2584780/header.jpg",
+    "downloadUrl": "/src/data/eggs/dead_matter/egg-dead-matter-cn.json",
+    "additionalFiles": []
+  },
+  {
     "id": "dedicated",
     "name": "SCP:SL",
     "path": "dedicated/dedicated.md",
@@ -94,6 +399,162 @@ export const gameServers = [
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/700330/header.jpg",
     "downloadUrl": "/src/data/eggs/scpsl/dedicated/egg-scpsl-cn.json",
     "additionalFiles": []
+  },
+  {
+    "id": "dont_starve",
+    "name": "Don't Starve Together",
+    "path": "dont_starve/dont_starve.md",
+    "jsonPath": "dont_starve/egg-dont-starve-together-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "饥荒联机版是一款毫不妥协的荒野生存游戏，充满了科学和魔法元素",
+    "author": "Klei Entertainment",
+    "date": "2024-08-06",
+    "tags": [
+      "生存",
+      "合作",
+      "多人联机",
+      "开放世界"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/322330/header.jpg",
+    "downloadUrl": "/src/data/eggs/dont_starve/egg-dont-starve-together-cn.json",
+    "additionalFiles": [
+      {
+        "name": "server.caves.ini",
+        "path": "dont_starve/server.caves.ini",
+        "size": 120,
+        "isDirectory": false
+      },
+      {
+        "name": "server.cluster.ini",
+        "path": "dont_starve/server.cluster.ini",
+        "size": 422,
+        "isDirectory": false
+      },
+      {
+        "name": "server.master.ini",
+        "path": "dont_starve/server.master.ini",
+        "size": 91,
+        "isDirectory": false
+      },
+      {
+        "name": "worldgenoverride.caves.lua",
+        "path": "dont_starve/worldgenoverride.caves.lua",
+        "size": 7505,
+        "isDirectory": false
+      },
+      {
+        "name": "worldgenoverride.master.lua",
+        "path": "dont_starve/worldgenoverride.master.lua",
+        "size": 7502,
+        "isDirectory": false
+      }
+    ]
+  },
+  {
+    "id": "eco",
+    "name": "Eco",
+    "path": "eco/eco.md",
+    "jsonPath": "eco/egg-eco-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "一款生态系统模拟游戏，玩家必须建立文明同时保护环境",
+    "author": "Strange Loop Games",
+    "date": "2024-08-06",
+    "tags": [
+      "生存",
+      "模拟",
+      "建造",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/382310/header.jpg",
+    "downloadUrl": "/src/data/eggs/eco/egg-eco-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "eft",
+    "name": "Stay In Tarkov",
+    "path": "eft/eft.md",
+    "jsonPath": "eft/egg-stay-in-tarkov-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "逃离塔科夫的单人/合作PvE模式服务器",
+    "author": "Stay In Tarkov Team",
+    "date": "2024-08-06",
+    "tags": [
+      "FPS",
+      "射击",
+      "战术",
+      "生存",
+      "合作"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1581940/header.jpg",
+    "downloadUrl": "/src/data/eggs/eft/egg-stay-in-tarkov-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "empyrion",
+    "name": "Empyrion",
+    "path": "empyrion/empyrion.md",
+    "jsonPath": "empyrion/egg-empyrion--galactic-survival-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Empyrion银河生存太空沙盒游戏服务器",
+    "author": "Eleon Game Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "太空",
+      "沙盒",
+      "生存",
+      "建造",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/383120/header.jpg",
+    "downloadUrl": "/src/data/eggs/empyrion/egg-empyrion--galactic-survival-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "enshrouded",
+    "name": "Enshrouded",
+    "path": "enshrouded/enshrouded.md",
+    "jsonPath": "enshrouded/egg-enshrouded-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Enshrouded体素生存RPG游戏服务器",
+    "author": "Keen Games",
+    "date": "2025-08-07",
+    "tags": [
+      "生存",
+      "RPG",
+      "体素",
+      "多人联机",
+      "开放世界"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1203620/header.jpg",
+    "downloadUrl": "/src/data/eggs/enshrouded/egg-enshrouded-cn.json",
+    "additionalFiles": [
+      {
+        "name": "enshrouded_server.json",
+        "path": "enshrouded/enshrouded_server.json",
+        "size": 2420,
+        "isDirectory": false
+      }
+    ]
   },
   {
     "id": "etlegacy",
@@ -191,6 +652,510 @@ export const gameServers = [
     "additionalFiles": []
   },
   {
+    "id": "factorio",
+    "name": "Factorio",
+    "path": "factorio/factorio.md",
+    "jsonPath": "factorio/egg-factorio-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Factorio工厂建造自动化游戏服务器",
+    "author": "Wube Software",
+    "date": "2025-08-07",
+    "tags": [
+      "工厂",
+      "自动化",
+      "建造",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/427520/header.jpg",
+    "downloadUrl": "/src/data/eggs/factorio/factorio/egg-factorio-cn.json",
+    "additionalFiles": [
+      {
+        "name": "egg-factorio-modupdate-cn.json",
+        "path": "factorio/egg-factorio-modupdate-cn.json",
+        "size": 8354,
+        "isDirectory": false
+      },
+      {
+        "name": "factorio",
+        "path": "factorio/factorio",
+        "size": 96,
+        "isDirectory": true
+      },
+      {
+        "name": "factorio-modupdate",
+        "path": "factorio/factorio-modupdate",
+        "size": 128,
+        "isDirectory": true
+      }
+    ]
+  },
+  {
+    "id": "fivem",
+    "name": "FiveM",
+    "path": "fivem/fivem.md",
+    "jsonPath": "fivem/egg-five-m-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "FiveM是GTA5的多人联机修改版服务器",
+    "author": "CitizenFX Collective",
+    "date": "2025-08-07",
+    "tags": [
+      "GTA",
+      "多人联机",
+      "开放世界",
+      "角色扮演"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://fivem.net/og-image.png",
+    "downloadUrl": "/src/data/eggs/gta/fivem/egg-five-m-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "fof",
+    "name": "Fistful of Frags",
+    "path": "fof/fof.md",
+    "jsonPath": "fof/egg-fof-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "拳头火药西部第一人称射击游戏服务器",
+    "author": "Fistful of Frags Team",
+    "date": "2025-08-07",
+    "tags": [
+      "FPS",
+      "西部",
+      "射击",
+      "多人联机",
+      "Source引擎"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/265630/header.jpg",
+    "downloadUrl": "/src/data/eggs/fof/egg-fof-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "foundry",
+    "name": "Foundry",
+    "path": "foundry/foundry.md",
+    "jsonPath": "foundry/egg-foundry-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Foundry工厂建造体素游戏服务器",
+    "author": "Paradox Interactive",
+    "date": "2025-08-07",
+    "tags": [
+      "工厂",
+      "体素",
+      "建造",
+      "多人联机",
+      "自动化"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/983870/header.jpg",
+    "downloadUrl": "/src/data/eggs/foundry/egg-foundry-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "frozen_flame",
+    "name": "Frozen Flame",
+    "path": "frozen_flame/frozen_flame.md",
+    "jsonPath": "frozen_flame/egg-frozen-flame-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "冰焰(Frozen Flame)生存RPG游戏服务器",
+    "author": "Dreamside Interactive",
+    "date": "2025-08-07",
+    "tags": [
+      "生存",
+      "RPG",
+      "开放世界",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/715400/header.jpg",
+    "downloadUrl": "/src/data/eggs/frozen_flame/egg-frozen-flame-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "ftl_tachyon",
+    "name": "Tachyon",
+    "path": "ftl_tachyon/ftl_tachyon.md",
+    "jsonPath": "ftl_tachyon/egg-tachyon-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "FTL（超越光速）游戏的多人服务器",
+    "author": "Dav-Edward",
+    "date": "2025-08-07",
+    "tags": [
+      "FTL",
+      "太空",
+      "多人联机",
+      "Java"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/212680/header.jpg",
+    "downloadUrl": "/src/data/eggs/ftl_tachyon/egg-tachyon-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "gmod",
+    "name": "Garry's Mod",
+    "path": "gmod/gmod.md",
+    "jsonPath": "gmod/egg-garry-s-mod-reworked-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Garry's Mod沙盒物理游戏服务器",
+    "author": "Facepunch Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "沙盒",
+      "物理",
+      "多人联机",
+      "Source引擎"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/4000/header.jpg",
+    "downloadUrl": "/src/data/eggs/gmod/egg-garry-s-mod-reworked-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "ground_branch",
+    "name": "Ground Branch",
+    "path": "ground_branch/ground_branch.md",
+    "jsonPath": "ground_branch/egg-ground-branch-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Ground Branch战术第一人称射击游戏服务器",
+    "author": "BlackFoot Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "FPS",
+      "战术",
+      "射击",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/16900/header.jpg",
+    "downloadUrl": "/src/data/eggs/ground_branch/egg-ground-branch-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "hogwarp",
+    "name": "Hogwarp",
+    "path": "hogwarp/hogwarp.md",
+    "jsonPath": "hogwarp/egg-hogwarp-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "霍格沃茨遗产(Hogwarts Legacy)多人模组服务器",
+    "author": "Tilted Phoques",
+    "date": "2025-08-07",
+    "tags": [
+      "魔法",
+      "多人联机",
+      "模组",
+      "霍格沃茨"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://img.itch.zone/aW1nLzEwOTQ2ODM1LnBuZw==/original/QdpITn.png",
+    "downloadUrl": "/src/data/eggs/hogwarp/egg-hogwarp-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "holdfast",
+    "name": "Holdfast: Nations At War",
+    "path": "holdfast/holdfast.md",
+    "jsonPath": "holdfast/egg-holdfast-na-w-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "坚守阵地：列国战争(Holdfast: Nations At War)拿破仑时代多人射击游戏服务器",
+    "author": "Anvil Game Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "射击",
+      "历史",
+      "拿破仑",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/589290/header.jpg",
+    "downloadUrl": "/src/data/eggs/holdfast/egg-holdfast-na-w-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "humanitz",
+    "name": "HumanitZ",
+    "path": "humanitz/humanitz.md",
+    "jsonPath": "humanitz/egg-humanit-z-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "HumanitZ等距视角僵尸生存游戏服务器",
+    "author": "Forbidden Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "僵尸",
+      "生存",
+      "等距视角",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2728330/header.jpg",
+    "downloadUrl": "/src/data/eggs/humanitz/egg-humanit-z-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "hurtworld",
+    "name": "Hurtworld",
+    "path": "hurtworld/hurtworld.md",
+    "jsonPath": "hurtworld/egg-hurtworld-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Hurtworld硬核多人生存FPS游戏服务器",
+    "author": "Bankroll Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "生存",
+      "FPS",
+      "多人联机",
+      "硬核"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/393420/header.jpg",
+    "downloadUrl": "/src/data/eggs/hurtworld/egg-hurtworld-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "icarus",
+    "name": "Icarus",
+    "path": "icarus/icarus.md",
+    "jsonPath": "icarus/egg-icarus--dedicated-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Icarus星际探险生存游戏专用服务器",
+    "author": "RocketWerkz",
+    "date": "2025-08-07",
+    "tags": [
+      "生存",
+      "太空",
+      "合作",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1149460/header.jpg",
+    "downloadUrl": "/src/data/eggs/icarus/egg-icarus--dedicated-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "insurgency_sandstorm",
+    "name": "Insurgency: Sandstorm",
+    "path": "insurgency_sandstorm/insurgency_sandstorm.md",
+    "jsonPath": "insurgency_sandstorm/egg-insurgency--sandstorm-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "叛乱：沙漠风暴(Insurgency: Sandstorm)战术FPS游戏服务器",
+    "author": "New World Interactive",
+    "date": "2025-08-07",
+    "tags": [
+      "FPS",
+      "战术",
+      "射击",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/581320/header.jpg",
+    "downloadUrl": "/src/data/eggs/insurgency_sandstorm/egg-insurgency--sandstorm-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "iosoccer",
+    "name": "IOSoccer",
+    "path": "iosoccer/iosoccer.md",
+    "jsonPath": "iosoccer/eggs-iosoccer-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "IOSoccer第三人称在线多人足球游戏服务器",
+    "author": "IOSoccer Team",
+    "date": "2025-08-07",
+    "tags": [
+      "足球",
+      "体育",
+      "多人联机",
+      "第三人称"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/673560/header.jpg",
+    "downloadUrl": "/src/data/eggs/iosoccer/eggs-iosoccer-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "killing_floor_2",
+    "name": "Killing Floor 2",
+    "path": "killing_floor_2/killing_floor_2.md",
+    "jsonPath": "killing_floor_2/egg-killing-floor2-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "杀戮间2(Killing Floor 2)僵尸生存射击游戏服务器",
+    "author": "Tripwire Interactive",
+    "date": "2025-08-07",
+    "tags": [
+      "射击",
+      "僵尸",
+      "生存",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/232090/header.jpg",
+    "downloadUrl": "/src/data/eggs/killing_floor_2/egg-killing-floor2-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "kissmp",
+    "name": "KissMP",
+    "path": "kissmp/kissmp.md",
+    "jsonPath": "kissmp/egg-kissmp-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "KissMP是BeamNG.drive的简易多人游戏模组服务器",
+    "author": "TheHellBox",
+    "date": "2024-08-06",
+    "tags": [
+      "模拟",
+      "驾驶",
+      "多人联机",
+      "物理引擎"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://github.com/TheHellBox/KISS-multiplayer/raw/master/kiss-mp-logo.png",
+    "downloadUrl": "/src/data/eggs/kissmp/egg-kissmp-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "ksp",
+    "name": "Kerbal Space Program",
+    "path": "ksp/ksp.md",
+    "jsonPath": "ksp/egg-k-s-p-d-m-p-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "坎巴拉太空计划(KSP)多人模组服务器",
+    "author": "Squad",
+    "date": "2025-08-07",
+    "tags": [
+      "太空",
+      "模拟",
+      "沙盒",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/220200/header.jpg",
+    "downloadUrl": "/src/data/eggs/ksp/egg-k-s-p-d-m-p-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "leaguesandbox",
+    "name": "League Sandbox",
+    "path": "leaguesandbox/leaguesandbox.md",
+    "jsonPath": "leaguesandbox/LeagueSandbox_Egg-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "英雄联盟沙盒(League Sandbox)自定义服务器",
+    "author": "League Sandbox Team",
+    "date": "2025-08-07",
+    "tags": [
+      "MOBA",
+      "英雄联盟",
+      "沙盒",
+      "自定义服务器"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://raw.githubusercontent.com/LeagueSandbox/leaguesandbox.github.io/master/img/lol-logo.png",
+    "downloadUrl": "/src/data/eggs/leaguesandbox/LeagueSandbox_Egg-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "left4dead",
+    "name": "Left 4 Dead",
+    "path": "left4dead/left4dead.md",
+    "jsonPath": "left4dead/egg-left4dead-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "求生之路(Left 4 Dead)僵尸末日生存射击游戏服务器",
+    "author": "Valve Corporation",
+    "date": "2025-08-07",
+    "tags": [
+      "射击",
+      "僵尸",
+      "合作",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/500/header.jpg",
+    "downloadUrl": "/src/data/eggs/left4dead/egg-left4dead-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "left4dead_2",
+    "name": "Left 4 Dead 2",
+    "path": "left4dead_2/left4dead_2.md",
+    "jsonPath": "left4dead_2/egg-left4dead_2-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "求生之路2(Left 4 Dead 2)僵尸末日生存射击游戏服务器",
+    "author": "Valve Corporation",
+    "date": "2025-08-07",
+    "tags": [
+      "射击",
+      "僵尸",
+      "合作",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg",
+    "downloadUrl": "/src/data/eggs/left4dead_2/egg-left4dead_2-cn.json",
+    "additionalFiles": []
+  },
+  {
     "id": "legacy",
     "name": "Rising World Java Legacy",
     "path": "legacy/legacy.md",
@@ -213,6 +1178,121 @@ export const gameServers = [
     "testStatus": "未进行运行认证",
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/324080/header.jpg",
     "downloadUrl": "/src/data/eggs/legacy/egg-rising-world-legacy-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "longvinter",
+    "name": "Longvinter",
+    "path": "longvinter/longvinter.md",
+    "jsonPath": "longvinter/egg-longvinter-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Longvinter多人第三人称沙盒游戏服务器",
+    "author": "Uuvana Studios",
+    "date": "2025-08-07",
+    "tags": [
+      "沙盒",
+      "生存",
+      "建造",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1635450/header.jpg",
+    "downloadUrl": "/src/data/eggs/longvinter/egg-longvinter-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "losangelescrimes",
+    "name": "Los Angeles Crimes",
+    "path": "losangelescrimes/losangelescrimes.md",
+    "jsonPath": "losangelescrimes/egg-l-a-c--online-public-server-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "洛杉矶犯罪(Los Angeles Crimes)多人开放世界游戏服务器",
+    "author": "JastinXyz",
+    "date": "2025-08-07",
+    "tags": [
+      "动作",
+      "开放世界",
+      "多人联机",
+      "手机游戏"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://play-lh.googleusercontent.com/6Vvl9qXLzGzQwPRARvVKLeiNXqkQFJqwj-9xvWuGfJw2SJKCjJ_QvrKRNVJUgdnJckA=w240-h480-rw",
+    "downloadUrl": "/src/data/eggs/losangelescrimes/egg-l-a-c--online-public-server-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "mcgalaxy",
+    "name": "ClassiCube(MGC)",
+    "path": "mcgalaxy/mcgalaxy.md",
+    "jsonPath": "mcgalaxy/egg-classi-cube--m-g-c-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "MCGalaxy是一个功能齐全且可定制的ClassiCube服务器软件，基于MCForge/MCLawl开发",
+    "author": "UnknownShadow200",
+    "date": "2025-08-08",
+    "tags": [
+      "ClassiCube",
+      "方块游戏",
+      "服务器",
+      "Mono"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://www.classicube.net/static/img/cc-cube-small.png",
+    "downloadUrl": "/src/data/eggs/mcgalaxy/egg-classi-cube--m-g-c-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "midnight_ghost_hunt",
+    "name": "Midnight Ghost Hunt",
+    "path": "midnight_ghost_hunt/midnight_ghost_hunt.md",
+    "jsonPath": "midnight_ghost_hunt/egg-midnight-ghost-hunt-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "午夜猎魂(Midnight Ghost Hunt)多人捉迷藏游戏服务器",
+    "author": "Vaulted Sky Games",
+    "date": "2025-08-07",
+    "tags": [
+      "捉迷藏",
+      "恐怖",
+      "多人联机",
+      "PVP"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/915810/header.jpg",
+    "downloadUrl": "/src/data/eggs/midnight_ghost_hunt/egg-midnight-ghost-hunt-cn.json",
+    "additionalFiles": []
+  },
+  {
+    "id": "mindustry",
+    "name": "Mindustry",
+    "path": "mindustry/mindustry.md",
+    "jsonPath": "mindustry/egg-mindustry-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Mindustry混合塔防沙盒工厂游戏服务器",
+    "author": "Anuken",
+    "date": "2025-08-07",
+    "tags": [
+      "塔防",
+      "沙盒",
+      "工厂",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1127400/header.jpg",
+    "downloadUrl": "/src/data/eggs/mindustry/egg-mindustry-cn.json",
     "additionalFiles": []
   },
   {
@@ -242,7 +1322,7 @@ export const gameServers = [
     "id": "modiverse",
     "name": "Modiverse",
     "path": "modiverse/modiverse.md",
-    "jsonPath": "modiverse/ServerConfiguration.json",
+    "jsonPath": "modiverse/egg-modiverse-cn.json",
     "version": "1.0.0",
     "category": "游戏服务器",
     "description": "Modiverse 沙盒模组服务器",
@@ -262,9 +1342,9 @@ export const gameServers = [
     "downloadUrl": "/src/data/eggs/modiverse/egg-modiverse-cn.json",
     "additionalFiles": [
       {
-        "name": "egg-modiverse-cn.json",
-        "path": "modiverse/egg-modiverse-cn.json",
-        "size": 7475,
+        "name": "ServerConfiguration.json",
+        "path": "modiverse/ServerConfiguration.json",
+        "size": 346,
         "isDirectory": false
       }
     ]
@@ -1023,6 +2103,30 @@ export const gameServers = [
     "additionalFiles": []
   },
   {
+    "id": "proving_grounds",
+    "name": "America's Army: Proving Grounds",
+    "path": "proving_grounds/proving_grounds.md",
+    "jsonPath": "proving_grounds/egg-america-s-army--proving-grounds-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "美国陆军官方游戏，专注于小型战术机动的军事射击游戏",
+    "author": "U.S. Army",
+    "date": "2024-08-06",
+    "tags": [
+      "军事",
+      "战术",
+      "射击",
+      "多人联机",
+      "免费"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/203290/header.jpg",
+    "downloadUrl": "/src/data/eggs/proving_grounds/egg-america-s-army--proving-grounds-cn.json",
+    "additionalFiles": []
+  },
+  {
     "id": "puck",
     "name": "Puck",
     "path": "puck/puck.md",
@@ -1119,10 +2223,33 @@ export const gameServers = [
     "additionalFiles": []
   },
   {
+    "id": "rehlds",
+    "name": "Custom ReHLDS Engine Game",
+    "path": "rehlds/rehlds.md",
+    "jsonPath": "rehlds/egg-custom-re-h-l-d-s-engine-game-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "ReHLDS引擎游戏服务器，用于运行如CS 1.6等经典游戏",
+    "author": "dreamstalker",
+    "date": "2025-08-07",
+    "tags": [
+      "FPS",
+      "经典",
+      "Valve",
+      "ReHLDS"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/6/67/Counter-Strike_Box.jpg",
+    "downloadUrl": "/src/data/eggs/hlds_server/rehlds/egg-custom-re-h-l-d-s-engine-game-cn.json",
+    "additionalFiles": []
+  },
+  {
     "id": "resonite",
     "name": "Resonite",
     "path": "resonite/resonite.md",
-    "jsonPath": "resonite/Config.json",
+    "jsonPath": "resonite/egg-resonite-cn.json",
     "version": "1.0.0",
     "category": "游戏服务器",
     "description": "Resonite是一个充满无限可能性的全新数字宇宙，用户可以在其中社交、创造和开发",
@@ -1142,9 +2269,9 @@ export const gameServers = [
     "downloadUrl": "/src/data/eggs/resonite/egg-resonite-cn.json",
     "additionalFiles": [
       {
-        "name": "egg-resonite-cn.json",
-        "path": "resonite/egg-resonite-cn.json",
-        "size": 7603,
+        "name": "Config.json",
+        "path": "resonite/Config.json",
+        "size": 1312,
         "isDirectory": false
       }
     ]
@@ -1855,6 +2982,29 @@ export const gameServers = [
     "additionalFiles": []
   },
   {
+    "id": "vanilla",
+    "name": "Custom HLDS Engine Game",
+    "path": "vanilla/vanilla.md",
+    "jsonPath": "vanilla/egg-custom-h-l-d-s-engine-game-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "HLDS引擎游戏服务器，用于运行如CS 1.6等经典游戏",
+    "author": "Valve",
+    "date": "2025-08-07",
+    "tags": [
+      "FPS",
+      "经典",
+      "Valve",
+      "HLDS"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/6/67/Counter-Strike_Box.jpg",
+    "downloadUrl": "/src/data/eggs/hlds_server/vanilla/egg-custom-h-l-d-s-engine-game-cn.json",
+    "additionalFiles": []
+  },
+  {
     "id": "vein",
     "name": "VEIN",
     "path": "vein/vein.md",
@@ -1983,5 +3133,41 @@ export const gameServers = [
     "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1018720/header.jpg",
     "downloadUrl": "/src/data/eggs/xonotic/egg-xonotic-cn.json",
     "additionalFiles": []
+  },
+  {
+    "id": "zandronum",
+    "name": "Zandronum",
+    "path": "zandronum/zandronum.md",
+    "jsonPath": "zandronum/egg-zandronum-cn.json",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Zandronum是一个以多人游戏为导向的毁灭战士端口，基于Skulltag",
+    "author": "Zandronum Team",
+    "date": "2024-08-06",
+    "tags": [
+      "FPS",
+      "射击",
+      "经典",
+      "多人联机"
+    ],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://zandronum.com/images/header.png",
+    "downloadUrl": "/src/data/eggs/doom/zandronum/egg-zandronum-cn.json",
+    "additionalFiles": [
+      {
+        "name": "GeoIP.dat",
+        "path": "zandronum/GeoIP.dat",
+        "size": 595714,
+        "isDirectory": false
+      },
+      {
+        "name": "zandronum.ini",
+        "path": "zandronum/zandronum.ini",
+        "size": 4468,
+        "isDirectory": false
+      }
+    ]
   }
 ];

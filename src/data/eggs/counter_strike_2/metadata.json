@@ -1,0 +1,14 @@
+{
+  "name": "Counter-Strike 2",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "二十多年来，Counter-Strike一直提供着精英竞技体验，这一体验由全球数百万玩家共同塑造",
+  "author": "Valve Corporation",
+  "date": "2025-08-08",
+  "tags": ["FPS", "射击游戏", "多人游戏", "竞技", "CS2", "电子竞技"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg",
+  "downloadUrl": "/src/data/eggs/counter_strike_2/egg-counter-strike2-cn.json"
+} 

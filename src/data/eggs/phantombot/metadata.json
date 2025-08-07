@@ -1,0 +1,14 @@
+{
+    "name": "PhantomBot",
+    "version": "1.0.0",
+    "category": "应用服务器",
+    "description": "开源互动Twitch机器人，为您的频道提供娱乐和管理功能",
+    "author": "PhantomBot",
+    "date": "2025-08-07",
+    "tags": ["Twitch", "机器人", "直播", "管理", "Java"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://avatars.githubusercontent.com/u/12662514",
+    "downloadUrl": "/src/data/eggs/phantombot/egg-phantom-bot-cn.json"
+} 

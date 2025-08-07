@@ -1,0 +1,224 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-01-13T21:10:57+01:00",
+    "name": "Arma 3",
+    "author": "red_thirten@yahoo.com",
+    "description": "体验真实的战斗游戏玩法，在一个庞大的军事沙盒中。提供各种单人和多人内容，超过20种车辆和40种武器，以及无限的内容创作机会，这是PC上首屈一指的军事游戏。真实、多样、开放 - Arma 3带你走向战场。",
+    "features": [
+        "steam_disk_space"
+    ],
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/games:arma3": "ghcr.io\/ptero-eggs\/games:arma3"
+    },
+    "file_denylist": [],
+    "startup": ".\/{{SERVER_BINARY}} -ip=0.0.0.0 -port={{SERVER_PORT}} -profiles=.\/serverprofile -bepath=.\/ -cfg=basic.cfg -config=server.cfg -mod=\\\"{{CLIENT_MODS}}\\\" -serverMod=\\\"{{SERVERMODS}}\\\" \\\"{{STARTUP_PARAMS}}\\\"",
+    "config": {
+        "files": "{\r\n    \"server.cfg\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"password=\": \"password = \\\"{{env.SERVER_PASSWORD}}\\\";\",\r\n            \"\/\/password=\": \"password = \\\"{{env.SERVER_PASSWORD}}\\\";\",\r\n            \"password =\": \"password = \\\"{{env.SERVER_PASSWORD}}\\\";\",\r\n            \"\/\/password =\": \"password = \\\"{{env.SERVER_PASSWORD}}\\\";\",\r\n            \"maxPlayers\": \"maxPlayers = {{env.MAX_PLAYERS}};\",\r\n            \"headlessClients\": \"headlessClients[] = { \\\"127.0.0.1\\\" };\",\r\n            \"localClient\": \"localClient[] = { \\\"127.0.0.1\\\" };\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Host identity created.\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\n## File: Pterodactyl Arma 3 Egg - egg-arma3.json\r\n## Author: David Wolfe (Red-Thirten)\r\n## Date: 2022\/05\/22\r\n## License: MIT License\r\n## Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n# Install packages. Default packages below are skipped if using image noted above, thus speeding up the install process.\r\napt -y update\r\napt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates\r\n\r\n# Check for valid Steam credentials to download Arma 3 with (requires valid Steam account)\r\nif [[ \"${STEAM_USER}\" == \"\" ]] || [[ \"${STEAM_USER}\" == \"anonymous\" ]] || [[ \"${STEAM_PASS}\" == \"\" ]]; then\r\n    echo -e \"INSTALLATION ERROR: A valid REAL Steam account is required to download the Arma 3 Dedicated Server.\"\r\n    echo -e \"\\t(\\\"anonymous\\\" account cannot be used. Game ownership is not required.)\"\r\n    exit 1\r\nfi\r\n\r\n# Download and install SteamCMD\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd \/mnt\/server\/steamapps\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n# Install game server using SteamCMD\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server \"+login \\\"${STEAM_USER}\\\" \\\"${STEAM_PASS}\\\"\" +app_update ${STEAMCMD_APPID} ${STEAMCMD_EXTRA_FLAGS} validate +quit\r\n\r\n# Set up 32 and 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk{32,64}\r\ncp -v linux32\/steamclient.so \/mnt\/server\/.steam\/sdk32\/steamclient.so\r\ncp -v linux64\/steamclient.so \/mnt\/server\/.steam\/sdk64\/steamclient.so\r\n\r\n# Arma 3 setup\r\ncd \/mnt\/server\/\r\n[[ -f basic.cfg ]] || curl -sSLO ${BASIC_URL}\r\n[[ -f server.cfg ]] || curl -sSLO ${BASIC_URL%\/*}\/server.cfg\r\nchmod 644 basic.cfg server.cfg\r\n\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "\/bin\/bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "[必填] Steam用户名",
+            "description": "用于安装和更新。账户不需要拥有Arma 3，但必须是有效的Steam账户（不能使用匿名登录）。出于安全考虑，建议您为专用服务器创建一个新的Steam账户。*此信息对服务器所有者不可见。*",
+            "env_variable": "STEAM_USER",
+            "default_value": "your_steam_username",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[必填] Steam密码",
+            "description": "用于安装和更新。Steam Guard必须完全关闭才能成功完成安装。*此信息对服务器所有者不可见，但以明文存储。不建议使用个人账户；最好使用一个专用账户。*",
+            "env_variable": "STEAM_PASS",
+            "default_value": "your_steam_password",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "SteamCMD重试次数",
+            "description": "SteamCMD在可恢复错误后应重试下载服务器或mod的次数。（例如，像CUP或RHS这样的特别大的mod下载超时）",
+            "env_variable": "STEAMCMD_ATTEMPTS",
+            "default_value": "3",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|integer",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器二进制文件",
+            "description": "服务器启动时调用的二进制文件。(32位: arma3server | 64位: arma3server_x64)",
+            "env_variable": "SERVER_BINARY",
+            "default_value": "arma3server_x64",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:arma3server,arma3server_x64,arma3serverprofiling,arma3serverprofiling_x64",
+            "field_type": "text"
+        },
+        {
+            "name": "额外启动参数",
+            "description": "有关此字段有效标志的更多信息，请参阅https://community.bistudio.com/wiki/Arma_3_Startup_Parameters。建议使用\"-noLogs\"以防止控制台速率限制警告。",
+            "env_variable": "STARTUP_PARAMS",
+            "default_value": "-noLogs",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string|nullable",
+            "field_type": "text"
+        },
+        {
+            "name": "最大玩家数",
+            "description": "允许加入服务器的最大玩家数。",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "32",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|gt:0",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "加入服务器所需的密码。留空则无密码。",
+            "env_variable": "SERVER_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "自动更新",
+            "description": "在启动时快速检查任何服务器或mod更新，并在必要时更新。(1 启用 | 0 禁用)",
+            "env_variable": "UPDATE_SERVER",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "禁用Mod下载/更新",
+            "description": "如果Steam账户不拥有基础Arma 3游戏，Steam Workshop mod下载/更新将不起作用。如果是这样，此设置允许禁用此功能以避免错误。(1 禁用 | 0 启用)",
+            "env_variable": "DISABLE_MOD_UPDATES",
+            "default_value": "0",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "下载创作者DLC",
+            "description": "在下次自动更新期间下载/更新运行任何CDLC所需的所有mod文件。可以通过将其mod文件夹名称添加到额外Mods启动变量来启用DLC。例如，添加\"vn;\"来加载Prairie Fire CDLC。(1 是 | 0 否)",
+            "env_variable": "CDLC",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "模组列表文件(从A3启动器导出)",
+            "description": "导出的模组列表的文件名。此文件将被解析用于模组安装和加载。将HTML文件上传到根目录(例如/home/container/modlist.html)。留空以禁用从模组列表加载模组。",
+            "env_variable": "MOD_FILE",
+            "default_value": "modlist.html",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "额外模组",
+            "description": "一个以分号分隔的额外模组文件夹列表。适用于加载CDLC或手动上传的模组。此模组列表将与模组列表文件(如果使用)一起加载。此列表中以\"@workshopID\"形式的任何模组也将包含在自动更新中(如果启用)。不允许大写字母、空格或以数字开头的文件夹!(例如 myMod;vn;@123456789;@987654321;等;)",
+            "env_variable": "MODIFICATIONS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[修复] 使模组文件小写",
+            "description": "每个设置为加载的模组的文件夹和文件都将更改为小写(以防止错误)。建议在将模组从Windows机器复制到服务器后，或者如果模组似乎没有加载，启用此选项一次服务器启动。(1 启用 | 0 禁用)",
+            "env_variable": "MODS_LOWERCASE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "[修复] 验证服务器文件",
+            "description": "当启用自动更新时验证所有服务器文件。注意：这将显著增加服务器启动时间，因此建议仅在需要时启用。(1 启用 | 0 禁用)",
+            "env_variable": "VALIDATE_SERVER",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 仅服务器端模组",
+            "description": "与\"-serverMods\"启动选项一起使用的模组文件夹。它们只在服务器端运行，如果启用了\"verifySignatures\"，客户端不需要这些模组。此列表中以\"@workshopID\"形式的任何模组也将包含在自动更新中(如果启用)。不允许大写字母、空格或以数字开头的文件夹!每个文件夹后必须跟有分号(例如 @123456789;@987654321;等;)",
+            "env_variable": "SERVERMODS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 可选客户端模组",
+            "description": "一个以分号分隔的可选模组列表，加载到keys文件夹，但不包含在服务器的mod参数中。适用于允许客户端连接到服务器时带有或不带有加载的mod。此列表中的模组必须以\"@workshopID\"形式(例如 @123456789;@987654321;)。这些也将包含在自动更新中(如果启用)。",
+            "env_variable": "OPTIONALMODS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] SteamCMD额外标志",
+            "description": "[如果使用，这将覆盖\"下载创作者DLC\"]仅在检查服务器更新时使用，通常用于获取测试版本。示例: -beta profiling -betapassword CautionSpecialProfilingAndTestingBranchArma3",
+            "env_variable": "STEAMCMD_EXTRA_FLAGS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] SteamCMD App ID",
+            "description": "用于安装和更新。很少需要更改。",
+            "env_variable": "STEAMCMD_APPID",
+            "default_value": "233780",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:233780",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] Basic.cfg URL",
+            "description": "用于下载basic.cfg文件的URL。很少需要更改。",
+            "env_variable": "BASIC_URL",
+            "default_value": "https://raw.githubusercontent.com/parkervcp/eggs/master/game_eggs/arma/arma3/egg-arma3-config/basic.cfg",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|url",
+            "field_type": "text"
+        }
+    ]
+} 

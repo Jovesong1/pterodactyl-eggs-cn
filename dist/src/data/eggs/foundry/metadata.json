@@ -1,0 +1,14 @@
+{
+    "name": "Foundry",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Foundry工厂建造体素游戏服务器",
+    "author": "Paradox Interactive",
+    "date": "2025-08-07",
+    "tags": ["工厂", "体素", "建造", "多人联机", "自动化"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/983870/header.jpg",
+    "downloadUrl": "/src/data/eggs/foundry/egg-foundry-cn.json"
+} 

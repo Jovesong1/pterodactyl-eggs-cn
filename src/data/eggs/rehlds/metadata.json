@@ -1,0 +1,14 @@
+{
+    "name": "Custom ReHLDS Engine Game",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "ReHLDS引擎游戏服务器，用于运行如CS 1.6等经典游戏",
+    "author": "dreamstalker",
+    "date": "2025-08-07",
+    "tags": ["FPS", "经典", "Valve", "ReHLDS"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/6/67/Counter-Strike_Box.jpg",
+    "downloadUrl": "/src/data/eggs/hlds_server/rehlds/egg-custom-re-h-l-d-s-engine-game-cn.json"
+} 

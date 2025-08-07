@@ -1,0 +1,14 @@
+{
+    "name": "Hogwarp",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "霍格沃茨遗产(Hogwarts Legacy)多人模组服务器",
+    "author": "Tilted Phoques",
+    "date": "2025-08-07",
+    "tags": ["魔法", "多人联机", "模组", "霍格沃茨"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://img.itch.zone/aW1nLzEwOTQ2ODM1LnBuZw==/original/QdpITn.png",
+    "downloadUrl": "/src/data/eggs/hogwarp/egg-hogwarp-cn.json"
+} 

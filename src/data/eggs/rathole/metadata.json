@@ -1,0 +1,14 @@
+{
+  "name": "rathole",
+  "version": "1.0.0",
+  "category": "工具",
+  "description": "一个轻量级且高性能的反向代理，用于NAT穿透，使用Rust编写",
+  "author": "rapiz1",
+  "date": "2025-08-07",
+  "tags": ["NAT穿透", "反向代理", "内网穿透", "Rust"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://raw.githubusercontent.com/rapiz1/rathole/main/docs/logo.svg",
+  "downloadUrl": "/src/data/eggs/rathole/egg-rathole-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+  "name": "Redis-6",
+  "version": "6.0.0",
+  "category": "应用服务器",
+  "description": "Redis是一个开源的内存数据结构存储，用作数据库、缓存和消息代理",
+  "author": "Redis Labs",
+  "date": "2025-08-07",
+  "tags": ["数据库", "缓存", "内存存储", "NoSQL"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://redis.io/images/redis-white.png",
+  "downloadUrl": "/src/data/eggs/redis-6/egg-redis-6-cn.json"
+} 

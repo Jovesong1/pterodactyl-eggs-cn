@@ -1,0 +1,142 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "update_url": null,
+        "version": "PTDL_v2"
+    },
+    "exported_at": "2024-06-01T19:44:14+00:00",
+    "name": "JMusicBot",
+    "author": "parker@parkervcp.com",
+    "description": "一个易于设置和运行的Discord音乐机器人！",
+    "features": null,
+    "docker_images": {
+        "ghcr.io/pterodactyl/yolks:java_17": "ghcr.io/pterodactyl/yolks:java_17"
+    },
+    "file_denylist": [],
+    "startup": "java -Dnogui=true -jar JMusicBot.jar",
+    "config": {
+        "files": "{\r\n    \"config.txt\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"token =\": \"token = \\\"{{server.build.env.BOT_TOKEN}}\\\"\",\r\n            \"owner =\": \"owner = {{server.build.env.BOT_OWNER}}\",\r\n            \"prefix =\": \"prefix = \\\"{{server.build.env.BOT_PREFIX}}\\\"\",\r\n            \"game =\": \"game = \\\"{{server.build.env.BOT_GAME}}\\\"\",\r\n            \"status =\": \"status = {{server.build.env.BOT_STATUS}}\",\r\n            \"songinstatus =\": \"songinstatus = {{server.build.env.BOT_SONG_STATUS}}\",\r\n            \"altprefix =\": \"altprefix = \\\"{{server.build.env.BOT_ALT_PREFIX}}\\\"\",\r\n            \"npimages =\": \"npimages = {{server.build.env.BOT_NPIMAGES}}\",\r\n            \"stayinchannel =\": \"stayinchannel = {{server.build.env.BOT_STAY_IN_CHANNEL}}\",\r\n            \"maxtime =\": \"maxtime = {{server.build.env.BOT_MAXTIME}}\",\r\n            \"alonetimeuntilstop =\": \"alonetimeuntilstop = {{server.build.env.BOT_ALONE_TIME}}\"\r\n        }\r\n    }\r\n}",
+        "logs": "{}",
+        "startup": "{\r\n    \"done\": \"Finished Loading\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "container": "ghcr.io/ptero-eggs/installers:debian",
+            "entrypoint": "/bin/bash",
+            "script": "#!/bin/bash\r\n\r\napt update\r\napt install -y jq curl\r\n\r\nCONFIG_LINK=\"https://raw.githubusercontent.com/ptero-eggs/application-eggs/main/bots/discord/jmusicbot/config.txt\"\r\nPLAYLIST_LINK=\"https://raw.githubusercontent.com/ptero-eggs/application-eggs/main/bots/discord/jmusicbot/example_playlist.txt\"\r\n\r\n\r\nif [ -z \"${GITHUB_USER}\" ] \u0026\u0026 [ -z \"${GITHUB_OAUTH_TOKEN}\" ] ; then\r\n    echo -e \"using anon api call\"\r\nelse\r\n    echo -e \"user and oauth token set\"\r\n    alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '\r\nfi\r\n\r\n## get release info and download links\r\nLATEST_JSON=$(curl --silent \"https://api.github.com/repos/jagrosh/MusicBot/releases/latest\")\r\nRELEASES=$(curl --silent \"https://api.github.com/repos/jagrosh/MusicBot/releases\")\r\nMATCH=JMusicBot\r\n\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" == \"latest\" ]; then\r\n    DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})\r\nelse\r\n    VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"${VERSION}\" == \"${VERSION_CHECK}\" ]; then\r\n        DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})\r\n    else\r\n        echo -e \"defaulting to latest release\"\r\n        DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)\r\n    fi\r\nfi\r\n\r\n## JMusicBot Setup\r\n[ ! -d /mnt/server ] \u0026\u0026 mkdir /mnt/server\r\ncd /mnt/server\r\necho -e \"\\nInstalling/Updating JMusicBot...\\n\"\r\n\r\nif [ -f JMusicBot.jar ]; then\r\n    echo -e \"Updating JMusicBot.jar to latest version...\"\r\n    echo -e '\\t(Old version can be found at \"JMusicBot.jar-old\")'\r\n    mv -f JMusicBot.jar JMusicBot.jar-old\r\nfi\r\n\r\necho -e \"Running: curl -sSLo JMusicBot.jar ${DOWNLOAD_URL}\\n\"\r\ncurl -sSLo JMusicBot.jar ${DOWNLOAD_URL}\r\n\r\nif [ -f config.txt ]; then\r\n    echo -e \"Updating config.txt to latest version...\"\r\n    echo -e '\\t(Old version can be found at \"config.txt-old\")'\r\n    mv -f config.txt config.txt-old\r\nfi\r\necho -e \"Running: curl -sSLo config.txt ${CONFIG_LINK}\\n\"\r\ncurl -sSLo config.txt ${CONFIG_LINK}\r\n\r\n[ ! -d Playlists ] \u0026\u0026 mkdir Playlists\r\ncd Playlists\r\nif [ -f example_playlist.txt ]; then\r\n    echo -e \"example_playlist.txt already exists. Skipping default download.\"\r\nelse\r\n    echo -e \"example_playlist.txt not found. Downloading default example_playlist...\"\r\n    echo -e \"Running: curl -sSLo example_playlist.txt ${PLAYLIST_LINK}\"\r\n    curl -sSLo example_playlist.txt ${PLAYLIST_LINK}\r\nfi\r\n\r\necho -e \"\\nJMusicBot Successfully Installed!\""
+        }
+    },
+    "variables": [
+        {
+            "name": "[必填] Discord机器人令牌",
+            "description": "Discord机器人的令牌。了解如何获取令牌并正确配置您的机器人应用程序：https://jmusicbot.com/getting-a-bot-token/",
+            "env_variable": "BOT_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[必填] 机器人所有者ID",
+            "description": "这是机器人所有者的Discord用户ID。了解如何获取此ID：https://jmusicbot.com/finding-your-user-id/",
+            "env_variable": "BOT_OWNER",
+            "default_value": "Change This To Your Discord User ID",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|digits_between:17,18",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人前缀",
+            "description": "设置机器人的命令前缀。前缀用于控制命令。如果使用!，播放命令将是!play。如果不设置，前缀将是@机器人名称（@机器人名称 play）。",
+            "env_variable": "BOT_PREFIX",
+            "default_value": "@mention",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人备用前缀",
+            "description": "如果设置此项，机器人将在'机器人前缀'之外还使用此前缀。设置为NONE表示不使用备用前缀。",
+            "env_variable": "BOT_ALT_PREFIX",
+            "default_value": "NONE",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人默认游戏状态",
+            "description": "修改机器人的默认游戏状态。设置为NONE表示没有游戏状态。设置为DEFAULT使用默认游戏状态。您可以设置为'Playing X'、'Listening to X'或'Watching X'，其中X是标题。如果不包含动作，将使用默认的'Playing'。",
+            "env_variable": "BOT_GAME",
+            "default_value": "DEFAULT",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人默认状态",
+            "description": "[ 可接受的值: ONLINE IDLE DND INVISIBLE ] 修改机器人的默认状态。",
+            "env_variable": "BOT_STATUS",
+            "default_value": "ONLINE",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:ONLINE,IDLE,DND,INVISIBLE",
+            "field_type": "text"
+        },
+        {
+            "name": "在状态中显示歌曲",
+            "description": "如果设置为true，机器人将在其'Playing'状态中显示当前播放歌曲的标题。注意：这仅在机器人在一个Discord服务器上播放音乐时有效；如果机器人在多个服务器上播放，此功能将不起作用！",
+            "env_variable": "BOT_SONG_STATUS",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "为'正在播放'显示图片",
+            "description": "如果设置为true，'nowplaying'命令将显示YouTube缩略图。注意：如果设置为true，正在播放的框将不会刷新。这是因为刷新框会导致每次刷新时重新加载图像。",
+            "env_variable": "BOT_NPIMAGES",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人保持在频道中",
+            "description": "如果设置为true，机器人在完成队列后不会离开语音频道。请注意，连接到语音频道会使用额外的带宽，因此如果带宽是一个问题，不建议使用此选项。",
+            "env_variable": "BOT_STAY_IN_CHANNEL",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人独自一人直到断开连接的时间",
+            "description": "设置机器人在语音频道中独自一人多少秒后自动离开并清除队列。如果不设置或设置为小于等于零的数字，机器人在独自一人时不会离开。",
+            "env_variable": "BOT_ALONE_TIME",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer",
+            "field_type": "text"
+        },
+        {
+            "name": "机器人最大歌曲长度",
+            "description": "设置加载的任何曲目的最大秒数。如果不设置或设置为小于等于零的数字，则没有最大时间长度限制。此时间限制适用于从任何来源加载的歌曲。",
+            "env_variable": "BOT_MAXTIME",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer",
+            "field_type": "text"
+        }
+    ]
+} 

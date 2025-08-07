@@ -1,0 +1,14 @@
+{
+  "name": "Lavalink",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "基于Lavaplayer和JDA-Audio的独立音频发送节点",
+  "author": "Lavalink Team",
+  "date": "2025-08-07",
+  "tags": ["音频", "Discord", "音乐机器人", "Java"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://raw.githubusercontent.com/lavalink-devs/Lavalink/master/logo.png",
+  "downloadUrl": "/src/data/eggs/lavalink/egg-lavalink-cn.json"
+} 

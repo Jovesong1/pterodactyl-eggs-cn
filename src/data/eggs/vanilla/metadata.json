@@ -1,0 +1,14 @@
+{
+    "name": "Custom HLDS Engine Game",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "HLDS引擎游戏服务器，用于运行如CS 1.6等经典游戏",
+    "author": "Valve",
+    "date": "2025-08-07",
+    "tags": ["FPS", "经典", "Valve", "HLDS"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/6/67/Counter-Strike_Box.jpg",
+    "downloadUrl": "/src/data/eggs/hlds_server/vanilla/egg-custom-h-l-d-s-engine-game-cn.json"
+} 

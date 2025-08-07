@@ -1,0 +1,14 @@
+{
+    "name": "Hurtworld",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Hurtworld硬核多人生存FPS游戏服务器",
+    "author": "Bankroll Studios",
+    "date": "2025-08-07",
+    "tags": ["生存", "FPS", "多人联机", "硬核"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/393420/header.jpg",
+    "downloadUrl": "/src/data/eggs/hurtworld/egg-hurtworld-cn.json"
+} 

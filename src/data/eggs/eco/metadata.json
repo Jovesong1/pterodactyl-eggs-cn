@@ -1,0 +1,14 @@
+{
+  "name": "Eco",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "一款生态系统模拟游戏，玩家必须建立文明同时保护环境",
+  "author": "Strange Loop Games",
+  "date": "2024-08-06",
+  "tags": ["生存", "模拟", "建造", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/382310/header.jpg",
+  "downloadUrl": "/src/data/eggs/eco/egg-eco-cn.json"
+} 

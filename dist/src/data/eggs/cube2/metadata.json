@@ -1,0 +1,14 @@
+{
+  "name": "Cube 2: Sauerbraten",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "Cube 2: Sauerbraten是一款免费的多人和单人第一人称射击游戏",
+  "author": "Sauerbraten Team",
+  "date": "2024-08-06",
+  "tags": ["FPS", "射击", "多人联机", "地图编辑"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "http://sauerbraten.org/sauerbraten.png",
+  "downloadUrl": "/src/data/eggs/cubeengine/cube2/egg-cube2--sauerbraten-cn.json"
+} 

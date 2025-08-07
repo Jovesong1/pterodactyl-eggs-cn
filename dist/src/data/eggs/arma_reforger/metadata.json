@@ -1,0 +1,14 @@
+{
+  "name": "Arma Reforger",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "Arma Reforger是一款冷战时期的军事战术游戏，提供真实的战斗体验",
+  "author": "Bohemia Interactive",
+  "date": "2024-08-06",
+  "tags": ["军事", "战术", "冷战", "射击", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1874880/header.jpg",
+  "downloadUrl": "/src/data/eggs/arma_reforger/egg-arma-reforger-cn.json"
+} 

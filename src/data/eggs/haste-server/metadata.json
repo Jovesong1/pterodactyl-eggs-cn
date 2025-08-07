@@ -1,0 +1,14 @@
+{
+  "name": "haste-server",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "开源的代码和文本粘贴板服务",
+  "author": "John Crepezzi",
+  "date": "2025-08-07",
+  "tags": ["粘贴板", "代码分享", "文本分享", "Node.js"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://raw.githubusercontent.com/toptal/haste-server/master/static/favicon.ico",
+  "downloadUrl": "/src/data/eggs/haste-server/egg-haste-server-cn.json"
+} 

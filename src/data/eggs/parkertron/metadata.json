@@ -1,0 +1,14 @@
+{
+  "name": "parkertron",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "由Parkervcp开发的简单聊天机器人",
+  "author": "parkervcp",
+  "date": "2025-08-07",
+  "tags": ["聊天机器人", "Go", "Discord"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://github.com/parkervcp.png",
+  "downloadUrl": "/src/data/eggs/parkertron/egg-parkertron-cn.json"
+} 

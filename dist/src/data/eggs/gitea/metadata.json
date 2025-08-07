@@ -1,0 +1,14 @@
+{
+  "name": "Gitea",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "轻量级代码托管解决方案，提供Git仓库管理、代码审查和协作功能",
+  "author": "Gitea",
+  "date": "2025-08-07",
+  "tags": ["Git", "代码托管", "版本控制", "开发工具"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://gitea.io/images/gitea.png",
+  "downloadUrl": "/src/data/eggs/gitea/egg-gitea-cn.json"
+} 

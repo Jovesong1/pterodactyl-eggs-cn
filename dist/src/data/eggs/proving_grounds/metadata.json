@@ -1,0 +1,14 @@
+{
+  "name": "America's Army: Proving Grounds",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "美国陆军官方游戏，专注于小型战术机动的军事射击游戏",
+  "author": "U.S. Army",
+  "date": "2024-08-06",
+  "tags": ["军事", "战术", "射击", "多人联机", "免费"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/203290/header.jpg",
+  "downloadUrl": "/src/data/eggs/proving_grounds/egg-america-s-army--proving-grounds-cn.json"
+} 

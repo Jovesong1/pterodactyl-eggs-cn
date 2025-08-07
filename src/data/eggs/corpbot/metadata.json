@@ -1,0 +1,14 @@
+{
+  "name": "CorpBot",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "一个非常笨拙的Python Discord机器人",
+  "author": "corpnewt",
+  "date": "2025-08-07",
+  "tags": ["Discord", "机器人", "Python"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://github.com/corpnewt.png",
+  "downloadUrl": "/src/data/eggs/corpbot/egg-corp-bot-cn.json"
+} 

@@ -1,0 +1,184 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-07-03T21:46:20-07:00",
+    "name": "Arma Reforger",
+    "author": "red_thirten@yahoo.com",
+    "description": "体验真实的冷战战斗，与朋友一起在广阔的51平方公里中大西洋岛屿上奋斗——或者担任游戏主持人，创建自己的场景供他人享受。",
+    "features": [
+        "steam_disk_space"
+    ],
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/steamcmd:debian": "ghcr.io\/ptero-eggs\/steamcmd:debian"
+    },
+    "file_denylist": [],
+    "startup": "sed -i 's\/\"true\"\/true\/g; s\/\"false\"\/false\/g' config.json; .\/ArmaReforgerServer -gproj .\/addons\/data\/ArmaReforger.gproj -config .\/config.json -profile .\/profile -backendlog -nothrow -listScenarios -logStats $(({{LOG_INTERVAL}}*1000)) -maxFPS {{MAX_FPS}} -addonTempDir .\/tmp",
+    "config": {
+        "files": "{\r\n    \"config.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"bindAddress\": \"0.0.0.0\",\r\n            \"bindPort\": \"{{server.build.default.port}}\",\r\n            \"publicAddress\": \"{{server.build.default.ip}}\",\r\n            \"publicPort\": \"{{server.build.default.port}}\",\r\n            \"game.name\": \"{{server.build.env.SERVER_NAME}}\",\r\n            \"game.password\": \"{{server.build.env.SERVER_PASS}}\",\r\n            \"game.passwordAdmin\": \"{{server.build.env.ADMIN_PASS}}\",\r\n            \"game.scenarioId\": \"{{server.build.env.SCENARIO_ID}}\",\r\n            \"game.maxPlayers\": \"{{server.build.env.MAX_PLAYERS}}\",\r\n            \"game.visible\": \"{{server.build.env.VISIBLE}}\",\r\n            \"game.gameProperties.disableThirdPerson\": \"{{server.build.env.DISABLE_THIRD}}\",\r\n            \"game.gameProperties.fastValidation\": true,\r\n            \"game.gameProperties.battlEye\": \"{{server.build.env.BATTLEYE}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Starting RPL server\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\n## File: Pterodactyl Arma Reforger Egg - egg-pterodactyl-arma-reforger.json\r\n## Author: David Wolfe (Red-Thirten)\r\n## Date: 2024\/07\/03\r\n## License: MIT License\r\n## Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n## Download and install SteamCMD\r\nexport HOME=\/mnt\/server\r\ncd \/tmp\r\nmkdir -p $HOME\/steamcmd $HOME\/steamapps\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C $HOME\/steamcmd\r\ncd $HOME\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\nchown -R root:root \/mnt\r\n\r\n# Install\/Verify game server using SteamCMD\r\n.\/steamcmd.sh +force_install_dir $HOME +login anonymous $( [[ \"${WINDOWS_INSTALL}\" == \"1\" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} +app_update 1007 $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) validate +quit\r\n\r\n# Set up 32 and 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk{32,64}\r\ncp -v linux32\/steamclient.so \/mnt\/server\/.steam\/sdk32\/steamclient.so\r\ncp -v linux64\/steamclient.so \/mnt\/server\/.steam\/sdk64\/steamclient.so\r\n\r\n## Arma Reforger setup\r\n# Check for successful installation\r\nif [[ ! -f $HOME\/ArmaReforgerServer ]]; then\r\n    echo -e \"\\n\\nSteamCMD failed to install the Arma Reforger Dedicated Server!\"\r\n    echo -e \"\\tTry reinstalling the server again.\\n\"\r\n    exit 1\r\nfi\r\n\r\nmkdir -p $HOME\/profile $HOME\/tmp\r\n\r\necho -e 'Creating default \"config.json\" configuration file...'\r\ncat > $HOME\/config.json << EOF\r\n{\r\n\t\"bindAddress\": \"0.0.0.0\",\r\n\t\"bindPort\": ${SERVER_PORT},\r\n\t\"publicAddress\": \"${SERVER_IP}\",\r\n\t\"publicPort\": ${SERVER_PORT},\r\n\t\"game\": {\r\n\t\t\"name\": \"${SERVER_NAME}\",\r\n\t\t\"password\": \"${SERVER_PASS}\",\r\n\t\t\"passwordAdmin\": \"${ADMIN_PASS}\",\r\n\t\t\"admins\" : [],\r\n\t\t\"scenarioId\": \"${SCENARIO_ID}\",\r\n\t\t\"maxPlayers\": ${MAX_PLAYERS},\r\n\t\t\"visible\": ${VISIBLE},\r\n\t\t\"gameProperties\": {\r\n\t\t\t\"serverMaxViewDistance\": 2500,\r\n\t\t\t\"serverMinGrassDistance\": 50,\r\n\t\t\t\"networkViewDistance\": 1000,\r\n\t\t\t\"disableThirdPerson\": ${DISABLE_THIRD},\r\n\t\t\t\"fastValidation\": true,\r\n\t\t\t\"battlEye\": ${BATTLEYE},\r\n\t\t\t\"VONDisableUI\": false,\r\n\t\t\t\"VONDisableDirectSpeechUI\": false\r\n\t\t},\r\n\t\t\"mods\": []\r\n\t}\r\n}\r\nEOF\r\n\r\necho -e \"\\nArma Reforger Dedicated Server successfully installed!\\n\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "\/bin\/bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "自动更新",
+            "description": "在启动时快速检查任何服务器或模组更新，并在必要时更新。",
+            "env_variable": "AUTO_UPDATE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器区域",
+            "description": "服务器浏览器中列出的区域。此字段可以使用ISO 3166-1 alpha-2代码。",
+            "env_variable": "REGION",
+            "default_value": "US",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,EU,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "在服务器浏览器中显示的名称。",
+            "env_variable": "SERVER_NAME",
+            "default_value": "Arma Reforger Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:255",
+            "field_type": "text"
+        },
+        {
+            "name": "最大玩家数",
+            "description": "允许加入服务器的最大玩家数。",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "32",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1,256",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "客户端加入服务器前需要输入的密码。留空表示无密码。",
+            "env_variable": "SERVER_PASS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:32",
+            "field_type": "text"
+        },
+        {
+            "name": "管理员密码",
+            "description": "",
+            "env_variable": "ADMIN_PASS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:32",
+            "field_type": "text"
+        },
+        {
+            "name": "场景ID",
+            "description": "要运行/播放的场景ID。有效ID可以在服务器启动时在控制台中查看。",
+            "env_variable": "SCENARIO_ID",
+            "default_value": "{ECC61978EDCC2B5A}Missions\/23_Campaign.conf",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "自动加入",
+            "description": "设置会话是否可以通过自动加入功能选择。",
+            "env_variable": "AUTO_JOINABLE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "在服务器浏览器中可见",
+            "description": "设置服务器在服务器浏览器中的可见性。",
+            "env_variable": "VISIBLE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "启用BattlEye",
+            "description": "在服务器上启用反作弊引擎，并要求所有客户端运行它。",
+            "env_variable": "BATTLEYE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "禁用第三人称视角",
+            "description": "",
+            "env_variable": "DISABLE_THIRD",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 最大FPS",
+            "description": "为服务器设置最大FPS限制，在某些情况下可以节省性能。留空表示无限制。",
+            "env_variable": "MAX_FPS",
+            "default_value": "120",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|integer|gt:0",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] 日志FPS间隔",
+            "description": "多久（以秒为单位）向控制台记录一次FPS和其他调试统计信息。设置为0以禁用。",
+            "env_variable": "LOG_INTERVAL",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "[修复] 验证服务器文件",
+            "description": "\"true\"启用；空禁用。当启用自动更新时验证所有服务器文件。注意：这将显著增加服务器启动时间，因此建议仅在需要时启用。",
+            "env_variable": "VALIDATE",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "[高级] Arma Reforger专用服务器App ID",
+            "description": "用于安装和更新。很少需要更改。",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "1874900",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|integer",
+            "field_type": "text"
+        }
+    ]
+} 

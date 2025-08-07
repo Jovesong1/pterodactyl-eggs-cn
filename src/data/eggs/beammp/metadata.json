@@ -1,0 +1,14 @@
+{
+  "name": "BeamMP",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "BeamMP是BeamNG.drive的多人游戏模组，让玩家能够在线一起驾驶",
+  "author": "BeamMP Team",
+  "date": "2024-08-06",
+  "tags": ["模拟", "驾驶", "多人联机", "物理引擎"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://www.beammp.com/assets/images/logo.png",
+  "downloadUrl": "/src/data/eggs/beammp/egg-beam-m-p-server-cn.json"
+} 

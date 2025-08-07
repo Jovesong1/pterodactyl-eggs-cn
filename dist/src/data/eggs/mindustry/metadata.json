@@ -1,0 +1,14 @@
+{
+    "name": "Mindustry",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Mindustry混合塔防沙盒工厂游戏服务器",
+    "author": "Anuken",
+    "date": "2025-08-07",
+    "tags": ["塔防", "沙盒", "工厂", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1127400/header.jpg",
+    "downloadUrl": "/src/data/eggs/mindustry/egg-mindustry-cn.json"
+} 

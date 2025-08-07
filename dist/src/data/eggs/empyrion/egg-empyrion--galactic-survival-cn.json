@@ -1,0 +1,222 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-01-25T15:56:40+00:00",
+    "name": "Empyrion: Galactic Survival",
+    "author": "eggs@purpleflaghosting.com",
+    "description": "在真正的太空沙盒生存冒险中建造和探索。在您的银河之旅中建造强大的主舰、广阔的行星定居点和庞大的空间站，探索Empyrion的奥秘！",
+    "features": [],
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/yolks:wine_latest": "ghcr.io\/ptero-eggs\/yolks:wine_latest"
+    },
+    "file_denylist": [],
+    "startup": "cd DedicatedServer ; wine EmpyrionDedicated.exe -batchmode -nographics -logFile ..\/Logs\/server\/server.log & PID=$! ; tail -c0 -F ..\/Logs\/server\/server.log & until nc -z 127.0.0.1 {{TELNET_PORT}}; do sleep 1;done ; telnet -E 127.0.0.1 {{TELNET_PORT}} ; wait $PID",
+    "config": {
+        "files": "{\r\n    \"dedicated.yaml\": {\r\n        \"parser\": \"yaml\",\r\n        \"find\": {\r\n            \"ServerConfig.Srv_Port\": \"{{server.build.default.port}}\",\r\n            \"ServerConfig.Srv_Name\": \"{{env.SERVER_NAME}}\",\r\n            \"ServerConfig.Srv_MaxPlayers\": \"{{env.MAX_PLAYERS}}\",\r\n            \"ServerConfig.Srv_Description\": \"{{env.SERVER_DESCRIPTION}}\",\r\n            \"ServerConfig.Srv_Public\": \"{{env.SERVER_PUBLIC}}\",\r\n            \"ServerConfig.Srv_Password\": \"{{env.SERVER_PASSWORD}}\",\r\n            \"ServerConfig.Tel_Enabled\": true,\r\n            \"ServerConfig.Tel_Port\": \"{{env.TELNET_PORT}}\",\r\n            \"ServerConfig.Tel_Pwd\": \"\",\r\n            \"GameConfig.Seed\": \"{{env.GAME_SEED}}\",\r\n            \"ServerConfig.EACActive\": \"{{env.EAC_ACTIVE}}\",\r\n            \"ServerConfig.MaxAllowedSizeClass\": \"{{env.MAX_ALLOWED_SIZE_CLASS}}\",\r\n            \"ServerConfig.AllowedBlueprints\": \"{{env.ALLOWED_BLUEPRINTS}}\",\r\n            \"ServerConfig.HeartbeatServer\": \"{{env.SERVER_HEARTBEAT}}\",\r\n            \"ServerConfig.TimeoutBootingPfServer\": \"{{env.TIMEOUT_BOOTING_PF_SERVER}}\",\r\n            \"GameConfig.GameName\": \"{{env.GAME_NAME}}\",\r\n            \"GameConfig.Mode\": \"{{env.GAME_MODE}}\",\r\n            \"GameConfig.CustomScenario\": \"{{env.CUSTOM_SCENARIO}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "saveandexit 0"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n# Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n##\r\n#\r\n# Variables\r\n# STEAM_USER, STEAM_PASS, STEAM_AUTH - Steam user setup. If a user has 2fa enabled it will most likely fail due to timeout. Leave blank for anon install.\r\n# WINDOWS_INSTALL - if it's a windows server you want to install set to 1\r\n# SRCDS_APPID - steam app id found here - https:\/\/developer.valvesoftware.com\/wiki\/Dedicated_Servers_List\r\n# SRCDS_BETAID - beta branch of a steam app. Leave blank to install normal branch\r\n# SRCDS_BETAPASS - password for a beta branch should one be required during private or closed testing phases.. Leave blank for no password.\r\n# INSTALL_FLAGS - Any additional SteamCMD  flags to pass during install.. Keep in mind that steamcmd auto update process in the docker image might overwrite or ignore these when it performs update on server boot.\r\n# AUTO_UPDATE - Adding this variable to the egg allows disabling or enabling automated updates on boot. Boolean value. 0 to disable and 1 to enable.\r\n#\r\n ##\r\n\r\n# Install packages. Default packages below are not required if using our existing install image thus speeding up the install process.\r\n#apt -y update\r\n#apt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates\r\n\r\n## just in case someone removed the defaults.\r\nif [[ \"${STEAM_USER}\" == \"\" ]] || [[ \"${STEAM_PASS}\" == \"\" ]]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\nmkdir -p \/mnt\/server\/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n## install game using steamcmd\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ \"${WINDOWS_INSTALL}\" == \"1\" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) ${INSTALL_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk32\r\ncp -v linux32\/steamclient.so ..\/.steam\/sdk32\/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk64\r\ncp -v linux64\/steamclient.so ..\/.steam\/sdk64\/steamclient.so\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Steam App ID",
+            "description": "",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "530870",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Windows Install",
+            "description": "",
+            "env_variable": "WINDOWS_INSTALL",
+            "default_value": "1",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Wine Debug",
+            "description": "",
+            "env_variable": "WINEDEBUG",
+            "default_value": "-all",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Telnet端口",
+            "description": "不要暴露给互联网。仅用于内部控制台连接。",
+            "env_variable": "TELNET_PORT",
+            "default_value": "1030",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|integer|between:1024,65535",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "在服务器列表中显示的服务器名称。",
+            "env_variable": "SERVER_NAME",
+            "default_value": "A Pterodactyl Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器描述",
+            "description": "服务器信息，可以包含[b]粗体[/b]文本或[u][url=empyriongame.com]链接[/url][/u]。",
+            "env_variable": "SERVER_DESCRIPTION",
+            "default_value": "An Empyrion Galactic Survival server hosted on Pterodactyl.",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:127",
+            "field_type": "text"
+        },
+        {
+            "name": "种子",
+            "description": "种子决定了世界如何程序化生成 - 相同的种子意味着相同的世界",
+            "env_variable": "GAME_SEED",
+            "default_value": "1011345",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|between:1,9999999",
+            "field_type": "text"
+        },
+        {
+            "name": "最大玩家数",
+            "description": "最大玩家数量",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "8",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "公开",
+            "description": "如果您想在服务器浏览器中隐藏您的服务器，请禁用此选项。如果服务器不可见，您可以通过IP或加入朋友的游戏进行连接。",
+            "env_variable": "SERVER_PUBLIC",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "进入服务器所需的密码。",
+            "env_variable": "SERVER_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Steam测试版ID",
+            "description": "如果指定，则安装测试版分支。",
+            "env_variable": "SRCDS_BETAID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:30",
+            "field_type": "text"
+        },
+        {
+            "name": "允许的蓝图",
+            "description": "None = 完全禁用蓝图系统，StockOnly = 只能生产库存蓝图，All = 允许所有类型（默认）",
+            "env_variable": "ALLOWED_BLUEPRINTS",
+            "default_value": "All",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:All,StockOnly,None",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器心跳",
+            "description": "超时时间（秒），如果游戏场景服务器进程不再向专用服务器发送心跳消息，将被终止（并且其上的所有玩家将断开连接）。设置为0以禁用此功能",
+            "env_variable": "SERVER_HEARTBEAT",
+            "default_value": "15",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:0,180",
+            "field_type": "text"
+        },
+        {
+            "name": "启动游戏场景服务器超时",
+            "description": "监控启动中的游戏场景服务器进程，如果超时则终止它们（时间以秒为单位，0 = 禁用）。这是一个保守的默认值，对于更快的服务器，60秒应该可以",
+            "env_variable": "TIMEOUT_BOOTING_PF_SERVER",
+            "default_value": "90",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:0,600",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏模式",
+            "description": "生存或创造。",
+            "env_variable": "GAME_MODE",
+            "default_value": "Survival",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20|in:Survival,Creative",
+            "field_type": "text"
+        },
+        {
+            "name": "EAC激活",
+            "description": "",
+            "env_variable": "EAC_ACTIVE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "最大允许尺寸等级",
+            "description": "限制允许的蓝图尺寸等级：受限类型不允许生产或生成 1 = 仅允许小型蓝图，... ，10 = 允许非常大的蓝图，...，50 = 允许巨型蓝图，... ，0 = 无限制。警告：大型蓝图可能对性能产生很大影响！",
+            "env_variable": "MAX_ALLOWED_SIZE_CLASS",
+            "default_value": "10",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏名称",
+            "description": "游戏/存档名称",
+            "env_variable": "GAME_NAME",
+            "default_value": "Default Game",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "自定义场景",
+            "description": "自定义场景名称",
+            "env_variable": "CUSTOM_SCENARIO",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        }
+    ]
+} 

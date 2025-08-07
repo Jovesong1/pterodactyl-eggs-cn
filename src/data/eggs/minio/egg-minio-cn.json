@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL - PTERODACTYL.io",
+    "meta": {
+        "update_url": null,
+        "version": "PTDL_v2"
+    },
+    "exported_at": "2024-06-02T14:32:00+00:00",
+    "name": "Minio S3",
+    "author": "accounts@bofanodes.io",
+    "description": "MinIO是一个与Amazon S3兼容的云存储服务器，基于Apache License v2发布。作为对象存储，MinIO可以存储非结构化数据，如照片、视频、日志文件、备份和容器镜像。单个对象的最大大小为5TB。",
+    "features": null,
+    "docker_images": {
+        "ghcr.io/ptero-eggs/yolks:debian": "ghcr.io/ptero-eggs/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": "./minio.sh",
+    "config": {
+        "files": "{}",
+        "logs": "{}",
+        "startup": "{\r\n    \"done\": \"guide\",\r\n    \"done\": \"Documentation:\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "container": "debian:buster-slim",
+            "entrypoint": "bash",
+            "script": "#!/bin/bash\r\n#\r\napt update\r\napt install -y wget\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] \u0026\u0026 echo \"amd64\" || echo \"arm64\")\r\ncd /mnt/server\r\nwget https://dl.min.io/server/minio/release/linux-${ARCH}/minio\r\nchmod +x minio\r\nmkdir data\r\nmkdir keys\r\n\r\nwget https://github.com//ptero-eggs/eggs/raw/master/storage/minio/minio.sh\r\nchmod +x minio.sh\r\nexport MINIO_ACCESS_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)\r\necho $MINIO_ACCESS_KEY \u003e keys/key.txt\r\nexport MINIO_SECRET_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)\r\necho $MINIO_SECRET_KEY \u003e keys/secret.txt\r\necho done"
+        }
+    },
+    "variables": [
+        {
+            "name": "启动类型",
+            "description": "normal(正常),rotate(密钥轮换),update(更新)",
+            "env_variable": "STARTUP_TYPE",
+            "default_value": "normal",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:normal,rotate,update",
+            "field_type": "text"
+        }
+    ]
+} 

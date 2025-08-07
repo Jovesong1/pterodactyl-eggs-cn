@@ -1,0 +1,14 @@
+{
+    "name": "Foundry VTT",
+    "version": "1.0.0",
+    "category": "应用服务器",
+    "description": "Foundry VTT是一个功能丰富的多人桌面角色扮演游戏平台",
+    "author": "Foundry Gaming LLC",
+    "date": "2025-08-07",
+    "tags": ["RPG", "桌游", "角色扮演", "Node.js"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://foundryvtt.com/static/assets/icons/fvtt-anvil-512x512.png",
+    "downloadUrl": "/src/data/eggs/foundry_vtt/egg-FoundryVTT-cn.json"
+} 

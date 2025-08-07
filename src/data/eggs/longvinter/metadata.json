@@ -1,0 +1,14 @@
+{
+    "name": "Longvinter",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Longvinter多人第三人称沙盒游戏服务器",
+    "author": "Uuvana Studios",
+    "date": "2025-08-07",
+    "tags": ["沙盒", "生存", "建造", "多人联机"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1635450/header.jpg",
+    "downloadUrl": "/src/data/eggs/longvinter/egg-longvinter-cn.json"
+} 

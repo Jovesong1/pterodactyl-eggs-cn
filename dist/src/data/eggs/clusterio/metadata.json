@@ -1,0 +1,14 @@
+{
+    "name": "Clusterio",
+    "version": "1.0.0",
+    "category": "游戏服务器",
+    "description": "Factorio集群式服务器管理系统",
+    "author": "Clusterio Team",
+    "date": "2025-08-07",
+    "tags": ["Factorio", "集群", "管理", "NodeJS"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://raw.githubusercontent.com/clusterio/clusterio/master/packages/web_ui/img/clusterio.svg",
+    "downloadUrl": "/src/data/eggs/factorio/clusterio/egg-clusterio-cn.json"
+} 

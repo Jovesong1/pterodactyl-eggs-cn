@@ -1,0 +1,14 @@
+{
+  "name": "JTS3ServerMod",
+  "version": "1.0.0",
+  "category": "工具",
+  "description": "JTS3ServerMod是一个TeamSpeak 3服务器机器人，提供闲置检测、录音检测、欢迎消息等多种功能",
+  "author": "Stefan1200",
+  "date": "2025-08-08",
+  "tags": ["TeamSpeak", "机器人", "服务器管理", "Java"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://www.stefan1200.de/images/JTS3ServerMod.png",
+  "downloadUrl": "/src/data/eggs/teamspeak3/egg-j-t-s3-server-mod-cn.json"
+} 

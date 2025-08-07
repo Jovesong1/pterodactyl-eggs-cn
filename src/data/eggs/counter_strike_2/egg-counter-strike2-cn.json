@@ -1,0 +1,164 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-03-23T20:42:08+01:00",
+    "name": "Counter-Strike 2",
+    "author": "admin@ballaual.de",
+    "description": "二十多年来，Counter-Strike一直提供着精英竞技体验，这一体验由全球数百万玩家共同塑造。现在，CS故事的下一章即将开始。这就是Counter-Strike 2。",
+    "features": [
+        "steam_disk_space"
+    ],
+    "docker_images": {
+        "ghcr.io\/ptero-eggs\/steamcmd:sniper": "ghcr.io\/ptero-eggs\/steamcmd:sniper"
+    },
+    "file_denylist": [],
+    "startup": ".\/game\/bin\/linuxsteamrt64\/cs2 -dedicated $( [ \"$VAC_ENABLED\" == \"1\" ] || printf %s ' -insecure' ) -ip 0.0.0.0 -port {{SERVER_PORT}} -tv_port {{TV_PORT}} -maxplayers {{MAX_PLAYERS}} $( [ \"$RCON_ENABLED\" == \"0\" ] || printf %s ' -usercon' ) +game_mode {{GAME_MODE}} +game_type {{GAME_TYPE}} +map {{SRCDS_MAP}} +hostname \"{{SERVER_NAME}}\" +sv_password \"{{SERVER_PASSWORD}}\" +rcon_password \"{{RCON_PASSWORD}}\" +sv_setsteamaccount {{STEAM_GSLT}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Connection to Steam servers successful\"\r\n}",
+        "logs": "{}",
+        "stop": "quit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n# Image to install with is 'ghcr.io\/ptero-eggs\/installers:debian'\r\n\r\n## just in case someone removed the defaults.\r\nif [[ \"${STEAM_USER}\" == \"\" ]] || [[ \"${STEAM_PASS}\" == \"\" ]]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\nmkdir -p \/mnt\/server\/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n## Install game using steamcmd\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk32\r\ncp -v linux32\/steamclient.so ..\/.steam\/sdk32\/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk64\r\ncp -v linux64\/steamclient.so ..\/.steam\/sdk64\/steamclient.so\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "地图",
+            "description": "服务器的默认地图。\r\n示例：\r\n\r\n爆破模式：\r\nde_dust2, de_mirage, de_nuke, de_overpass, de_inferno, de_ancient, de_vertigo, de_anubis\r\n\r\n人质模式：\r\ncs_italy, cs_office\r\n\r\n军备竞赛：\r\nar_baggage, ar_shoots",
+            "env_variable": "SRCDS_MAP",
+            "default_value": "de_dust2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Source AppID",
+            "description": "服务器重启时更新游戏所需。请勿修改。",
+            "env_variable": "SRCDS_APPID",
+            "default_value": "730",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|in:730",
+            "field_type": "text"
+        },
+        {
+            "name": "最大玩家数",
+            "description": "指定能够加入服务器的最大玩家数量。",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "12",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|between:1,64",
+            "field_type": "text"
+        },
+        {
+            "name": "自动更新服务器",
+            "description": "启用/禁用服务器在重启时自动更新。\r\n\r\n默认设置为启用。",
+            "env_variable": "AUTO_UPDATE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "SourceTV端口",
+            "description": "用于连接观看服务器上游戏的SourceTV端口。",
+            "env_variable": "TV_PORT",
+            "default_value": "27020",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1025,65535",
+            "field_type": "text"
+        },
+        {
+            "name": "Steam游戏服务器登录令牌",
+            "description": "服务器公开显示所需的Steam账户令牌。可以在此处获取令牌：https://steamcommunity.com/dev/managegameservers",
+            "env_variable": "STEAM_GSLT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|alpha_num|size:32",
+            "field_type": "text"
+        },
+        {
+            "name": "启用VAC",
+            "description": "在服务器上启用/禁用VAC（Valve反作弊系统）。默认情况下将启用。",
+            "env_variable": "VAC_ENABLED",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "启用RCON",
+            "description": "启用/禁用RCON以使用外部工具执行RCON命令。默认情况下将禁用。",
+            "env_variable": "RCON_ENABLED",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器名称",
+            "description": "设置Steam服务器浏览器中列出的服务器名称。",
+            "env_variable": "SERVER_NAME",
+            "default_value": "由Pterodactyl托管的CS2服务器",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "服务器密码",
+            "description": "如果指定，玩家必须提供此密码才能加入服务器。",
+            "env_variable": "SERVER_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|alpha_dash|between:1,30",
+            "field_type": "text"
+        },
+        {
+            "name": "RCON密码",
+            "description": "用于获取服务器上管理员命令的访问权限。",
+            "env_variable": "RCON_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|alpha_dash|between:1,30",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏模式",
+            "description": "定义在下一回合开始时设置的游戏模式和游戏类型。\r\n示例：\r\n\r\n竞技模式：\r\ngame_mode 1\r\ngame_type 0\r\n\r\n翼竞模式：\r\ngame_mode 2\r\ngame_type 0\r\n\r\n休闲模式：\r\ngame_mode 0\r\ngame_type 0\r\n\r\n死亡竞赛：\r\ngame_mode 2\r\ngame_type 1\r\n\r\n军备竞赛：\r\ngame_mode 0\r\ngame_type 1\r\n\r\n自定义：\r\ngame_mode 0\r\ngame_type 3",
+            "env_variable": "GAME_MODE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "游戏类型",
+            "description": "定义在下一回合开始时设置的游戏模式和游戏类型。\r\n示例：\r\n\r\n竞技模式：\r\ngame_mode 1\r\ngame_type 0\r\n\r\n翼竞模式：\r\ngame_mode 2\r\ngame_type 0\r\n\r\n休闲模式：\r\ngame_mode 0\r\ngame_type 0\r\n\r\n死亡竞赛：\r\ngame_mode 2\r\ngame_type 1\r\n\r\n军备竞赛：\r\ngame_mode 0\r\ngame_type 1\r\n\r\n自定义：\r\ngame_mode 0\r\ngame_type 3",
+            "env_variable": "GAME_TYPE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+} 

@@ -416,33 +416,91 @@ function HomePage() {
         </div>
       )}
 
-      {/* 项目介绍 */}
+      {/* 项目介绍 - 全新设计 */}
       {!hasSearched && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-800 dark:text-white">
-            <svg className="h-6 w-6 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            关于本项目
-          </h2>
-          <div className="prose max-w-none dark:prose-invert">
-            <p className="mb-4 text-gray-700 dark:text-gray-300">
-              翼龙面板中文Egg资源站是一个公益性质的资源汇总平台，旨在解决国内用户在使用翼龙面板部署游戏/应用服务器时面临的"英文Egg门槛高、资源分散、适配性不明"等痛点。
-            </p>
-            <p className="mb-4 text-gray-700 dark:text-gray-300">
-              我们提供经过汉化和优化的Egg资源，包含详细的配置说明和使用教程，帮助用户快速部署各类服务器。
-            </p>
-          </div>
-          <div className="mt-8 flex justify-center">
-            <Link 
-              to="/about" 
-              className="inline-flex items-center px-6 py-2 border border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors"
-            >
-              了解更多
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </Link>
+        <div className="relative overflow-hidden bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg p-8">
+          {/* 背景装饰 */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 dark:bg-blue-500/10 rounded-full -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-500/5 dark:bg-green-500/10 rounded-full -ml-40 -mb-40"></div>
+          
+          <div className="relative">
+            {/* 标题区域 */}
+            <div className="flex items-center mb-8">
+              <div className="bg-blue-600 dark:bg-blue-500 rounded-xl p-3 mr-4 shadow-md">
+                <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">关于本项目</h2>
+            </div>
+            
+            {/* 内容区域 - 卡片式布局 */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* 左侧：项目介绍 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
+                  <svg className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                  项目简介
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  翼龙面板中文Egg资源站是一个公益性质的资源汇总平台，旨在解决国内用户在使用翼龙面板部署游戏/应用服务器时面临的"英文Egg门槛高、资源分散、适配性不明"等痛点。
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  我们提供经过汉化和优化的Egg资源，包含详细的配置说明和使用教程，帮助用户快速部署各类服务器。
+                </p>
+              </div>
+              
+              {/* 右侧：项目特点 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
+                  <svg className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  项目特点
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 dark:text-gray-300">中文化界面与配置，降低使用门槛</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 dark:text-gray-300">经过测试认证，确保稳定可用</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 dark:text-gray-300">详细的配置说明与使用教程</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 dark:text-gray-300">社区驱动，持续更新与优化</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            {/* 底部按钮 */}
+            <div className="mt-8 flex justify-center">
+              <Link 
+                to="/about" 
+                className="group inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg"
+              >
+                <span>了解更多详情</span>
+                <svg className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       )}

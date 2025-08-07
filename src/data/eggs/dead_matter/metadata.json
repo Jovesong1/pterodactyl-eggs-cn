@@ -1,0 +1,14 @@
+{
+  "name": "Dead Matter",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "末日生存游戏，在病毒爆发后的加拿大落基山脉中生存",
+  "author": "QI Software",
+  "date": "2024-08-06",
+  "tags": ["生存", "僵尸", "开放世界", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/2584780/header.jpg",
+  "downloadUrl": "/src/data/eggs/dead_matter/egg-dead-matter-cn.json"
+} 

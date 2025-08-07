@@ -1,0 +1,14 @@
+{
+  "name": "owncast",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "Owncast是一个自托管的直播视频和网页聊天服务器，可与现有流行的广播软件一起使用",
+  "author": "Owncast Project",
+  "date": "2025-08-07",
+  "tags": ["直播", "流媒体", "视频", "聊天"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://owncast.online/images/logo.svg",
+  "downloadUrl": "/src/data/eggs/owncast/egg-owncast-cn.json"
+} 

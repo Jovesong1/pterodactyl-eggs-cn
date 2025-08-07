@@ -1,0 +1,14 @@
+{
+  "name": "Teamspeak3 Server ARM64",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "具有安全设计的VoIP软件，拥有清晰的语音质量、无限的自定义选项，以及可扩展至数千名同时在线用户的能力。",
+  "author": "TeamSpeak Systems, Inc.",
+  "date": "2025-08-08",
+  "tags": ["语音通信", "VoIP", "ARM64", "团队协作"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.jsdelivr.net/gh/TeamSpeak-Systems/teamspeak-brand-assets/logos/teamspeak.svg",
+  "downloadUrl": "/src/data/eggs/teamspeak_ARM64/egg-teamspeak3-server-arm64-cn.json"
+} 

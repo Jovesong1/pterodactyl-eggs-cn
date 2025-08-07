@@ -1,0 +1,14 @@
+{
+  "name": "DDRaceNetwork",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "DDraceNetwork是Teeworlds的一个合作游戏玩法修改版",
+  "author": "DDNet Team",
+  "date": "2024-08-06",
+  "tags": ["平台游戏", "2D", "多人联机", "合作"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://ddnet.org/favicon.png",
+  "downloadUrl": "/src/data/eggs/ddracenetwork/egg-d-d-race-network-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+    "name": "TS3 Manager",
+    "version": "1.0.0",
+    "category": "应用服务器",
+    "description": "简单轻量级的TeamSpeak网页管理界面",
+    "author": "joni1802",
+    "date": "2025-08-07",
+    "tags": ["TeamSpeak", "网页界面", "管理工具"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://raw.githubusercontent.com/joni1802/ts3-manager/master/client/public/favicon.png",
+    "downloadUrl": "/src/data/eggs/ts3_manager/egg-t-s3-manager-cn.json"
+} 

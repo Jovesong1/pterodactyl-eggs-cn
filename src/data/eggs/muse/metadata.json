@@ -1,0 +1,14 @@
+{
+  "name": "Muse",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "一个高度自我定制的中西部自托管Discord音乐机器人",
+  "author": "museofficial",
+  "date": "2025-08-07",
+  "tags": ["Discord", "音乐", "机器人", "Node.js"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://raw.githubusercontent.com/museofficial/muse/main/docs/logo.png",
+  "downloadUrl": "/src/data/eggs/muse/egg-muse-cn.json"
+} 

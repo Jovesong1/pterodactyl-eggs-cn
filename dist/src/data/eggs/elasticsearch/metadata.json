@@ -1,0 +1,14 @@
+{
+  "name": "Elasticsearch",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "分布式RESTful搜索和分析引擎，提供强大的数据存储和检索能力",
+  "author": "Elastic",
+  "date": "2025-08-07",
+  "tags": ["搜索引擎", "分析", "数据库", "Elastic Stack"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.akamai.steamstatic.com/steam/apps/1163850/header.jpg",
+  "downloadUrl": "/src/data/eggs/elasticsearch/egg-elasticsearch-cn.json"
+} 

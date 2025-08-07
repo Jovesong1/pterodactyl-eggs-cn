@@ -1,0 +1,14 @@
+{
+  "name": "ATLBot",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "ATLauncher的官方Discord机器人",
+  "author": "ATLauncher",
+  "date": "2025-08-07",
+  "tags": ["Discord", "机器人", "Node.js", "ATLauncher"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://avatars.githubusercontent.com/u/1547796",
+  "downloadUrl": "/src/data/eggs/atlbot/egg-a-t-l-bot-cn.json"
+} 

@@ -1,0 +1,14 @@
+{
+  "name": "Aoede",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "直接将Spotify音乐流式传输到Discord的音乐机器人",
+  "author": "codetheweb",
+  "date": "2025-08-07",
+  "tags": ["Discord", "音乐", "Spotify", "机器人", "Rust"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://raw.githubusercontent.com/codetheweb/aoede/master/logo.png",
+  "downloadUrl": "/src/data/eggs/aoede/egg-aoede-cn.json"
+} 

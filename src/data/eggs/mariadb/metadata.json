@@ -1,0 +1,14 @@
+{
+  "name": "MariaDB",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "MariaDB是一个社区开发的MySQL关系型数据库管理系统分支，保持开源特性",
+  "author": "MariaDB Foundation",
+  "date": "2025-08-08",
+  "tags": ["数据库", "MySQL", "关系型数据库", "SQL"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://mariadb.org/wp-content/themes/twentynineteen-child/icons/mariadb_org_rgb_h.svg",
+  "downloadUrl": "/src/data/eggs/sql/mariadb/egg-maria-d-b-cn.json"
+} 

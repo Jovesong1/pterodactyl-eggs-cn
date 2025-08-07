@@ -1,0 +1,14 @@
+{
+  "name": "reposilite",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "轻量级且易于使用的仓库管理软件，专门用于JVM生态系统中基于Maven的构件",
+  "author": "dzikoysk",
+  "date": "2025-08-07",
+  "tags": ["Maven", "仓库", "Java", "构建工具"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://avatars.githubusercontent.com/u/64671468",
+  "downloadUrl": "/src/data/eggs/reposilite/egg-reposilite-cn.json"
+} 

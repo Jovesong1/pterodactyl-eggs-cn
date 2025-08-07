@@ -1,0 +1,14 @@
+{
+  "name": "Zandronum",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "Zandronum是一个以多人游戏为导向的毁灭战士端口，基于Skulltag",
+  "author": "Zandronum Team",
+  "date": "2024-08-06",
+  "tags": ["FPS", "射击", "经典", "多人联机"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://zandronum.com/images/header.png",
+  "downloadUrl": "/src/data/eggs/doom/zandronum/egg-zandronum-cn.json"
+} 

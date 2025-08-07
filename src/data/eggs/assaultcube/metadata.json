@@ -1,0 +1,14 @@
+{
+  "name": "AssaultCube",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "AssaultCube是一款免费的多人第一人称射击游戏，基于CUBE引擎",
+  "author": "AssaultCube Team",
+  "date": "2024-08-06",
+  "tags": ["FPS", "射击", "多人联机", "轻量级"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://assault.cubers.net/images/aclogo.png",
+  "downloadUrl": "/src/data/eggs/cubeengine/assaultcube/egg-assault-cube-cn.json"
+} 

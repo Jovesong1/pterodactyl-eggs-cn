@@ -1,0 +1,14 @@
+{
+  "name": "ClassiCube(MGC)",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "MCGalaxy是一个功能齐全且可定制的ClassiCube服务器软件，基于MCForge/MCLawl开发",
+  "author": "UnknownShadow200",
+  "date": "2025-08-08",
+  "tags": ["ClassiCube", "方块游戏", "服务器", "Mono"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://www.classicube.net/static/img/cc-cube-small.png",
+  "downloadUrl": "/src/data/eggs/mcgalaxy/egg-classi-cube--m-g-c-cn.json"
+} 

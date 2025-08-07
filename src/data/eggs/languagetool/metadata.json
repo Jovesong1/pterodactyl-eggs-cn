@@ -1,0 +1,14 @@
+{
+  "name": "LanguageTool",
+  "version": "1.0.0",
+  "category": "工具",
+  "description": "开源的多语言校对和语法检查工具",
+  "author": "Daniel Naber",
+  "date": "2025-08-07",
+  "tags": ["语法检查", "校对", "拼写检查", "多语言"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://languagetool.org/favicon.ico",
+  "downloadUrl": "/src/data/eggs/languagetool/egg-language-tool-cn.json"
+} 

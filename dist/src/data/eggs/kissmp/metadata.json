@@ -1,0 +1,14 @@
+{
+  "name": "KissMP",
+  "version": "1.0.0",
+  "category": "游戏服务器",
+  "description": "KissMP是BeamNG.drive的简易多人游戏模组服务器",
+  "author": "TheHellBox",
+  "date": "2024-08-06",
+  "tags": ["模拟", "驾驶", "多人联机", "物理引擎"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://github.com/TheHellBox/KISS-multiplayer/raw/master/kiss-mp-logo.png",
+  "downloadUrl": "/src/data/eggs/kissmp/egg-kissmp-cn.json"
+} 

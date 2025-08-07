@@ -1,0 +1,14 @@
+{
+    "name": "fragbot",
+    "version": "1.0.0",
+    "category": "应用服务器",
+    "description": "基于golang的Fragforce Discord机器人",
+    "author": "fragforce",
+    "date": "2025-08-07",
+    "tags": ["Discord", "机器人", "Golang"],
+    "localizationStatus": "已汉化",
+    "optimizationStatus": "未优化",
+    "testStatus": "未进行运行认证",
+    "icon": "https://avatars.githubusercontent.com/u/16067588",
+    "downloadUrl": "/src/data/eggs/fragbot/egg-fragbot-cn.json"
+} 

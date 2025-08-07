@@ -1,0 +1,14 @@
+{
+  "name": "Code-Server",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "在任何机器上运行VS Code并通过浏览器访问的服务器",
+  "author": "Coder",
+  "date": "2025-08-07",
+  "tags": ["开发", "编辑器", "IDE", "VS Code"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://coder.com/images/code-server-logo.png",
+  "downloadUrl": "/src/data/eggs/code-server/egg-code-server-cn.json"
+} 

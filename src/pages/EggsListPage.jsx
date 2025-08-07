@@ -18,10 +18,22 @@ function EggsListPage() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
+  const [showAllTags, setShowAllTags] = useState(false);
   
   // 提取所有分类和标签
   const categories = [...new Set(eggsIndex.map(egg => egg.category))];
   const tags = [...new Set(eggsIndex.flatMap(egg => egg.tags))];
+  
+  // 定义常用/热门标签（这里假设一些热门标签，实际项目中可能需要根据使用频率或其他指标来确定）
+  const popularTags = ['FPS', '开放世界', 'RPG', '沙盒', '生存', '策略'];
+  
+  // 过滤出实际存在的热门标签
+  const visiblePopularTags = popularTags.filter(tag => tags.includes(tag));
+  
+  // 计算要显示在顶部的标签（热门标签 + 已选中的标签）
+  const displayedTags = selectedTag && !visiblePopularTags.includes(selectedTag) 
+    ? [...visiblePopularTags, selectedTag] 
+    : visiblePopularTags;
   
   // 状态筛选选项
   const statusFilters = [
@@ -122,6 +134,15 @@ function EggsListPage() {
   // 处理标签筛选
   const handleTagFilter = (tag) => {
     setSelectedTag(tag === selectedTag ? '' : tag);
+    // 如果选择了一个标签，自动关闭弹出层
+    if (tag !== selectedTag) {
+      setShowAllTags(false);
+    }
+  };
+  
+  // 切换显示所有标签
+  const toggleShowAllTags = () => {
+    setShowAllTags(!showAllTags);
   };
   
   // 处理状态筛选
@@ -156,49 +177,6 @@ function EggsListPage() {
         <SearchBar onSearch={handleSearch} />
       </div>
       
-      {/* 状态筛选器 */}
-      <div className="mb-6">
-        <div className="flex flex-wrap gap-3">
-          <button
-            onClick={clearAllFilters}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              !selectedCategory && !selectedTag && !selectedStatus && !searchTerm
-                ? 'bg-blue-600 dark:bg-blue-700 text-white shadow-md' 
-                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-            }`}
-          >
-            全部资源
-          </button>
-          
-          {statusFilters.map(filter => {
-            // 计算每种状态的资源数量
-            const count = eggsIndex.filter(egg => egg[filter.field] === filter.value).length;
-            
-            // 为不同状态设置不同的颜色
-            const colors = {
-              localized: 'bg-green-600 dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-600',
-              optimized: 'bg-purple-600 dark:bg-purple-700 hover:bg-purple-700 dark:hover:bg-purple-600',
-              tested: 'bg-yellow-600 dark:bg-yellow-700 hover:bg-yellow-700 dark:hover:bg-yellow-600'
-            };
-            
-            return (
-              <button
-                key={filter.id}
-                onClick={() => handleStatusFilter(filter.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center ${
-                  selectedStatus === filter.id 
-                    ? `${colors[filter.id]} text-white shadow-md` 
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
-              >
-                <span className="w-2 h-2 bg-white rounded-full mr-1.5"></span>
-                {filter.label} ({count})
-              </button>
-            );
-          })}
-        </div>
-      </div>
-      
       {/* 筛选器 */}
       <div className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <div className="mb-4">
@@ -230,10 +208,11 @@ function EggsListPage() {
           </div>
         </div>
         
-        <div>
+        <div className="mb-4">
           <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">按标签筛选</h2>
           <div className="flex flex-wrap gap-2">
-            {tags.map(tag => (
+            {/* 显示热门标签和已选中的标签 */}
+            {displayedTags.map(tag => (
               <button
                 key={tag}
                 onClick={() => handleTagFilter(tag)}
@@ -246,6 +225,89 @@ function EggsListPage() {
                 {tag}
               </button>
             ))}
+            
+            {/* 更多标签按钮 */}
+            <button
+              onClick={toggleShowAllTags}
+              className="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors flex items-center"
+            >
+              {showAllTags ? '收起' : '更多标签'} 
+              <svg 
+                className={`ml-1 w-4 h-4 transition-transform ${showAllTags ? 'transform rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+          </div>
+          
+          {/* 弹出的所有标签选择区域 */}
+          {showAllTags && (
+            <div className="mt-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 max-h-60 overflow-y-auto custom-scrollbar">
+              <div className="flex flex-wrap gap-2">
+                {tags
+                  .filter(tag => !displayedTags.includes(tag))
+                  .map(tag => (
+                    <button
+                      key={tag}
+                      onClick={() => handleTagFilter(tag)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedTag === tag 
+                          ? 'bg-blue-600 dark:bg-blue-700 text-white' 
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">按状态筛选</h2>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={clearAllFilters}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                !selectedCategory && !selectedTag && !selectedStatus && !searchTerm
+                  ? 'bg-blue-600 dark:bg-blue-700 text-white shadow-md' 
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              全部资源
+            </button>
+            
+            {statusFilters.map(filter => {
+              // 计算每种状态的资源数量
+              const count = eggsIndex.filter(egg => egg[filter.field] === filter.value).length;
+              
+              // 为不同状态设置不同的颜色
+              const colors = {
+                localized: 'bg-green-600 dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-600',
+                optimized: 'bg-purple-600 dark:bg-purple-700 hover:bg-purple-700 dark:hover:bg-purple-600',
+                tested: 'bg-yellow-600 dark:bg-yellow-700 hover:bg-yellow-700 dark:hover:bg-yellow-600'
+              };
+              
+              return (
+                <button
+                  key={filter.id}
+                  onClick={() => handleStatusFilter(filter.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center ${
+                    selectedStatus === filter.id 
+                      ? `${colors[filter.id]} text-white shadow-md` 
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  <span className="w-2 h-2 bg-white rounded-full mr-1.5"></span>
+                  {filter.label} ({count})
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,0 +1,14 @@
+{
+  "name": "SFTP Storage Share",
+  "version": "1.0.0",
+  "category": "工具",
+  "description": "一个简单的SFTP存储共享服务，利用翼龙面板内置的SFTP系统",
+  "author": "David Wolfe (Red-Thirten)",
+  "date": "2025-08-08",
+  "tags": ["存储", "文件共享", "SFTP"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://cdn.jsdelivr.net/gh/pterodactyl/panel@develop/public/assets/svgs/pterodactyl.svg",
+  "downloadUrl": "/src/data/eggs/sftp_storage_share/egg-sftp-storage-share-cn.json"
+} 

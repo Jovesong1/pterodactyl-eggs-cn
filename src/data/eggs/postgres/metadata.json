@@ -1,0 +1,14 @@
+{
+  "name": "Postgres 16",
+  "version": "1.0.0",
+  "category": "应用服务器",
+  "description": "PostgreSQL是世界上最先进的开源关系型数据库",
+  "author": "PostgreSQL Global Development Group",
+  "date": "2025-08-08",
+  "tags": ["数据库", "关系型数据库", "SQL", "PostgreSQL"],
+  "localizationStatus": "已汉化",
+  "optimizationStatus": "未优化",
+  "testStatus": "未进行运行认证",
+  "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
+  "downloadUrl": "/src/data/eggs/sql/postgres/egg-postgres16-cn.json"
+} 
