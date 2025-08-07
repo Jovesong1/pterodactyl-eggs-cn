@@ -67,7 +67,18 @@ async function generateEggsIndex() {
     const files = fs.readdirSync(folderPath);
     
     const mdFile = files.find(file => file.endsWith('.md'));
-    const eggJsonFile = files.find(file => file.endsWith('.json') && !file.startsWith('metadata'));
+    // const eggJsonFile = files.find(file => file.endsWith('.json') && !file.startsWith('metadata'));
+    // 先查找带有 egg 的 JSON 文件（不区分大小写）
+    const eggJsonWithEgg = files.find(file => 
+      file.endsWith('.json') && 
+      !file.startsWith('metadata') && 
+      file.toLowerCase().includes('egg')
+    );
+    // 如果找到带有 egg 的，则使用它，否则使用原来的逻辑
+    const eggJsonFile = eggJsonWithEgg || files.find(file => 
+      file.endsWith('.json') && 
+      !file.startsWith('metadata')
+    );
     const metadataFile = files.find(file => file === 'metadata.json');
     
     // 收集额外文件信息
